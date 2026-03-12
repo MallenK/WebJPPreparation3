@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=Anton&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", sans-serif;
+  --font-accent: "Anton", sans-serif;
+  
+  --color-brand-dark: #0A1F44;
+  --color-brand-black: #050505;
+  --color-brand-accent: #1E6BFF;
+  --color-brand-cyan: #00F0FF;
+  --color-brand-violet: #8B5CF6;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-black text-white font-sans antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display uppercase tracking-tight;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-sports {
+    background: linear-gradient(135deg, var(--color-brand-dark) 0%, var(--color-brand-accent) 100%);
+  }
+  
+  .bg-gradient-dynamic {
+    background: linear-gradient(90deg, var(--color-brand-accent) 0%, var(--color-brand-violet) 100%);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-accent to-brand-cyan;
+  }
+
+  .slanted-bg {
+    clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+  }
+
+  .slanted-bg-reverse {
+    clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply bg-white/10 border-brand-accent/50 shadow-[0_0_30px_rgba(30,107,255,0.2)];
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden bg-brand-accent hover:bg-blue-600 text-white font-bold py-4 px-10 rounded-full transition-all duration-300 uppercase tracking-widest text-sm inline-flex items-center justify-center shadow-lg shadow-brand-accent/20;
+  }
+
+  .btn-primary::after {
+    content: '';
+    @apply absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-all duration-500 skew-x-12;
+  }
+
+  .btn-primary:hover::after {
+    @apply left-full;
+  }
+
+  .btn-outline {
+    @apply border-2 border-white/20 hover:border-brand-accent hover:text-brand-accent text-white font-bold py-4 px-10 rounded-full transition-all duration-300 uppercase tracking-widest text-sm inline-flex items-center justify-center;
+  }
+
+  .section-padding {
+    @apply py-24 md:py-32 px-6 md:px-12;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-brand-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-dark border-2 border-brand-black rounded-full;
+}
+
+::-line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}

@@ -1,0 +1,5 @@
+{
+  "name": "JP Preparation - Elite Football Academy",
+  "description": "High-performance football training academy specializing in technical and physical preparation for young athletes.",
+  "requestFramePermissions": ["geolocation"]
+}
