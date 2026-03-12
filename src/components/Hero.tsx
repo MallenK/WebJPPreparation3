@@ -55,9 +55,9 @@ export const Hero = () => {
             The Future of Football is Here
           </motion.div>
           
-          <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black leading-[0.85] mb-8 tracking-tighter">
-            DOMINA EL <br />
-            <span className="text-gradient italic">JUEGO</span>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[0.85] mb-8 tracking-tighter">
+            JP <br />
+            <span className="text-gradient">Preparation</span>
           </h1>
           
           <p className="text-lg md:text-xl text-white/70 mb-12 max-w-lg leading-relaxed font-medium">
@@ -99,14 +99,14 @@ export const Hero = () => {
           transition={{ duration: 1, delay: 0.5 }}
           className="hidden lg:block relative"
         >
-          <div className="relative z-10 aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl shadow-brand-accent/20">
+          <div className="relative -z-10 aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl shadow-brand-accent/20">
             <img 
-              src="https://images.unsplash.com/photo-1526232759583-26f173b0bb3e?q=80&w=1000&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1000&auto=format&fit=crop" 
               alt="Elite Player" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover grayscale"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-black/30 to-transparent"></div>
           </div>
           
           {/* Floating Cards */}

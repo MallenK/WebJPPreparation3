@@ -78,7 +78,7 @@ export const Equipo = () => {
       delay: 0.2
     },
     {
-      name: "Sergio Mallén",
+      name: "Sergi Mallén",
       role: "Entrenador Tecnificación",
       bio: "Especialista en desarrollo técnico de base. Su metodología se centra en el control orientado, el perfilamiento y la toma de decisiones rápida.",
       img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop",

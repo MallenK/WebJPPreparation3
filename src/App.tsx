@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Header, Footer } from './components/Navigation';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Tecnificacion } from './pages/Tecnificacion';
 import { Programas } from './pages/Programas';
@@ -14,15 +14,17 @@ import { useEffect } from 'react';
 // Scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
   return null;
 };
 
 export default function App() {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
@@ -39,6 +41,6 @@ export default function App() {
         </div>
         <Footer />
       </div>
-    </Router>
+    </>
   );
 }
