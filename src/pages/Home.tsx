@@ -44,18 +44,18 @@ export const Home = () => {
             viewport={{ once: true }}
           >
             <SectionHeader 
-              subtitle="Nuestra Visión" 
-              title="FORJAMOS EL <span className='text-gradient italic'>ADN</span> DEL FUTBOLISTA PROFESIONAL" 
+              subtitle="Qué Hacemos" 
+              title="MEJORAMOS EL <span className='text-gradient italic'>RENDIMIENTO</span> DEL FUTBOLISTA" 
             />
             <p className="text-white/70 text-xl mb-10 leading-relaxed font-medium">
-              En JP Preparation entendemos que el talento es solo el punto de partida. La diferencia entre llegar y mantenerse está en los detalles técnicos, la inteligencia táctica y la fortaleza mental.
+              En JP Preparation trabajamos de forma personalizada para ayudar a cada jugador a mejorar su técnica, su físico y su rendimiento dentro del campo. Cada sesión está enfocada en desarrollar aspectos concretos del juego según las necesidades de cada futbolista.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
               {[
-                { icon: Brain, title: "Inteligencia Táctica", desc: "Lectura de juego avanzada." },
-                { icon: Zap, title: "Explosividad", desc: "Potencia en el primer paso." },
-                { icon: Target, title: "Precisión", desc: "Control total del balón." },
-                { icon: Shield, title: "Resiliencia", desc: "Mentalidad de ganador." }
+                { icon: Brain, title: "Trabajo Específico", desc: "Entrenamientos adaptados a cada jugador." },
+                { icon: Zap, title: "Preparación Física", desc: "Mejora del rendimiento y prevención." },
+                { icon: Target, title: "Tecnificación", desc: "Corrección técnica y mejora del juego." },
+                { icon: Shield, title: "Seguimiento", desc: "Evolución constante en cada sesión." }
               ].map((item, i) => (
                 <div key={i} className="flex gap-4 group">
                   <div className="w-12 h-12 shrink-0 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-brand-accent transition-colors duration-300">
@@ -69,7 +69,7 @@ export const Home = () => {
               ))}
             </div>
             <Link to="/tecnificacion" className="btn-primary">
-              Nuestra Metodología
+              Ver tecnificación
             </Link>
           </motion.div>
           
@@ -82,7 +82,7 @@ export const Home = () => {
             <div className="aspect-square rounded-[2rem] overflow-hidden border-2 border-white/10 p-4 bg-white/5">
               <img 
                 src="https://images.unsplash.com/photo-1526232759583-26f173b0bb3e?q=80&w=1000&auto=format&fit=crop" 
-                alt="Training Session" 
+                alt="Sesión de entrenamiento" 
                 className="w-full h-full object-cover rounded-[1.5rem]"
                 referrerPolicy="no-referrer"
               />
@@ -93,9 +93,9 @@ export const Home = () => {
                 <div className="w-10 h-10 rounded-full bg-brand-accent flex items-center justify-center">
                   <Trophy className="text-white" size={20} />
                 </div>
-                <span className="font-black text-lg tracking-tighter">ELITE LEVEL</span>
+                <span className="font-black text-lg tracking-tighter">ENTRENAMIENTO PERSONALIZADO</span>
               </div>
-              <p className="text-xs text-white/50 leading-relaxed">"No es solo entrenar más, es entrenar mejor. Aquí cada minuto cuenta para tu futuro."</p>
+              <p className="text-xs text-white/50 leading-relaxed">"Cada jugador necesita un trabajo específico para mejorar su nivel y rendir mejor en el campo."</p>
             </div>
           </motion.div>
         </div>

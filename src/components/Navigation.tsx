@@ -18,44 +18,45 @@ export const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
+    { name: 'Inicio', path: '/' },
     { name: 'Tecnificación', path: '/tecnificacion' },
     { name: 'Programas', path: '/programas' },
     { name: 'Equipo', path: '/equipo' },
     { name: 'Instalaciones', path: '/instalaciones' },
     { name: 'Resultados', path: '/resultados' },
-    { name: 'Contacto', path: '/contacto' },
   ];
 
   return (
     <header 
       className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-500 py-4 px-6 md:px-12",
+        "fixed top-0 left-0 w-full z-50 transition-all duration-500 py-4 px-4 md:px-8 xl:px-12",
         isScrolled ? "bg-brand-black/80 backdrop-blur-xl border-b border-white/10 py-3" : "bg-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-6">
+        <Link to="/" className="flex items-center gap-3 group shrink-0">
           <div className="relative w-12 h-12 bg-brand-accent rounded-xl flex items-center justify-center font-display font-bold text-2xl italic transform group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-brand-accent/30">
             JP
             <div className="absolute -top-1 -right-1 w-3 h-3 bg-brand-cyan rounded-full animate-pulse"></div>
           </div>
           <div className="flex flex-col">
-            <span className="font-display text-2xl font-black tracking-tighter leading-none">
+            <span className="font-display text-xl xl:text-2xl font-black tracking-tighter leading-none">
               PREPARATION
             </span>
-            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-accent font-bold">Elite Academy</span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-accent font-bold">
+              Football Academy
+            </span>
           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-10">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-7 min-w-0">
           {navLinks.map((link) => (
             <Link 
               key={link.path}
               to={link.path}
               className={cn(
-                "relative font-display text-sm uppercase tracking-widest transition-all duration-300 hover:text-brand-accent",
+                "relative text-[11px] xl:text-xs uppercase tracking-[0.18em] whitespace-nowrap transition-all duration-300 hover:text-brand-accent",
                 location.pathname === link.path ? "text-brand-accent" : "text-white/70"
               )}
             >
@@ -68,14 +69,15 @@ export const Header = () => {
               )}
             </Link>
           ))}
-          <Link to="/contacto" className="btn-primary py-3 px-8 text-xs">
-            Inscripción
+
+          <Link to="/contacto" className="btn-primary py-3 px-6 xl:px-8 text-[11px] xl:text-xs shrink-0">
+            Contacto
           </Link>
         </nav>
 
         {/* Mobile Toggle */}
         <button 
-          className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white"
+          className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white shrink-0"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -94,20 +96,26 @@ export const Header = () => {
           >
             <div className="flex items-center justify-between p-6 border-b border-white/10">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-brand-accent rounded-lg flex items-center justify-center font-display font-bold text-xl italic">JP</div>
+                <div className="w-10 h-10 bg-brand-accent rounded-lg flex items-center justify-center font-display font-bold text-xl italic">
+                  JP
+                </div>
                 <span className="font-display text-xl font-bold tracking-tighter">PREPARATION</span>
               </div>
-              <button onClick={() => setIsMobileMenuOpen(false)} className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5"
+              >
                 <X size={24} />
               </button>
             </div>
+
             <nav className="flex flex-col p-8 gap-6 overflow-y-auto flex-grow">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.path}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.08 }}
                 >
                   <Link 
                     to={link.path}
@@ -122,13 +130,14 @@ export const Header = () => {
                 </motion.div>
               ))}
             </nav>
+
             <div className="p-8 border-t border-white/10">
               <Link 
                 to="/contacto" 
                 className="btn-primary w-full py-5 text-base"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Inscripción Ahora
+                Contacto
               </Link>
             </div>
           </motion.div>

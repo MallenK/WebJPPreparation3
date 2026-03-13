@@ -1,0 +1,2 @@
+- Reduir navbar
+- Reduir mida textos

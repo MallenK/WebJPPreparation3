@@ -16,7 +16,7 @@ export const Hero = () => {
         >
           <img 
             src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000&auto=format&fit=crop" 
-            alt="Football Training" 
+            alt="Entrenamiento de fútbol" 
             className="w-full h-full object-cover grayscale"
             referrerPolicy="no-referrer"
           />
@@ -52,7 +52,7 @@ export const Hero = () => {
             className="inline-flex items-center gap-2 py-2 px-4 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-8"
           >
             <span className="w-2 h-2 bg-brand-cyan rounded-full animate-pulse"></span>
-            The Future of Football is Here
+            Tecnificación · Rendimiento · Fútbol
           </motion.div>
           
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[0.85] mb-8 tracking-tighter">
@@ -61,16 +61,16 @@ export const Hero = () => {
           </h1>
           
           <p className="text-lg md:text-xl text-white/70 mb-12 max-w-lg leading-relaxed font-medium">
-            No entrenamos para el próximo partido. Entrenamos para tu <span className="text-white font-bold">carrera profesional</span>. Metodología de élite para el jugador moderno.
+            Entrenamiento personalizado para <span className="text-white font-bold">futbolistas</span>. Tecnificación, preparación física y trabajo específico para mejorar tu rendimiento real.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6">
             <Link to="/contacto" className="btn-primary group">
-              Empezar Ahora
+              Reservar sesión
               <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
             </Link>
-            <Link to="/tecnificacion" className="btn-outline group">
-              Nuestra Metodología
+            <Link to="/programas" className="btn-outline group">
+              Ver programas
               <Play className="ml-2 w-4 h-4 fill-current group-hover:scale-110 transition-transform" />
             </Link>
           </div>
@@ -82,12 +82,12 @@ export const Hero = () => {
               <div className="text-xs uppercase tracking-widest text-white/50">Personalizado</div>
             </div>
             <div>
-              <div className="text-2xl font-display font-bold text-white">UEFA</div>
-              <div className="text-xs uppercase tracking-widest text-white/50">Certificados</div>
+              <div className="text-2xl font-display font-bold text-white">8-30</div>
+              <div className="text-xs uppercase tracking-widest text-white/50">Años</div>
             </div>
             <div>
-              <div className="text-2xl font-display font-bold text-white">PRO</div>
-              <div className="text-xs uppercase tracking-widest text-white/50">Metodología</div>
+              <div className="text-2xl font-display font-bold text-white">MAX 4</div>
+              <div className="text-xs uppercase tracking-widest text-white/50">Por Grupo</div>
             </div>
           </div>
         </motion.div>
@@ -97,12 +97,12 @@ export const Hero = () => {
           initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="hidden lg:block relative"
+          className="hidden lg:block relative max-w-md ml-auto"
         >
-          <div className="relative -z-10 aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl shadow-brand-accent/20">
+          <div className="relative -z-10 aspect-[1/1] rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl shadow-brand-accent/20">
             <img 
               src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1000&auto=format&fit=crop" 
-              alt="Elite Player" 
+              alt="Jugador entrenando" 
               className="w-full h-full object-cover grayscale"
               referrerPolicy="no-referrer"
             />
@@ -120,8 +120,8 @@ export const Hero = () => {
                 <Zap className="text-brand-accent" size={24} />
               </div>
               <div>
-                <div className="text-xs text-white/50 uppercase tracking-widest">Velocidad</div>
-                <div className="text-xl font-bold">+24%</div>
+                <div className="text-xs text-white/50 uppercase tracking-widest">Servicio</div>
+                <div className="text-xl font-bold">Individual</div>
               </div>
             </div>
           </motion.div>
@@ -136,28 +136,13 @@ export const Hero = () => {
                 <Target className="text-brand-cyan" size={24} />
               </div>
               <div>
-                <div className="text-xs text-white/50 uppercase tracking-widest">Precisión</div>
-                <div className="text-xl font-bold">98.2%</div>
+                <div className="text-xs text-white/50 uppercase tracking-widest">Ubicación</div>
+                <div className="text-xl font-bold">Sant Vicenç</div>
               </div>
             </div>
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div 
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30"
-      >
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center p-1">
-          <motion.div 
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1 h-2 bg-white rounded-full"
-          />
-        </div>
-      </motion.div>
     </section>
   );
 };

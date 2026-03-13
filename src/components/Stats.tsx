@@ -20,7 +20,7 @@ const StatItem = ({ value, label, suffix = "" }: StatItemProps) => {
       const end = value;
       const duration = 2000;
       const increment = end / (duration / 16);
-      
+
       const timer = setInterval(() => {
         start += increment;
         if (start >= end) {
@@ -30,7 +30,7 @@ const StatItem = ({ value, label, suffix = "" }: StatItemProps) => {
           setCount(Math.floor(start));
         }
       }, 16);
-      
+
       return () => clearInterval(timer);
     }
   }, [isInView, value]);
@@ -49,21 +49,21 @@ const StatItem = ({ value, label, suffix = "" }: StatItemProps) => {
 
 export const StatsBar = () => {
   const stats = [
-    { value: 500, label: "Jugadores Formados", suffix: "+" },
-    { value: 15, label: "Entrenadores PRO", suffix: "" },
-    { value: 1200, label: "Sesiones Realizadas", suffix: "+" },
-    { value: 8, label: "Años de Experiencia", suffix: "" },
+    { value: 100, label: "Personalizado", suffix: "%" },
+    { value: 8, label: "Edad Mínima", suffix: "" },
+    { value: 4, label: "Máx. por Grupo", suffix: "" },
+    { value: 6, label: "Servicios", suffix: "" },
   ];
 
   return (
     <section className="bg-brand-dark border-y border-white/10">
       <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4">
         {stats.map((stat, index) => (
-          <StatItem 
-            key={index} 
-            value={stat.value} 
-            label={stat.label} 
-            suffix={stat.suffix} 
+          <StatItem
+            key={index}
+            value={stat.value}
+            label={stat.label}
+            suffix={stat.suffix}
           />
         ))}
       </div>
