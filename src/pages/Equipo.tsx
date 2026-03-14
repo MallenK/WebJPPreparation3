@@ -78,7 +78,7 @@ export const Equipo = () => {
       delay: 0.2
     },
     {
-      name: "Sergi Mallén",
+      name: "Eduardo Casanova",
       role: "Entrenador Tecnificación",
       bio: "Especialista en desarrollo técnico de base. Su metodología se centra en el control orientado, el perfilamiento y la toma de decisiones rápida.",
       img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop",
@@ -185,7 +185,7 @@ export const Equipo = () => {
         </div>
       </section>
 
-      {/* Certifications / Partners */}
+      {/* Certifications / Partners 
       <section className="py-24 px-6 md:px-12 bg-brand-dark relative overflow-hidden">
         <div className="absolute bottom-0 left-0 w-full h-32 bg-brand-black slanted-bg-reverse translate-y-1/2" />
         <div className="max-w-7xl mx-auto relative z-10">
@@ -200,7 +200,7 @@ export const Equipo = () => {
             <div className="text-3xl font-black tracking-tighter">AFE</div>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Join the Team CTA */}
       <section className="py-32 px-6 md:px-12 bg-brand-black">

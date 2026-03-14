@@ -190,7 +190,6 @@ export const Resultados = () => {
 
       {/* Testimonials Carousel Placeholder */}
       <section className="py-32 px-6 md:px-12 bg-brand-dark relative overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-brand-black slanted-bg-reverse translate-y-1/2" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-bold">Lo que dicen <br /><span className="text-brand-accent italic">Padres y Jugadores</span></h2>
@@ -228,14 +227,13 @@ export const Resultados = () => {
         </div>
       </section>
 
-      {/* Awards/Logos Section */}
+      {/* Awards/Logos Section 
       <section className="py-24 px-6 md:px-12 bg-brand-black">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h3 className="text-white/60 uppercase tracking-[0.3em] text-xs font-bold">Colaboramos con canteras de élite</h3>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all">
-            {/* Placeholder for club logos */}
             <div className="text-3xl font-black tracking-tighter">FCB</div>
             <div className="text-3xl font-black tracking-tighter">RCD</div>
             <div className="text-3xl font-black tracking-tighter">GIR</div>
@@ -244,6 +242,7 @@ export const Resultados = () => {
           </div>
         </div>
       </section>
+      Awards/Logos Section */}
 
       {/* Final CTA */}
       <section className="py-32 px-6 md:px-12 bg-brand-accent relative overflow-hidden">

@@ -11,6 +11,25 @@
   --color-brand-accent: #1E6BFF;
   --color-brand-cyan: #00F0FF;
   --color-brand-violet: #8B5CF6;
+
+  /* Escala tipográfica global */
+  --text-3xl: 1.75rem;
+  --text-3xl--line-height: 1.05;
+
+  --text-4xl: 2.1rem;
+  --text-4xl--line-height: 1.02;
+
+  --text-5xl: 2.6rem;
+  --text-5xl--line-height: 0.98;
+
+  --text-6xl: 3.2rem;
+  --text-6xl--line-height: 0.95;
+
+  --text-7xl: 4rem;
+  --text-7xl--line-height: 0.92;
+
+  --text-8xl: 4.75rem;
+  --text-8xl--line-height: 0.9;
 }
 
 @layer base {

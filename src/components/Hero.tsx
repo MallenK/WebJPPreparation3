@@ -110,7 +110,7 @@ export const Hero = () => {
           </div>
           
           {/* Floating Cards */}
-          <motion.div 
+          {/*<motion.div 
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -top-10 -right-10 glass-card p-6 z-20"
@@ -124,7 +124,7 @@ export const Hero = () => {
                 <div className="text-xl font-bold">Individual</div>
               </div>
             </div>
-          </motion.div>
+          </motion.div>*/}
 
           <motion.div 
             animate={{ y: [0, 20, 0] }}

@@ -4,6 +4,8 @@ import { Menu, X, ChevronRight, Phone, Instagram, Facebook, Mail, MapPin, Youtub
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
 
+import logo from '../assets/images/brand/logo-jp-preparation.png';
+
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,13 +37,16 @@ export const Header = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-6">
         <Link to="/" className="flex items-center gap-3 group shrink-0">
-          <div className="relative w-12 h-12 bg-brand-accent rounded-xl flex items-center justify-center font-display font-bold text-2xl italic transform group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-brand-accent/30">
-            JP
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-brand-cyan rounded-full animate-pulse"></div>
+          <div className="relative h-10 xl:h-12 flex items-center">
+            <img
+              src={logo}
+              alt="JP Preparation"
+              className="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </div>
           <div className="flex flex-col">
             <span className="font-display text-xl xl:text-2xl font-black tracking-tighter leading-none">
-              PREPARATION
+              JP PREPARATION
             </span>
             <span className="text-[10px] uppercase tracking-[0.3em] text-brand-accent font-bold">
               Football Academy
@@ -96,10 +101,14 @@ export const Header = () => {
           >
             <div className="flex items-center justify-between p-6 border-b border-white/10">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-brand-accent rounded-lg flex items-center justify-center font-display font-bold text-xl italic">
-                  JP
+                <div className="h-10 flex items-center">
+                  <img
+                    src={logo}
+                    alt="JP Preparation"
+                    className="h-full w-auto object-contain"
+                  />
                 </div>
-                <span className="font-display text-xl font-bold tracking-tighter">PREPARATION</span>
+                <span className="font-display text-xl font-bold tracking-tighter"> JP PREPARATION</span>
               </div>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -151,36 +160,66 @@ export const Footer = () => {
   return (
     <footer className="bg-brand-black border-t border-white/10 pt-24 pb-12 px-6 md:px-12 relative overflow-hidden">
       <div className="absolute top-0 left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-brand-accent to-transparent"></div>
-      
+
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
         <div className="space-y-8">
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-brand-accent rounded-xl flex items-center justify-center font-display font-bold text-2xl italic shadow-lg shadow-brand-accent/20">JP</div>
+            <div className="h-12 flex items-center">
+              <img
+                src={logo}
+                alt="JP Preparation"
+                className="h-full w-auto object-contain"
+              />
+            </div>
             <div className="flex flex-col">
-              <span className="font-display text-2xl font-black tracking-tighter leading-none">PREPARATION</span>
-              <span className="text-[10px] uppercase tracking-[0.3em] text-brand-accent font-bold">Elite Academy</span>
+              <span className="font-display text-2xl font-black tracking-tighter leading-none">
+                JP PREPARATION
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.3em] text-brand-accent font-bold">
+                Tecnificación de fútbol
+              </span>
             </div>
           </Link>
+
           <p className="text-white/50 leading-relaxed text-sm">
-            La academia de tecnificación líder en formación de talentos. Metodología profesional aplicada al desarrollo individual del futbolista moderno.
+            Academia de tecnificación y entrenamiento personalizado para futbolistas en Sant Vicenç dels Horts.
           </p>
+
           <div className="flex gap-4">
-            {[Instagram, Facebook, Twitter, Youtube].map((Icon, i) => (
-              <a key={i} href="#" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all duration-300 border border-white/5 hover:border-brand-accent/50">
-                <Icon size={18} />
-              </a>
-            ))}
+            <a
+              href="https://www.instagram.com/jp.preparation"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all duration-300 border border-white/5 hover:border-brand-accent/50"
+            >
+              <Instagram size={18} />
+            </a>
           </div>
         </div>
 
         <div>
-          <h4 className="font-display text-lg mb-8 text-white tracking-widest uppercase">Explorar</h4>
+          <h4 className="font-display text-lg mb-8 text-white tracking-widest uppercase">
+            Explorar
+          </h4>
           <ul className="space-y-4">
-            {['Tecnificación', 'Programas', 'Nuestro Equipo', 'Instalaciones', 'Resultados'].map((item) => (
-              <li key={item}>
-                <Link to={`/${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-')}`} className="text-white/40 hover:text-brand-accent transition-colors flex items-center group">
-                  <ChevronRight size={14} className="mr-2 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
-                  {item}
+            {[
+              { name: 'Tecnificación', path: '/tecnificacion' },
+              { name: 'Programas', path: '/programas' },
+              { name: 'Equipo', path: '/equipo' },
+              { name: 'Instalaciones', path: '/instalaciones' },
+              { name: 'Resultados', path: '/resultados' },
+              { name: 'Contacto', path: '/contacto' },
+            ].map((item) => (
+              <li key={item.path}>
+                <Link
+                  to={item.path}
+                  className="text-white/40 hover:text-brand-accent transition-colors flex items-center group"
+                >
+                  <ChevronRight
+                    size={14}
+                    className="mr-2 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"
+                  />
+                  {item.name}
                 </Link>
               </li>
             ))}
@@ -188,51 +227,81 @@ export const Footer = () => {
         </div>
 
         <div>
-          <h4 className="font-display text-lg mb-8 text-white tracking-widest uppercase">Contacto</h4>
+          <h4 className="font-display text-lg mb-8 text-white tracking-widest uppercase">
+            Contacto
+          </h4>
           <ul className="space-y-6">
             <li className="flex items-start gap-4 text-white/40 group">
               <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
                 <MapPin className="text-brand-accent" size={18} />
               </div>
-              <span className="text-sm pt-2">Ciudad Deportiva, Calle Principal 123, Madrid</span>
+              <span className="text-sm pt-2">
+                Carrer de la Pobla, 29
+                <br />
+                08620 Sant Vicenç dels Horts, Barcelona
+              </span>
             </li>
+
             <li className="flex items-center gap-4 text-white/40 group">
               <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
                 <Phone className="text-brand-accent" size={18} />
               </div>
-              <span className="text-sm">+34 600 000 000</span>
+              <a
+                href="https://wa.me/34662968341"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm hover:text-brand-accent transition-colors"
+              >
+                +34 662 968 341
+              </a>
             </li>
+
             <li className="flex items-center gap-4 text-white/40 group">
               <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
-                <Mail className="text-brand-accent" size={18} />
+                <Instagram className="text-brand-accent" size={18} />
               </div>
-              <span className="text-sm">info@jppreparation.com</span>
+              <a
+                href="https://www.instagram.com/jp.preparation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm hover:text-brand-accent transition-colors"
+              >
+                @jp.preparation
+              </a>
             </li>
           </ul>
         </div>
 
         <div>
-          <h4 className="font-display text-lg mb-8 text-white tracking-widest uppercase">Newsletter</h4>
-          <p className="text-white/40 mb-6 text-sm">Únete a nuestra comunidad y recibe consejos de entrenamiento exclusivos.</p>
-          <form className="relative">
-            <input 
-              type="email" 
-              placeholder="Tu correo electrónico" 
-              className="bg-white/5 border border-white/10 rounded-xl px-4 py-4 w-full focus:outline-none focus:border-brand-accent transition-all text-sm"
-            />
-            <button className="absolute right-2 top-2 bottom-2 bg-brand-accent px-4 rounded-lg hover:bg-blue-600 transition-colors">
-              <ChevronRight size={18} />
-            </button>
-          </form>
+          <h4 className="font-display text-lg mb-8 text-white tracking-widest uppercase">
+            Ubicación
+          </h4>
+          <p className="text-white/40 mb-6 text-sm">
+            Puedes encontrarnos en Sant Vicenç dels Horts, Barcelona.
+          </p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Carrer+de+la+Pobla+29+Sant+Vicenc+dels+Horts+Barcelona"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline w-full py-4 text-sm"
+          >
+            Ver en Google Maps
+          </a>
         </div>
       </div>
-      
+
       <div className="max-w-7xl mx-auto pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/20 text-[10px] uppercase tracking-[0.2em] font-bold">
-        <p>© 2026 JP Preparation. Elevando el juego.</p>
+        <p>© 2026 JP Preparation. Todos los derechos reservados.</p>
         <div className="flex gap-8">
-          <a href="#" className="hover:text-brand-accent transition-colors">Aviso Legal</a>
-          <a href="#" className="hover:text-white transition-colors">Privacidad</a>
-          <a href="#" className="hover:text-white transition-colors">Cookies</a>
+          <a href="#" className="hover:text-brand-accent transition-colors">
+            Aviso Legal
+          </a>
+          <a href="#" className="hover:text-white transition-colors">
+            Privacidad
+          </a>
+          <a href="#" className="hover:text-white transition-colors">
+            Cookies
+          </a>
         </div>
       </div>
     </footer>

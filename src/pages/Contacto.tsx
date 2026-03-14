@@ -1,38 +1,58 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Mail, Phone, MapPin, Send, Instagram, Facebook, 
-  MessageSquare, ChevronDown, Plus, CheckCircle2, 
-  ArrowRight, Globe, Youtube, Twitter
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Instagram,
+  MessageSquare,
+  ChevronDown,
+  ArrowRight,
+  Globe,
+  Youtube,
+  Twitter,
 } from 'lucide-react';
 
 export const Contacto = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
+  const contact = {
+    whatsapp: '+34 662 968 341',
+    whatsappUrl: 'https://wa.me/34662968341',
+    instagram: 'https://www.instagram.com/jp.preparation',
+    addressLine1: 'Carrer de la Pobla, 29',
+    addressLine2: '08620 Sant Vicenç dels Horts, Barcelona',
+    mapsUrl:
+      'https://www.google.com/maps/search/?api=1&query=Carrer+de+la+Pobla+29+Sant+Vicenc+dels+Horts+Barcelona',
+    mapsEmbed:
+      'https://www.google.com/maps?q=Carrer%20de%20la%20Pobla%2029%20Sant%20Vicenc%20dels%20Horts%20Barcelona&output=embed',
+  };
+
   const faqs = [
     {
-      q: "¿Cómo reservo mi primera sesión de prueba?",
-      a: "Es muy sencillo. Rellena el formulario de esta página o envíanos un WhatsApp. Nos pondremos en contacto contigo en menos de 24h para agendar una prueba de nivel gratuita."
+      q: '¿Cómo puedo contactar con JP Preparation?',
+      a: 'Puedes escribir directamente por WhatsApp o contactar a través de su perfil oficial de Instagram.',
     },
     {
-      q: "¿A partir de qué edad pueden apuntarse?",
-      a: "Nuestros programas empiezan desde los 6 años (Pre-benjamín) hasta categoría Senior. Adaptamos la metodología y la intensidad según la etapa madurativa del jugador."
+      q: '¿Qué edades trabajan?',
+      a: 'JP Preparation trabaja con futbolistas desde los 8 años hasta edades adultas.',
     },
     {
-      q: "¿Es compatible con los entrenamientos de mi club?",
-      a: "¡Absolutamente! Somos una academia de tecnificación complementaria. Nuestros horarios están diseñados para que puedas venir 1 o 2 días a la semana sin interferir con tu club."
+      q: '¿Qué tipo de entrenamientos ofrecen?',
+      a: 'En su comunicación pública muestran entrenamientos personalizados, tecnificación, trabajo físico y sesiones adaptadas al jugador.',
     },
     {
-      q: "¿Ofrecéis entrenamientos individuales o en grupo?",
-      a: "Ambos. Tenemos sesiones 1-on-1 para un trabajo de máximo detalle, y grupos reducidos (máximo 6 jugadores) para trabajar situaciones reales de juego y competitividad."
-    }
+      q: '¿Dónde están ubicados?',
+      a: 'JP Preparation está en Carrer de la Pobla, 29, 08620 Sant Vicenç dels Horts, Barcelona.',
+    },
   ];
 
   const steps = [
-    { title: "Solicitud", desc: "Rellenas el formulario con tus datos y objetivos.", icon: MessageSquare },
-    { title: "Evaluación", desc: "Realizamos una prueba de nivel gratuita en campo.", icon: Target },
-    { title: "Planificación", desc: "Te asignamos el grupo y entrenador ideal para ti.", icon: Zap },
-    { title: "¡A Entrenar!", desc: "Empiezas tu camino hacia la élite con nosotros.", icon: Trophy },
+    { title: 'Contacto', desc: 'Escríbenos por WhatsApp o Instagram para solicitar información.', icon: MessageSquare },
+    { title: 'Consulta', desc: 'Te orientamos sobre el servicio que mejor encaja contigo.', icon: Target },
+    { title: 'Valoración', desc: 'Se define la mejor opción según edad, nivel y objetivo.', icon: Zap },
+    { title: 'Inicio', desc: 'Comienza tu proceso de entrenamiento con JP Preparation.', icon: Trophy },
   ];
 
   return (
@@ -46,43 +66,68 @@ export const Contacto = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Contacto & Inscripciones</span>
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.85] tracking-tighter mb-8">
-              ÚNETE A LA <br />
-              <span className="text-brand-accent italic">ACADEMIA</span>
+            <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-xs mb-4 block">
+              Contacto
+            </span>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter mb-8">
+              CONTACTA CON <br className="hidden sm:block" />
+              <span className="text-brand-accent italic">JP PREPARATION</span>
             </h1>
-            <p className="text-white/70 text-xl md:text-2xl mt-8 max-w-3xl leading-relaxed">
-              ¿Listo para transformar tu juego? Estamos aquí para resolver tus dudas y ayudarte a dar el <span className="text-white font-semibold">salto de calidad</span> que buscas.
+            <p className="text-white/70 text-lg md:text-xl mt-8 max-w-3xl leading-relaxed">
+              Si quieres más información sobre sus entrenamientos, ubicación o servicios,
+              aquí tienes los canales públicos de contacto de JP Preparation.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Form & Info - Slanted */}
-      <section className="relative py-32 px-6 md:px-12 bg-brand-dark overflow-hidden">
+      {/* Contact Form & Info */}
+      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-brand-dark overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-32 bg-brand-black slanted-bg -translate-y-1/2" />
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-12">Información de <br /><span className="text-brand-accent">Contacto</span></h2>
-              
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12">
+                Información de <br />
+                <span className="text-brand-accent">Contacto</span>
+              </h2>
+
               <div className="space-y-10">
                 {[
-                  { title: "Llámanos", info: "+34 600 000 000", sub: "L-V: 09:00 - 20:00", icon: Phone },
-                  { title: "Email Directo", info: "info@jppreparation.com", sub: "Respuesta en < 24h", icon: Mail },
-                  { title: "Nuestra Sede", info: "Carrer de la Tecnología, 12", sub: "Barcelona, España", icon: MapPin },
+                  {
+                    title: 'WhatsApp',
+                    info: contact.whatsapp,
+                    sub: 'Canal directo de contacto',
+                    icon: Phone,
+                  },
+                  {
+                    title: 'Instagram',
+                    info: '@jp.preparation',
+                    sub: 'Perfil oficial',
+                    icon: Instagram,
+                  },
+                  {
+                    title: 'Ubicación',
+                    info: contact.addressLine1,
+                    sub: contact.addressLine2,
+                    icon: MapPin,
+                  },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-6 group">
                     <div className="w-14 h-14 rounded-2xl bg-brand-accent/10 flex items-center justify-center shrink-0 border border-brand-accent/20 group-hover:bg-brand-accent group-hover:text-brand-black transition-all">
                       <item.icon size={24} />
                     </div>
                     <div>
-                      <h4 className="text-white/60 text-xs uppercase tracking-widest font-bold mb-1">{item.title}</h4>
-                      <p className="text-xl font-bold text-white mb-1">{item.info}</p>
+                      <h4 className="text-white/60 text-xs uppercase tracking-widest font-bold mb-1">
+                        {item.title}
+                      </h4>
+                      <p className="text-lg md:text-xl font-bold text-white mb-1 break-words">
+                        {item.info}
+                      </p>
                       <p className="text-white/50 text-sm">{item.sub}</p>
                     </div>
                   </div>
@@ -92,12 +137,29 @@ export const Contacto = () => {
               <div className="mt-16 p-8 glass-card border-brand-accent/20 bg-brand-accent/5">
                 <h4 className="font-bold mb-4 flex items-center gap-2">
                   <MessageSquare className="text-brand-accent" size={20} />
-                  ¿Atención rápida?
+                  Contacto rápido
                 </h4>
-                <p className="text-white/70 text-sm mb-6">Escríbenos por WhatsApp para una respuesta inmediata de nuestro equipo de admisiones.</p>
-                <button className="bg-[#25D366] text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:scale-105 transition-transform">
-                  WHATSAPP DIRECTO
-                </button>
+                <p className="text-white/70 text-sm mb-6">
+                  Puedes escribir directamente por WhatsApp o visitar su perfil oficial de Instagram.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href={contact.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#25D366] text-white px-8 py-3 rounded-full font-bold flex items-center justify-center gap-2 hover:scale-105 transition-transform"
+                  >
+                    WHATSAPP
+                  </a>
+                  <a
+                    href={contact.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-outline px-8 py-3"
+                  >
+                    INSTAGRAM
+                  </a>
+                </div>
               </div>
             </motion.div>
 
@@ -110,50 +172,92 @@ export const Contacto = () => {
               <div className="absolute top-0 right-0 p-8 opacity-5">
                 <Send size={120} />
               </div>
-              <h3 className="text-2xl font-bold mb-8 relative z-10">Solicitud de <span className="text-brand-accent">Inscripción</span></h3>
+
+              <h3 className="text-2xl font-bold mb-8 relative z-10">
+                Solicitud de <span className="text-brand-accent">Información</span>
+              </h3>
+
               <form className="space-y-6 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">Nombre del Jugador</label>
-                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white" placeholder="Ej: Marc García" />
+                    <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
+                      Nombre
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white"
+                      placeholder="Tu nombre"
+                    />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">Edad / Categoría</label>
-                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white" placeholder="Ej: 12 años / Infantil" />
+                    <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
+                      Edad
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white"
+                      placeholder="Ej: 14 años"
+                    />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">Email</label>
-                    <input type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white" placeholder="tu@email.com" />
+                    <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white"
+                      placeholder="tu@email.com"
+                    />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">Teléfono</label>
-                    <input type="tel" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white" placeholder="+34 600 000 000" />
+                    <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
+                      Teléfono
+                    </label>
+                    <input
+                      type="tel"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white"
+                      placeholder="+34 ..."
+                    />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">Programa de Interés</label>
+                  <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
+                    Servicio de interés
+                  </label>
                   <select className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white appearance-none cursor-pointer">
-                    <option className="bg-brand-dark">Tecnificación Individual (1-on-1)</option>
-                    <option className="bg-brand-dark">Grupos Reducidos (Max 6)</option>
-                    <option className="bg-brand-dark">Campus de Verano / Navidad</option>
-                    <option className="bg-brand-dark">Análisis de Video & Bio-mecánica</option>
+                    <option className="bg-brand-dark">Tecnificación</option>
+                    <option className="bg-brand-dark">Entrenamiento personalizado</option>
+                    <option className="bg-brand-dark">Preparación física</option>
+                    <option className="bg-brand-dark">Información general</option>
                   </select>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">Mensaje / Objetivos</label>
-                  <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white resize-none" placeholder="Cuéntanos un poco sobre tu nivel actual y qué buscas mejorar..."></textarea>
+                  <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
+                    Mensaje
+                  </label>
+                  <textarea
+                    rows={4}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white resize-none"
+                    placeholder="Escribe aquí tu consulta..."
+                  ></textarea>
                 </div>
 
-                <button type="submit" className="btn-primary w-full py-5 flex items-center justify-center gap-3 group">
+                <button
+                  type="submit"
+                  className="btn-primary w-full py-5 flex items-center justify-center gap-3 group"
+                >
                   ENVIAR SOLICITUD
                   <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
-                <p className="text-xs text-white/50 text-center">Al enviar este formulario aceptas nuestra política de privacidad y tratamiento de datos.</p>
+
+                <p className="text-xs text-white/50 text-center">
+                  Este formulario puede adaptarse con el contenido y flujo definitivo que indique JP Preparation.
+                </p>
               </form>
             </motion.div>
           </div>
@@ -161,12 +265,17 @@ export const Contacto = () => {
       </section>
 
       {/* Process Steps */}
-      <section className="py-32 px-6 md:px-12 bg-brand-black">
+      <section className="py-24 md:py-32 px-6 md:px-12 bg-brand-black">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold">¿Qué pasa <span className="text-brand-accent italic">después?</span></h2>
-            <p className="text-white/60 mt-6 max-w-xl mx-auto">Tu camino hacia la mejora técnica es un proceso estructurado y profesional.</p>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold">
+              ¿Qué pasa <span className="text-brand-accent italic">después?</span>
+            </h2>
+            <p className="text-white/60 mt-6 max-w-xl mx-auto">
+              El contacto con JP Preparation puede empezar de forma rápida y directa.
+            </p>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {steps.map((step, i) => (
               <div key={i} className="relative text-center group">
@@ -185,21 +294,28 @@ export const Contacto = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-32 px-6 md:px-12 bg-brand-dark relative overflow-hidden">
+      <section className="py-24 md:py-32 px-6 md:px-12 bg-brand-dark relative overflow-hidden">
         <div className="absolute bottom-0 left-0 w-full h-32 bg-brand-black slanted-bg-reverse translate-y-1/2" />
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold">Preguntas <span className="text-brand-accent italic">Frecuentes</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold">
+              Preguntas <span className="text-brand-accent italic">Frecuentes</span>
+            </h2>
           </div>
+
           <div className="space-y-4">
             {faqs.map((faq, i) => (
               <div key={i} className="glass-card overflow-hidden">
-                <button 
+                <button
                   onClick={() => setActiveFaq(activeFaq === i ? null : i)}
-                  className="w-full p-8 text-left flex justify-between items-center hover:bg-white/5 transition-colors"
+                  className="w-full p-6 md:p-8 text-left flex justify-between items-center gap-4 hover:bg-white/5 transition-colors"
                 >
-                  <span className="text-xl font-bold">{faq.q}</span>
-                  <div className={`w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-transform duration-300 ${activeFaq === i ? 'rotate-180 bg-brand-accent border-brand-accent text-brand-black' : ''}`}>
+                  <span className="text-lg md:text-xl font-bold">{faq.q}</span>
+                  <div
+                    className={`w-8 h-8 shrink-0 rounded-full border border-white/10 flex items-center justify-center transition-transform duration-300 ${
+                      activeFaq === i ? 'rotate-180 bg-brand-accent border-brand-accent text-brand-black' : ''
+                    }`}
+                  >
                     <ChevronDown size={20} />
                   </div>
                 </button>
@@ -211,7 +327,7 @@ export const Contacto = () => {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="p-8 pt-0 text-white/70 leading-relaxed border-t border-white/5">
+                      <div className="p-6 md:p-8 pt-0 text-white/70 leading-relaxed border-t border-white/5">
                         {faq.a}
                       </div>
                     </motion.div>
@@ -224,50 +340,69 @@ export const Contacto = () => {
       </section>
 
       {/* Social Media Grid */}
-      <section className="py-32 px-6 md:px-12 bg-brand-black">
+      <section className="py-24 md:py-32 px-6 md:px-12 bg-brand-black">
         <div className="max-w-7xl mx-auto">
+
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <h2 className="text-4xl md:text-6xl font-bold leading-tight">Síguenos en <br /><span className="text-brand-accent">Redes</span></h2>
-            <div className="flex gap-4">
-              <button className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-accent hover:text-brand-black transition-all"><Instagram size={20} /></button>
-              <button className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-accent hover:text-brand-black transition-all"><Youtube size={20} /></button>
-              <button className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-accent hover:text-brand-black transition-all"><Twitter size={20} /></button>
-            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight">
+              Síguenos en <br />
+              <span className="text-brand-accent">Instagram</span>
+            </h2>
+
+            <a
+              href="https://www.instagram.com/jp.preparation"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-accent hover:text-brand-black transition-all"
+            >
+              <Instagram size={20} />
+            </a>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=400&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=400&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=400&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=400&auto=format&fit=crop",
-            ].map((img, i) => (
-              <div key={i} className="aspect-square rounded-2xl overflow-hidden relative group cursor-pointer">
-                <img src={img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" alt="Social" referrerPolicy="no-referrer" />
-                <div className="absolute inset-0 bg-brand-accent/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <Instagram className="text-white" size={32} />
-                </div>
-              </div>
-            ))}
+
+          <div className="w-full rounded-2xl overflow-hidden border border-white/10">
+            <iframe
+              src="https://www.instagram.com/jp.preparation/embed"
+              className="w-full h-[900px]"
+              frameBorder="0"
+              scrolling="no"
+              loading="lazy"
+            />
           </div>
+
         </div>
       </section>
 
       {/* Map Section */}
-      <section className="h-[500px] w-full bg-brand-dark relative overflow-hidden">
-        <div className="absolute inset-0 grayscale opacity-40">
-          <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Map" referrerPolicy="no-referrer" />
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center p-6">
-          <div className="glass-card p-10 text-center max-w-md w-full border-brand-accent/30 shadow-2xl">
-            <div className="w-16 h-16 rounded-full bg-brand-accent flex items-center justify-center mx-auto mb-6 text-brand-black">
-              <MapPin size={32} />
+      <section className="relative bg-brand-dark overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[520px]">
+          <div className="relative min-h-[320px] lg:min-h-full">
+            <iframe
+              src={contact.mapsEmbed}
+              className="absolute inset-0 w-full h-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Mapa JP Preparation"
+            />
+          </div>
+
+          <div className="flex items-center justify-center p-6 md:p-10">
+            <div className="glass-card p-8 md:p-10 max-w-md w-full border-brand-accent/30 shadow-2xl">
+              <div className="w-16 h-16 rounded-full bg-brand-accent flex items-center justify-center mx-auto mb-6 text-brand-black">
+                <MapPin size={32} />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 text-center">¿Dónde están?</h3>
+              <p className="text-white/70 mb-3 text-center">{contact.addressLine1}</p>
+              <p className="text-white/50 mb-8 text-center">{contact.addressLine2}</p>
+              <a
+                href={contact.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary w-full flex items-center justify-center gap-3"
+              >
+                ABRIR EN GOOGLE MAPS
+                <Globe size={18} />
+              </a>
             </div>
-            <h3 className="text-2xl font-bold mb-4">¿Vienes a vernos?</h3>
-            <p className="text-white/70 mb-8">Estamos en el corazón de la ciudad deportiva. Fácil acceso y parking propio para padres.</p>
-            <button className="btn-primary w-full flex items-center justify-center gap-3">
-              ABRIR EN GOOGLE MAPS
-              <Globe size={18} />
-            </button>
           </div>
         </div>
       </section>
@@ -275,14 +410,60 @@ export const Contacto = () => {
   );
 };
 
-const Target = ({ className, size }: { className?: string, size?: number }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+const Target = ({ className, size }: { className?: string; size?: number }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size || 24}
+    height={size || 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" />
+  </svg>
 );
 
-const Zap = ({ className, size }: { className?: string, size?: number }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+const Zap = ({ className, size }: { className?: string; size?: number }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size || 24}
+    height={size || 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+  </svg>
 );
 
-const Trophy = ({ className, size }: { className?: string, size?: number }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+const Trophy = ({ className, size }: { className?: string; size?: number }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size || 24}
+    height={size || 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+    <path d="M4 22h16" />
+    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+  </svg>
 );
