@@ -50,14 +50,13 @@ const StatItem = ({ value, label, suffix = "" }: StatItemProps) => {
 export const StatsBar = () => {
   const stats = [
     { value: 100, label: "Personalizado", suffix: "%" },
-    { value: 8, label: "Edad Mínima", suffix: "" },
-    { value: 4, label: "Máx. por Grupo", suffix: "" },
-    { value: 6, label: "Servicios", suffix: "" },
+    { value: 4, label: "Edad Mínima", suffix: "" },
+    { value: 2, label: "Máx. por Grupo", suffix: "" },
   ];
 
   return (
     <section className="bg-brand-dark border-y border-white/10">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-3">
         {stats.map((stat, index) => (
           <StatItem
             key={index}

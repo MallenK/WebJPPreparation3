@@ -7,6 +7,7 @@ import { Tecnificacion } from './pages/Tecnificacion';
 import { Programas } from './pages/Programas';
 import { Equipo } from './pages/Equipo';
 import { Instalaciones } from './pages/Instalaciones';
+import { Eventos } from './pages/Eventos';
 import { Resultados } from './pages/Resultados';
 import { Contacto } from './pages/Contacto';
 import { useEffect } from 'react';
@@ -34,7 +35,8 @@ export default function App() {
             <Route path="/tecnificacion" element={<Tecnificacion />} />
             <Route path="/programas" element={<Programas />} />
             <Route path="/equipo" element={<Equipo />} />
-            <Route path="/instalaciones" element={<Instalaciones />} />
+            {/* <Route path="/instalaciones" element={<Instalaciones />} /> */}
+            <Route path="/eventos" element={<Eventos />} />
             <Route path="/resultados" element={<Resultados />} />
             <Route path="/contacto" element={<Contacto />} />
           </Routes>

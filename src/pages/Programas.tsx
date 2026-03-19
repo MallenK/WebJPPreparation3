@@ -77,27 +77,27 @@ export const Programas = () => {
   const programs = [
     {
       title: "One-to-One",
-      subtitle: "Individual",
-      description: "Sesiones de 60 minutos enfocadas exclusivamente en tus necesidades técnicas. El entrenador corrige cada detalle en tiempo real para una mejora exponencial.",
-      features: ["Análisis biomecánico HD", "Foco en debilidades específicas", "Máxima intensidad de repetición", "Seguimiento por vídeo incluido"],
-      price: "45€",
+      subtitle: "Sesión única",
+      description: "Entrenamiento individual totalmente adaptado a las necesidades del jugador/a.",
+      features: ["Trabajo técnico específico", "Corrección en tiempo real", "Adaptado a cada jugador"],
+      price: "55€",
       img: "https://images.unsplash.com/photo-1526232759583-26f173b0bb3e?q=80&w=800&auto=format&fit=crop"
     },
     {
-      title: "Squad Training",
-      subtitle: "Grupos Reducidos",
-      description: "Entrena con jugadores de tu mismo nivel (máx. 4). Ideal para trabajar situaciones de duelo, pase y toma de decisiones bajo presión real.",
-      features: ["Duelos 1vs1 y 2vs2", "Competitividad real", "Transferencia directa al juego", "2 sesiones semanales"],
-      price: "120€",
+      title: "One-to-One",
+      subtitle: "Mensual",
+      description: "Plan continuo con sesiones personalizadas y seguimiento del jugador/a.",
+      features: ["Plan individualizado", "Seguimiento continuo", "Comunicación con familias"],
+      price: "40€",
       img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800&auto=format&fit=crop",
       popular: true
     },
     {
-      title: "Elite Camp",
-      subtitle: "Intensivo Pro",
-      description: "Programa de inmersión total durante 1 semana. Entrenamiento profesional, nutrición, charlas tácticas y convivencia deportiva.",
-      features: ["Doble sesión diaria", "Equipación oficial Nike", "Informe de rendimiento final", "Almuerzo deportivo incluido"],
-      price: "350€",
+      title: "Personal Trainer",
+      subtitle: "Preparación física",
+      description: "Entrenador personal titulado enfocado en fuerza, pliometría y mejora del rendimiento físico.",
+      features: ["Trabajo de fuerza", "Pliometría", "Asesoramiento deportivo y nutricional"],
+      price: "Consultar",
       img: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=800&auto=format&fit=crop"
     }
   ];
@@ -119,7 +119,7 @@ export const Programas = () => {
               <span className="text-brand-accent italic">ALTO RENDIMIENTO</span>
             </h1>
             <p className="text-white/70 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
-              Diseñados para cada etapa del desarrollo del futbolista. Elige el camino que mejor se adapte a tus objetivos y empieza a marcar la diferencia.
+              Entrenamientos personalizados adaptados a cada jugador/a. Mejora tu rendimiento real en el campo.
             </p>
           </motion.div>
         </div>
@@ -138,12 +138,28 @@ export const Programas = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">¿Cómo trabajamos <br /><span className="text-brand-accent">en cada sesión?</span></h2>
+              <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+                ¿Cómo trabajamos <br />
+                <span className="text-brand-accent">en cada sesión?</span>
+              </h2>
+
               <div className="space-y-8">
                 {[
-                  { title: "Grupos por Nivel", desc: "No mezclamos edades, mezclamos niveles técnicos para asegurar el progreso de todos.", icon: Users },
-                  { title: "Entrenadores Certificados", desc: "Todos nuestros técnicos cuentan con titulación UEFA y especialización en tecnificación.", icon: ShieldCheck },
-                  { title: "Material Pro", desc: "Balones de competición, GPS, cámaras y material de última generación.", icon: Star },
+                  {
+                    title: "Entrenamiento individualizado",
+                    desc: "Sesiones adaptadas a las necesidades de cada jugador/a, con comunicación previa con las familias para definir el trabajo específico.",
+                    icon: Users
+                  },
+                  {
+                    title: "Entrenadores Certificados",
+                    desc: "Todos nuestros técnicos cuentan con titulación y experiencia en tecnificación y desarrollo de futbolistas.",
+                    icon: ShieldCheck
+                  },
+                  {
+                    title: "Material profesional",
+                    desc: "Utilizamos material de entrenamiento específico adaptado a cada sesión.",
+                    icon: Star
+                  },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-6">
                     <div className="w-12 h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center shrink-0">
@@ -157,14 +173,23 @@ export const Programas = () => {
                 ))}
               </div>
             </div>
+
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <div className="aspect-square rounded-2xl overflow-hidden"><img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training" referrerPolicy="no-referrer" /></div>
-                <div className="aspect-[3/4] rounded-2xl overflow-hidden"><img src="https://images.unsplash.com/photo-1526232759583-26f173b0bb3e?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training" referrerPolicy="no-referrer" /></div>
+                <div className="aspect-square rounded-2xl overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training" referrerPolicy="no-referrer" />
+                </div>
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1526232759583-26f173b0bb3e?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training" referrerPolicy="no-referrer" />
+                </div>
               </div>
               <div className="space-y-4 pt-12">
-                <div className="aspect-[3/4] rounded-2xl overflow-hidden"><img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training" referrerPolicy="no-referrer" /></div>
-                <div className="aspect-square rounded-2xl overflow-hidden"><img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training" referrerPolicy="no-referrer" /></div>
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training" referrerPolicy="no-referrer" />
+                </div>
+                <div className="aspect-square rounded-2xl overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training" referrerPolicy="no-referrer" />
+                </div>
               </div>
             </div>
           </div>
@@ -208,19 +233,16 @@ export const Programas = () => {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-white/10">
-                  <th className="py-8 px-8 font-display uppercase tracking-widest text-xs text-white/60">Característica</th>
-                  <th className="py-8 px-8 font-display uppercase tracking-widest text-xs text-brand-accent">Individual</th>
-                  <th className="py-8 px-8 font-display uppercase tracking-widest text-xs text-white">Grupal</th>
-                  <th className="py-8 px-8 font-display uppercase tracking-widest text-xs text-white">Camp</th>
+                  <th className="py-8 px-8 text-xs text-white/60">Característica</th>
+                  <th className="py-8 px-8 text-brand-accent">Individual</th>
+                  <th className="py-8 px-8 text-white">Duo</th>
                 </tr>
               </thead>
               <tbody className="text-sm">
                 {[
-                  ["Atención personalizada", "100%", "25%", "Variable"],
-                  ["Foco técnico", "Máximo", "Alto", "Medio"],
-                  ["Toma de decisiones", "Bajo", "Máximo", "Alto"],
-                  ["Análisis de vídeo", "Incluido", "Opcional", "Incluido"],
-                  ["Preparación física", "Específica", "General", "Intensiva"],
+                  ["Atención personalizada", "Máxima", "Alta"],
+                  ["Toma de decisión", "Alta", "Máxima"],
+                  ["Preparación física", "Específica", "Adaptada"],
                 ].map((row, i) => (
                   <tr key={i} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                     <td className="py-6 px-8 font-bold text-white/80">{row[0]}</td>
@@ -245,7 +267,7 @@ export const Programas = () => {
             {[
               { q: "¿Puedo cambiar de programa a mitad de mes?", a: "Sí, siempre que haya disponibilidad en el nuevo programa. Ajustaremos la cuota proporcionalmente." },
               { q: "¿Qué pasa si falto a una sesión?", a: "Si avisas con 24h de antelación, la sesión se recupera en otro horario. Si no, se dará por realizada." },
-              { q: "¿Necesito llevar material propio?", a: "Solo tus botas y ropa de entrenamiento. Nosotros ponemos los balones, petos y material técnico de última generación." },
+              { q: "¿Necesito llevar material propio?", a: "Solo tus botas y ropa de entrenamiento." },
             ].map((faq, i) => (
               <div key={i} className="p-8 border border-white/5 rounded-2xl hover:border-brand-accent/30 transition-colors">
                 <h4 className="text-lg font-bold mb-4 flex items-center gap-3">

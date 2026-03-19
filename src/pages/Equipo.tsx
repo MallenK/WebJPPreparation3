@@ -62,28 +62,60 @@ const CoachCard = ({ name, role, bio, img, license, delay }: CoachCardProps) => 
 export const Equipo = () => {
   const coaches = [
     {
-      name: "Javier Palacios",
-      role: "Director Técnico",
-      bio: "Ex-jugador profesional con más de 10 años de experiencia en canteras de Primera División. Especialista en táctica individual y gestión de talento.",
+      name: "Joel Paredes",
+      role: "Director de la Escuela",
+      bio: "Ex-jugador profesional con experiencia en ligas internacionales y competiciones europeas como Champions League, Europa League y Conference League.",
       img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
-      license: "UEFA PRO",
+      license: "Dirección",
       delay: 0.1
     },
     {
-      name: "Adrián Gómez",
-      role: "Prep. Físico",
-      bio: "Graduado en CAFYD con máster en alto rendimiento deportivo. Experto en prevención de lesiones, potencia explosiva y recuperación funcional.",
+      name: "Iker Arjona",
+      role: "Captador y Entrenador",
+      bio: "Responsable de la captación de jugadores para torneos y entrenador dentro de la estructura de JP Preparation.",
       img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop",
-      license: "NSCA-CSCS",
+      license: "Staff",
       delay: 0.2
     },
     {
-      name: "Eduardo Casanova",
-      role: "Entrenador Tecnificación",
-      bio: "Especialista en desarrollo técnico de base. Su metodología se centra en el control orientado, el perfilamiento y la toma de decisiones rápida.",
+      name: "Nil Soto",
+      role: "Entrenador",
+      bio: "Responsable de la creación de entrenamientos individualizados adaptados a cada jugador.",
       img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop",
-      license: "UEFA A",
+      license: "Staff",
       delay: 0.3
+    },
+    {
+      name: "Marc Rodriguez",
+      role: "Entrenador y Coordinador",
+      bio: "Encargado de la coordinación interna y desarrollo de las sesiones dentro de JP Preparation.",
+      img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop",
+      license: "Coordinación",
+      delay: 0.4
+    },
+    {
+      name: "Joel Agraz",
+      role: "Entrenador",
+      bio: "Entrenador enfocado en la mejora técnica y progresión individual de los jugadores.",
+      img: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=800&auto=format&fit=crop",
+      license: "Staff",
+      delay: 0.5
+    },
+    {
+      name: "Arnau Tellez",
+      role: "Entrenador",
+      bio: "Entrenador de JP Preparation centrado en el desarrollo técnico y toma de decisiones.",
+      img: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop",
+      license: "Staff",
+      delay: 0.6
+    },
+    {
+      name: "David Garcia",
+      role: "Personal Trainer",
+      bio: "Entrenador personal especializado en trabajo de fuerza, pliometría y asesoramiento nutricional y deportivo.",
+      img: "https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?q=80&w=800&auto=format&fit=crop",
+      license: "Fitness",
+      delay: 0.7
     }
   ];
 
@@ -113,7 +145,22 @@ export const Equipo = () => {
       {/* Coaches Grid */}
       <section className="py-24 px-6 md:px-12 bg-brand-black">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {coaches.map((coach, i) => <CoachCard key={i} {...coach} />)}
+          {coaches.map((coach, i) => (
+            <div
+              key={i}
+              className={
+                coaches.length % 3 === 1 && i === coaches.length - 1
+                  ? "lg:col-span-3 flex justify-center"
+                  : coaches.length % 3 === 2 && i >= coaches.length - 2
+                  ? "lg:col-span-1 flex justify-center"
+                  : ""
+              }
+            >
+              <div className="w-full max-w-sm">
+                <CoachCard {...coach} />
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

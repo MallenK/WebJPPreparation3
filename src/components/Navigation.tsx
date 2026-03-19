@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronRight, Phone, Instagram, Facebook, Mail, MapPin, Youtube, Twitter } from 'lucide-react';
+import { Menu, X, ChevronRight, Phone, Instagram, Facebook, Music2, Mail, MapPin, Youtube, Twitter } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
 
@@ -24,7 +24,8 @@ export const Header = () => {
     { name: 'Tecnificación', path: '/tecnificacion' },
     { name: 'Programas', path: '/programas' },
     { name: 'Equipo', path: '/equipo' },
-    { name: 'Instalaciones', path: '/instalaciones' },
+    {/* { name: 'Instalaciones', path: '/instalaciones' }, */},
+    { name: 'Eventos', path: '/eventos' },
     { name: 'Resultados', path: '/resultados' },
   ];
 
@@ -193,6 +194,15 @@ export const Footer = () => {
               className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all duration-300 border border-white/5 hover:border-brand-accent/50"
             >
               <Instagram size={18} />
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@jp.preparation"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all duration-300 border border-white/5 hover:border-brand-accent/50"
+            >
+              <Music2 size={18} />
             </a>
           </div>
         </div>

@@ -138,7 +138,6 @@ export const Tecnificacion = () => {
 
       {/* Age-Based Development - Slanted Reverse */}
       <section className="relative py-32 px-6 md:px-12 bg-brand-dark overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-brand-black slanted-bg-reverse translate-y-1/2" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div className="max-w-2xl">
@@ -150,9 +149,9 @@ export const Tecnificacion = () => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {[
-              { age: "U8 - U12", title: "Fundamentos", desc: "Fase sensible para la adquisición de habilidades técnicas. Prioridad absoluta al balón.", icon: Users },
-              { age: "U13 - U16", title: "Especialización", desc: "Introducción de conceptos tácticos individuales y preparación física adaptada.", icon: ShieldCheck },
-              { age: "U17+", title: "Rendimiento", desc: "Optimización máxima para el salto al fútbol profesional o semi-profesional.", icon: Trophy },
+              { age: "Sub 4 - Sub 12", title: "Fundamentos", desc: "Fase sensible para la adquisición de habilidades técnicas. Prioridad absoluta al balón.", icon: Users },
+              { age: "Sub 13 - Sub 16", title: "Especialización", desc: "Introducción de conceptos tácticos individuales y preparación física adaptada.", icon: ShieldCheck },
+              { age: "Sub 17+", title: "Rendimiento", desc: "Optimización máxima para el salto al fútbol profesional o semi-profesional.", icon: Trophy },
             ].map((item, i) => (
               <div key={i} className="bg-brand-black/50 border border-white/5 p-12 rounded-2xl hover:bg-brand-accent/5 transition-all group">
                 <div className="text-brand-accent font-display text-xl mb-4">{item.age}</div>
@@ -167,7 +166,7 @@ export const Tecnificacion = () => {
         </div>
       </section>
 
-      {/* Video Analysis Section */}
+      {/* Video Analysis Section - Slanted Design 
       <section className="py-32 px-6 md:px-12 bg-brand-black">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -210,36 +209,66 @@ export const Tecnificacion = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Training Session Structure */}
       <section className="py-32 px-6 md:px-12 bg-brand-dark relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-accent/5 -skew-x-12 translate-x-1/4 pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10">
+          
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold">Estructura de una <br /><span className="text-brand-accent italic">Sesión Tipo</span></h2>
-            <p className="text-white/60 mt-6 max-w-xl mx-auto">90 minutos de intensidad máxima diseñados para exprimir cada segundo de entrenamiento.</p>
+            <h2 className="text-4xl md:text-6xl font-bold">
+              Estructura de una <br />
+              <span className="text-brand-accent italic">Sesión Tipo</span>
+            </h2>
+            <p className="text-white/60 mt-6 max-w-xl mx-auto">
+              Sesiones de 60 minutos diseñadas para maximizar el rendimiento de cada jugador.
+            </p>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
-              { time: "15 min", title: "Activación", desc: "Movilidad articular y técnica de carrera específica para fútbol.", icon: Timer },
-              { time: "30 min", title: "Bloque Analítico", desc: "Repetición consciente de gestos técnicos: control, pase, regate.", icon: Target },
-              { time: "30 min", title: "Transferencia", desc: "Duelos 1vs1 o 2vs2 con objetivos tácticos y toma de decisiones.", icon: Zap },
-              { time: "15 min", title: "Finalización", desc: "Remates a portería bajo fatiga y vuelta a la calma con estiramientos.", icon: Trophy },
+              {
+                time: "10 min",
+                title: "Activación",
+                desc: "Calentamiento con bici y trabajo de coordinación para preparar al jugador.",
+                icon: Timer
+              },
+              {
+                time: "20 min",
+                title: "Bloque Analítico",
+                desc: "Repetición consciente de gestos técnicos: control, pase y regate.",
+                icon: Target
+              },
+              {
+                time: "20 min",
+                title: "Transferencia",
+                desc: "Ejercicios para que el jugador tome decisiones en situaciones reales de partido adaptadas a su posición.",
+                icon: Zap
+              },
+              {
+                time: "10 min",
+                title: "Finalización",
+                desc: "Trabajo de acciones a balón parado.",
+                icon: Trophy
+              },
             ].map((step, i) => (
               <div key={i} className="glass-card p-10 relative overflow-hidden group hover:bg-brand-accent/10 transition-all">
                 <div className="absolute top-0 right-0 p-6 text-brand-accent/10 font-display text-7xl font-bold group-hover:text-brand-accent/20 transition-colors">
-                  0{i+1}
+                  0{i + 1}
                 </div>
+
                 <div className="flex items-center gap-3 text-brand-accent font-bold mb-6">
                   <step.icon size={20} />
                   {step.time}
                 </div>
+
                 <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
                 <p className="text-white/70 text-sm leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 

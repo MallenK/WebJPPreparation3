@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { 
-  Trophy, TrendingUp, Users, Star, Quote, 
+  Trophy, TrendingUp, User, Users, Star, Quote, 
   ArrowRight, CheckCircle2, Award, Target, Zap
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
 
 export const Resultados = () => {
   const successStories = [
@@ -76,7 +77,7 @@ export const Resultados = () => {
         </div>
       </section>
 
-      {/* Success Stories - Cards */}
+      {/* Success Stories - Cards 
       <section className="py-32 px-6 md:px-12 bg-brand-dark relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-32 bg-brand-black slanted-bg -translate-y-1/2" />
         <div className="max-w-7xl mx-auto relative z-10">
@@ -122,7 +123,7 @@ export const Resultados = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Technical Evolution Roadmap */}
       <section className="py-32 px-6 md:px-12 bg-brand-black">
@@ -197,14 +198,14 @@ export const Resultados = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               { 
-                text: "JP Preparation ha sido un antes y un después en la carrera de mi hijo. No solo ha mejorado su técnica, sino su confianza y madurez en el campo.",
-                author: "Ricardo S.",
+                text: "La tecnificación de JP es un lugar excepcional para crecer tanto deportiva como personalmente. El ambiente es muy familiar, lo que hace que cada entrenamiento se disfrute al máximo. Los entrenadores son muy agradables, cercanos y a la vez muy exigentes, siempre buscando sacar lo mejor de cada jugador. Los entrenos son intensos, bien organizados y con un enfoque claro en la mejora técnica y táctica. Sin duda, un sitio ideal para quienes quieren mejorar, aprender y disfrutar del fútbol en un entorno positivo y profesional. ¡Totalmente recomendable!",
+                author: "Joan Falcó Piñol",
                 role: "Padre de alumno U12",
                 avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=100&auto=format&fit=crop"
               },
               { 
-                text: "Entrenar aquí es lo más parecido a estar en una cantera profesional. La exigencia y el nivel de detalle son increíbles.",
-                author: "Dani L.",
+                text: "Sin duda la mejor escuela de tecnificación de fútbol , mi hijo está encantado con su progreso, cosa qué no había conseguido en otras escuelas. Las instalaciones y técnicas de 10. Tanto el director del centro, Joel, como el resto del equipo realizan un trabajo impecable y un trato muy familiar. Así que tanto niños como papås nos sentimos bien acogidos. Totalmente recomendable. No pudimos encontrar un lugar mejor.",
+                author: "Rous",
                 role: "Jugador Juvenil",
                 avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=100&auto=format&fit=crop"
               },
@@ -213,12 +214,12 @@ export const Resultados = () => {
                 <Quote className="text-brand-accent/20 absolute top-8 right-8" size={48} />
                 <p className="text-xl text-white/80 italic mb-10 leading-relaxed relative z-10">"{testimonial.text}"</p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden border border-brand-accent">
-                    <img src={testimonial.avatar} alt={testimonial.author} referrerPolicy="no-referrer" />
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+                    <User size={20} className="text-white/70" />
                   </div>
                   <div>
                     <div className="font-bold text-white">{testimonial.author}</div>
-                    <div className="text-brand-accent text-xs uppercase tracking-widest">{testimonial.role}</div>
+                    {/* <div className="text-brand-accent text-xs uppercase tracking-widest">{testimonial.role}</div>*/}
                   </div>
                 </div>
               </div>

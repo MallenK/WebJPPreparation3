@@ -202,10 +202,26 @@ export const Home = () => {
               />
               <div className="space-y-12">
                 {[
-                  { time: "09:00", title: "Activación Cognitiva", desc: "Ejercicios de reacción y coordinación para despertar el sistema nervioso." },
-                  { time: "10:00", title: "Bloque de Tecnificación", desc: "Trabajo analítico de alta repetición enfocado en el gesto técnico puro." },
-                  { time: "11:30", title: "Situaciones de Juego", desc: "Duelos y transiciones donde aplicamos lo aprendido bajo oposición." },
-                  { time: "13:00", title: "Análisis y Feedback", desc: "Revisión de clips de vídeo y corrección personalizada." }
+                  { 
+                    time: "01", 
+                    title: "Activación Cognitiva", 
+                    desc: "Ejercicios de reacción, coordinación y activación para preparar al jugador antes del entrenamiento." 
+                  },
+                  { 
+                    time: "02", 
+                    title: "Bloque de Tecnificación", 
+                    desc: "Trabajo técnico específico adaptado a las necesidades del jugador/a." 
+                  },
+                  { 
+                    time: "03", 
+                    title: "Situaciones de Juego", 
+                    desc: "Ejercicios enfocados en la toma de decisión en situaciones reales de partido." 
+                  },
+                  { 
+                    time: "04", 
+                    title: "Vuelta a la calma", 
+                    desc: "Finalizamos la sesión con acciones a balón parado como faltas." 
+                  }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-8 group">
                     <div className="font-display font-black text-3xl text-white/10 group-hover:text-brand-accent transition-colors duration-300 pt-1">
@@ -219,6 +235,7 @@ export const Home = () => {
                 ))}
               </div>
             </div>
+
             <div className="relative">
               <div className="aspect-video rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl">
                 <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training Day" referrerPolicy="no-referrer" />
@@ -233,7 +250,7 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* Modern Player Analysis */}
+      {/* Modern Player Analysis 
       <section className="section-padding bg-brand-black">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -244,7 +261,6 @@ export const Home = () => {
               className="relative"
             >
               <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1000&auto=format&fit=crop" className="w-full rounded-3xl opacity-50" alt="Player Analysis" referrerPolicy="no-referrer" />
-              {/* Overlay Graphics */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-full h-full relative">
                   <motion.div 
@@ -288,19 +304,25 @@ export const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Comparison Section */}
-      <section className="section-padding bg-brand-dark relative slanted-bg">
+      <section className="section-padding bg-brand-black relative slanted-bg">
         <div className="max-w-7xl mx-auto relative z-10">
           <SectionHeader 
             subtitle="Diferenciación" 
             title="¿POR QUÉ SOMOS <span className='text-brand-accent italic'>DIFERENTES?</span>" 
             centered
           />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+            {/* Tradicional */}
             <div className="glass-card p-10 border-red-500/20">
-              <h3 className="text-2xl font-bold mb-8 text-red-500 uppercase tracking-tighter italic">Entrenamiento Tradicional</h3>
+              <h3 className="text-2xl font-bold mb-8 text-red-500 uppercase tracking-tighter italic">
+                Entrenamiento Tradicional
+              </h3>
+
               <ul className="space-y-6">
                 {[
                   "25 jugadores por entrenador.",
@@ -316,15 +338,20 @@ export const Home = () => {
                 ))}
               </ul>
             </div>
+
+            {/* JP */}
             <div className="glass-card p-10 border-brand-accent bg-brand-accent/5">
-              <h3 className="text-2xl font-bold mb-8 text-brand-accent uppercase tracking-tighter italic">JP Preparation</h3>
+              <h3 className="text-2xl font-bold mb-8 text-brand-accent uppercase tracking-tighter italic">
+                JP Preparation
+              </h3>
+
               <ul className="space-y-6">
                 {[
-                  "Grupos máximos de 4 jugadores.",
+                  "Grupos máximos de 2 jugadores.",
                   "Foco 100% en tu desarrollo individual.",
                   "Corrección milimétrica de cada gesto.",
                   "Plan de entrenamiento personalizado.",
-                  "Análisis de vídeo y feedback constante."
+                  "Seguimiento y feedback constante."
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-4 text-white/90">
                     <CheckCircle2 size={18} className="text-brand-accent shrink-0" />
@@ -333,9 +360,11 @@ export const Home = () => {
                 ))}
               </ul>
             </div>
+
           </div>
         </div>
       </section>
+
 
       {/* CTA Section */}
       <section className="section-padding bg-brand-black relative overflow-hidden">
