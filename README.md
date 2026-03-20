@@ -1,20 +1,42 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+  <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+<h1 align="center">⚽ JP Preparation — High Performance Web</h1>
 
-This contains everything you need to run your app locally.
+<p align="center">
+Entrenamiento de élite llevado al entorno digital.<br/>
+Diseño premium · Experiencia inmersiva · Enfoque en rendimiento
+</p>
 
-View your app in AI Studio: https://ai.studio/apps/f2b80f94-916c-4da7-8562-432170918369
+---
 
-## Run Locally
+## 🚀 STACK
 
-**Prerequisites:**  Node.js
+- ⚛️ React + Vite  
+- 🎨 TailwindCSS  
+- 🎬 Motion (animations)  
+- 🧠 AI Integration (Gemini)  
 
+---
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🧠 DESCRIPCIÓN
+
+Aplicación web enfocada en transmitir una experiencia de alto rendimiento para futbolistas.
+
+- Diseño **dark premium**
+- Estructura basada en **conversión**
+- Animaciones fluidas
+- Enfoque visual potente
+
+---
+
+## ⚙️ RUN LOCAL
+
+### 📦 Prerrequisitos
+- Node.js instalado
+
+### 🧩 Instalación
+
+```bash
+npm install
