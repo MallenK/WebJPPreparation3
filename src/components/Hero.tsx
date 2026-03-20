@@ -30,28 +30,26 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">        
         {/* LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 py-2 px-4 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-8">
+          <div className="inline-flex items-center gap-2 py-2 px-4 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-4">
             <span className="w-2 h-2 bg-brand-cyan rounded-full animate-pulse"></span>
             Entrenamiento · Personalizado · Fútbol
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[0.85] mb-8 tracking-tighter">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black leading-[0.9] mb-6 md:mb-8 tracking-tighter">
             JP <br />
             <span className="text-gradient">Preparation</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-white/70 mb-12 max-w-lg leading-relaxed font-medium">
-            Sesiones <span className="text-white font-bold">individualizadas</span> adaptadas a cada jugador/a, con trabajo específico para mejorar la toma de decisiones y el rendimiento real en el campo.
+          <p className="text-base sm:text-lg md:text-lg lg:text-lg xl:text-xl text-white/70 mb-4 md:mb-8 max-w-lg leading-relaxed font-medium">
+              Sesiones <span className="text-white font-bold">individualizadas</span> adaptadas a cada jugador/a, con trabajo específico para mejorar la toma de decisiones y el rendimiento real en el campo.
           </p>
-
           <div className="flex flex-col sm:flex-row gap-6">
             <Link to="/contacto" className="btn-primary group">
               Reservar sesión
@@ -65,7 +63,7 @@ export const Hero = () => {
           </div>
 
           {/* STATS */}
-          <div className="mt-16 grid grid-cols-3 gap-8 border-t border-white/10 pt-8">
+          <div className="mt-10 md:mt-14 grid grid-cols-3 gap-6 md:gap-8 border-t border-white/10 pt-6 md:pt-8">
             <div>
               <div className="text-2xl font-display font-bold text-white">100%</div>
               <div className="text-xs uppercase tracking-widest text-white/50">Personalizado</div>

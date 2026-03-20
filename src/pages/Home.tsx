@@ -7,8 +7,9 @@ import { ChevronRight, CheckCircle2, Star, Users, MapPin, Calendar, ArrowRight, 
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
-const SectionHeader = ({ subtitle, title, centered = false }: { subtitle: string, title: string, centered?: boolean }) => (
-  <div className={centered ? "text-center mb-20" : "mb-16"}>
+const SectionHeader = ({ subtitle, title, centered = false }) => (
+  <div className={centered ? "text-center mb-12 md:mb-16 lg:mb-16 xl:mb-20" : "mb-10 md:mb-12 lg:mb-14"}>
+
     <motion.span 
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -17,14 +18,16 @@ const SectionHeader = ({ subtitle, title, centered = false }: { subtitle: string
     >
       {subtitle}
     </motion.span>
+
     <motion.h2 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.1 }}
-      className="text-5xl md:text-7xl font-black mt-6 leading-[0.9] tracking-tighter" 
+      className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-black mt-4 md:mt-6 leading-[0.95] tracking-tighter"
       dangerouslySetInnerHTML={{ __html: title }}
-    ></motion.h2>
+    />
+
   </div>
 );
 
@@ -37,7 +40,10 @@ export const Home = () => {
       {/* Intro Section - The Vision */}
       <section className="section-padding bg-brand-black relative">
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-brand-black to-transparent z-10"></div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-20 items-center">
+
+          {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -47,108 +53,139 @@ export const Home = () => {
               subtitle="Qué Hacemos" 
               title="MEJORAMOS EL <span className='text-gradient italic'>RENDIMIENTO</span> DEL FUTBOLISTA" 
             />
-            <p className="text-white/70 text-xl mb-10 leading-relaxed font-medium">
-              En JP Preparation trabajamos de forma personalizada para ayudar a cada jugador a mejorar su técnica, su físico y su rendimiento dentro del campo. Cada sesión está enfocada en desarrollar aspectos concretos del juego según las necesidades de cada futbolista.
+
+            <p className="text-base sm:text-lg lg:text-lg xl:text-xl text-white/70 mb-6 md:mb-8 leading-relaxed font-medium">
+              En JP Preparation trabajamos de forma personalizada para ayudar a cada jugador a mejorar su técnica, su físico y su rendimiento dentro del campo.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-12">
               {[
                 { icon: Brain, title: "Trabajo Específico", desc: "Entrenamientos adaptados a cada jugador." },
                 { icon: Zap, title: "Preparación Física", desc: "Mejora del rendimiento y prevención." },
                 { icon: Target, title: "Tecnificación", desc: "Corrección técnica y mejora del juego." },
                 { icon: Shield, title: "Seguimiento", desc: "Evolución constante en cada sesión." }
               ].map((item, i) => (
-                <div key={i} className="flex gap-4 group">
-                  <div className="w-12 h-12 shrink-0 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-brand-accent transition-colors duration-300">
-                    <item.icon className="text-brand-accent group-hover:text-white" size={20} />
+                <div key={i} className="flex gap-3 md:gap-4 group">
+                  <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-brand-accent transition-colors">
+                    <item.icon className="text-brand-accent group-hover:text-white" size={18} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white mb-1">{item.title}</h4>
+                    <h4 className="font-bold text-white text-sm md:text-base mb-1">{item.title}</h4>
                     <p className="text-white/60 text-xs">{item.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
+
             <Link to="/tecnificacion" className="btn-primary">
               Ver tecnificación
             </Link>
           </motion.div>
-          
+
+          {/* RIGHT */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="aspect-square rounded-[2rem] overflow-hidden border-2 border-white/10 p-4 bg-white/5">
+            <div className="aspect-square rounded-[2rem] overflow-hidden border-2 border-white/10 p-3 md:p-4 bg-white/5">
               <img 
-                src="https://images.unsplash.com/photo-1526232759583-26f173b0bb3e?q=80&w=1000&auto=format&fit=crop" 
-                alt="Sesión de entrenamiento" 
+                src="https://images.unsplash.com/photo-1526232759583-26f173b0bb3e?q=80&w=1000"
                 className="w-full h-full object-cover rounded-[1.5rem]"
-                referrerPolicy="no-referrer"
               />
             </div>
-            {/* Floating Badge */}
-            <div className="absolute -bottom-10 -right-10 glass-card p-8 max-w-[280px] hidden md:block border-brand-accent/30">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-brand-accent flex items-center justify-center">
-                  <Trophy className="text-white" size={20} />
+
+            <div className="absolute -bottom-8 -right-8 glass-card p-5 md:p-6 max-w-[240px] lg:max-w-[260px] hidden md:block border-brand-accent/30">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-brand-accent flex items-center justify-center">
+                  <Trophy className="text-white" size={18} />
                 </div>
-                <span className="font-black text-lg tracking-tighter">ENTRENAMIENTO PERSONALIZADO</span>
+                <span className="font-black text-sm md:text-base tracking-tighter">
+                  ENTRENAMIENTO PERSONALIZADO
+                </span>
               </div>
-              <p className="text-xs text-white/50 leading-relaxed">"Cada jugador necesita un trabajo específico para mejorar su nivel y rendir mejor en el campo."</p>
+              <p className="text-[10px] md:text-xs text-white/50 leading-relaxed">
+                "Cada jugador necesita un trabajo específico para mejorar su nivel."
+              </p>
             </div>
+
           </motion.div>
+
         </div>
       </section>
 
       {/* The Problem - Why us? */}
       <section className="section-padding bg-brand-dark relative overflow-hidden slanted-bg">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div className="order-2 lg:order-1 grid grid-cols-2 gap-6">
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-20 items-center">
+
+            {/* IMAGES */}
+            <div className="order-2 lg:order-1 grid grid-cols-2 gap-4 md:gap-6">
+              
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="aspect-[3/4] rounded-2xl overflow-hidden mt-12 border border-white/10"
+                className="aspect-[3/4] rounded-2xl overflow-hidden mt-6 md:mt-10 lg:mt-8 border border-white/10"
               >
-                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Focus" referrerPolicy="no-referrer" />
+                <img 
+                  src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1000"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                />
               </motion.div>
+
               <motion.div 
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: -20 }}
                 viewport={{ once: true }}
                 className="aspect-[3/4] rounded-2xl overflow-hidden border border-white/10"
               >
-                <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Ball" referrerPolicy="no-referrer" />
+                <img 
+                  src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1000"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                />
               </motion.div>
+
             </div>
+
+            {/* TEXT */}
             <div className="order-1 lg:order-2">
+
               <SectionHeader 
                 subtitle="El Desafío" 
                 title="EL ENTRENAMIENTO DE CLUB <br/><span className='text-brand-accent italic'>YA NO ES SUFICIENTE</span>" 
               />
-              <p className="text-white/70 text-lg mb-8 leading-relaxed">
-                En un equipo convencional, el entrenador tiene 25 jugadores. El tiempo para corregir tu control orientado, tu perfilación o tu toma de decisiones es casi nulo.
+
+              <p className="text-base md:text-lg text-white/70 mb-6 md:mb-8 leading-relaxed">
+                En un equipo convencional, el entrenador tiene 25 jugadores. El tiempo para corregir tu técnica o toma de decisiones es casi nulo.
               </p>
-              <div className="space-y-6 mb-12">
+
+              <div className="space-y-4 md:space-y-5 mb-8 md:mb-12">
                 {[
                   "Falta de corrección técnica individualizada.",
                   "Entrenamientos genéricos para el grupo.",
                   "Poco volumen de contacto con el balón.",
                   "Estancamiento en el desarrollo de habilidades clave."
                 ].map((text, i) => (
-                  <div key={i} className="flex items-center gap-4 text-white/80 font-bold italic">
+                  <div key={i} className="flex items-center gap-3 md:gap-4 text-white/80 font-bold italic text-sm md:text-base">
                     <div className="w-2 h-2 bg-brand-accent rounded-full"></div>
                     {text}
                   </div>
                 ))}
               </div>
-              <div className="p-8 bg-brand-accent/10 border-l-4 border-brand-accent rounded-r-2xl">
-                <p className="text-white font-medium italic">"La élite no se alcanza en el entrenamiento grupal, se construye en las horas de trabajo específico."</p>
+
+              <div className="p-5 md:p-6 lg:p-6 bg-brand-accent/10 border-l-4 border-brand-accent rounded-r-2xl">
+                <p className="text-white font-medium italic text-sm md:text-base">
+                  "La élite no se alcanza en el entrenamiento grupal, se construye en el trabajo específico."
+                </p>
               </div>
+
             </div>
+
           </div>
+
         </div>
       </section>
 
@@ -181,7 +218,7 @@ export const Home = () => {
                 <div className="w-16 h-16 rounded-full bg-brand-black border-2 border-brand-accent flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-accent transition-colors duration-500">
                   <span className="font-display font-black text-xl text-brand-accent group-hover:text-white">{item.step}</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">{item.title}</h3>
+                <h3 className="text-lg md:text-xl lg:text-xl xl:text-2xl font-bold mb-4">{item.title}</h3>
                 <p className="text-white/60 text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
@@ -228,7 +265,7 @@ export const Home = () => {
                       {item.time}
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2">{item.title}</h4>
+                      <h4 className="text-lg md:text-xl lg:text-xl xl:text-2xl font-bold mb-2">{item.title}</h4>
                       <p className="text-white/70 text-sm leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
@@ -319,7 +356,7 @@ export const Home = () => {
 
             {/* Tradicional */}
             <div className="glass-card p-10 border-red-500/20">
-              <h3 className="text-2xl font-bold mb-8 text-red-500 uppercase tracking-tighter italic">
+              <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-2xl font-bold mb-8 text-red-500 uppercase tracking-tighter italictext-2xl font-bold mb-8 text-red-500 uppercase tracking-tighter italic">
                 Entrenamiento Tradicional
               </h3>
 
@@ -341,7 +378,7 @@ export const Home = () => {
 
             {/* JP */}
             <div className="glass-card p-10 border-brand-accent bg-brand-accent/5">
-              <h3 className="text-2xl font-bold mb-8 text-brand-accent uppercase tracking-tighter italic">
+              <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-2xl font-bold mb-8 text-brand-accent uppercase tracking-tighter italictext-2xl font-bold mb-8 text-brand-accent uppercase tracking-tighter italic">
                 JP Preparation
               </h3>
 
@@ -375,11 +412,11 @@ export const Home = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl sm:text-6xl md:text-8xl font-black mb-8 leading-[0.85] tracking-tighter">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-8 leading-[0.95] tracking-tighter">
               ¿ESTÁS LISTO PARA <br />
               <span className="text-gradient italic">LA ÉLITE?</span>
             </h2>
-            <p className="text-xl text-white/70 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg xl:text-xl text-white/70 mb-12 max-w-2xl mx-auto leading-relaxed">
               Las plazas son limitadas para garantizar la máxima calidad en cada sesión. No pierdas la oportunidad de transformar tu juego.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">

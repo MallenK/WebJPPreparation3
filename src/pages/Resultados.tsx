@@ -35,23 +35,34 @@ export const Resultados = () => {
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative pt-40 pb-24 px-6 md:px-12 bg-brand-black">
+      <section className="relative pt-28 md:pt-32 lg:pt-32 xl:pt-40 pb-16 md:pb-20 lg:pb-24 px-6 md:px-10 lg:px-12 bg-brand-black">
+        
         <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-accent/5 -skew-x-12 translate-x-1/4 pointer-events-none" />
-        <div className="max-w-7xl mx-auto relative z-10">
+
+        <div className="max-w-7xl mx-auto text-center relative z-10">
+          
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Impacto Real</span>
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.85] tracking-tighter mb-8">
+
+            <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-xs mb-3 md:mb-4 block">
+              Impacto Real
+            </span>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-[0.9] tracking-tighter mb-6 md:mb-8">
               RESULTADOS QUE <br />
               <span className="text-brand-accent italic">HABLAN</span>
             </h1>
-            <p className="text-white/70 text-xl md:text-2xl mt-8 max-w-3xl leading-relaxed">
-              No prometemos magia, prometemos <span className="text-white font-semibold">trabajo y evolución</span>. Aquí es donde el esfuerzo se convierte en éxito tangible en el campo.
+
+            <p className="text-base sm:text-lg md:text-lg lg:text-lg xl:text-xl text-white/70 mt-6 md:mt-8 max-w-3xl mx-auto leading-relaxed">
+              No prometemos magia, prometemos <span className="text-white font-semibold">trabajo y evolución</span>. 
+              Aquí es donde el esfuerzo se convierte en éxito tangible.
             </p>
+
           </motion.div>
+
         </div>
       </section>
 
@@ -131,7 +142,9 @@ export const Resultados = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
               <span className="text-brand-accent font-bold tracking-widest uppercase text-xs">Metodología de Progreso</span>
-              <h2 className="text-4xl md:text-6xl font-bold mt-4 mb-8 leading-tight">Tu Hoja de Ruta <br />hacia la <span className="text-brand-accent italic">Élite</span></h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mt-4 mb-6 md:mb-8 leading-[0.95] tracking-tighter">
+                Tu Hoja de Ruta <br />hacia la <span className="text-brand-accent italic">Élite</span>
+              </h2>
               <div className="space-y-12 mt-12">
                 {[
                   { title: "Evaluación Inicial", desc: "Test técnico y físico completo para detectar áreas de mejora inmediata.", icon: Microscope },
@@ -145,7 +158,9 @@ export const Resultados = () => {
                       <step.icon className="text-brand-accent" size={20} />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2">{step.title}</h4>
+                      <h4 className="text-lg md:text-xl lg:text-xl xl:text-2xl font-bold mb-2">
+                        {step.title}
+                      </h4>
                       <p className="text-white/70 text-sm leading-relaxed">{step.desc}</p>
                     </div>
                   </div>
@@ -154,7 +169,7 @@ export const Resultados = () => {
             </div>
             <div className="relative">
               <div className="glass-card p-12 border-brand-accent/30 bg-brand-accent/5">
-                <h3 className="text-2xl font-bold mb-8 text-center">Gráfica de Evolución Media</h3>
+                <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center">Gráfica de Evolución Media</h3>
                 <div className="space-y-8">
                   {[
                     { skill: "Control de Balón", progress: 85 },
@@ -193,7 +208,10 @@ export const Resultados = () => {
       <section className="py-32 px-6 md:px-12 bg-brand-dark relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold">Lo que dicen <br /><span className="text-brand-accent italic">Padres y Jugadores</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[0.95] tracking-tighter">
+              Lo que dicen <br />
+              <span className="text-brand-accent italic">Padres y Jugadores</span>
+            </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
@@ -212,7 +230,7 @@ export const Resultados = () => {
             ].map((testimonial, i) => (
               <div key={i} className="glass-card p-12 relative">
                 <Quote className="text-brand-accent/20 absolute top-8 right-8" size={48} />
-                <p className="text-xl text-white/80 italic mb-10 leading-relaxed relative z-10">"{testimonial.text}"</p>
+                <p className="text-base md:text-lg lg:text-lg xl:text-xl text-white/80 italic mb-8 md:mb-10 leading-relaxed">"{testimonial.text}"</p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
                     <User size={20} className="text-white/70" />
@@ -249,11 +267,11 @@ export const Resultados = () => {
       <section className="py-32 px-6 md:px-12 bg-brand-accent relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-brand-black mb-10 leading-none">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-brand-black mb-8 md:mb-10 leading-[0.95] tracking-tighter">
             TU ÉXITO EMPIEZA <br />
             <span className="italic">AQUÍ MISMO</span>
           </h2>
-          <p className="text-brand-black/80 text-xl mb-12 max-w-2xl mx-auto font-medium">
+          <p className="text-brand-black/80 text-base md:text-lg xl:text-xl mb-10 md:mb-12 max-w-2xl mx-auto font-medium">
             No esperes a que los resultados lleguen solos. Ven a buscarlos con el mejor equipo de tecnificación.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">

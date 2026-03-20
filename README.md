@@ -39,4 +39,9 @@ Aplicación web enfocada en transmitir una experiencia de alto rendimiento para 
 ### 🧩 Instalación
 
 ```bash
-npm install
+git init
+git add .
+git commit -m "Initial commit"
+git push -u origin main
+npm run build
+npm run deploy

@@ -37,7 +37,7 @@ const CoachCard = ({ name, role, bio, img, license, delay }: CoachCardProps) => 
         <div className="bg-brand-accent text-brand-black text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest mb-4 inline-block shadow-xl">
           {license}
         </div>
-        <h3 className="text-3xl font-bold text-white mb-1 leading-none">{name}</h3>
+        <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-3xl font-bold text-white mb-1 leading-none">{name}</h3>
         <p className="text-brand-accent text-sm font-display uppercase tracking-[0.2em]">{role}</p>
         
         <div className="flex gap-3 mt-6 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
@@ -122,23 +122,34 @@ export const Equipo = () => {
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative pt-40 pb-24 px-6 md:px-12 bg-brand-black">
+      <section className="relative pt-28 md:pt-32 lg:pt-32 xl:pt-40 pb-16 md:pb-20 lg:pb-24 px-6 md:px-10 lg:px-12 bg-brand-black">
+        
         <div className="absolute inset-0 bg-gradient-to-b from-brand-accent/5 to-transparent pointer-events-none" />
+
         <div className="max-w-7xl mx-auto text-center relative z-10">
+          
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Profesionales Certificados</span>
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.85] tracking-tighter mb-8">
+
+            <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-xs mb-3 md:mb-4 block">
+              Profesionales Certificados
+            </span>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-[0.9] tracking-tighter mb-6 md:mb-8">
               NUESTRO <br />
               <span className="text-brand-accent italic">STAFF TÉCNICO</span>
             </h1>
-            <p className="text-white/70 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
-              Un equipo multidisciplinar de élite dedicado exclusivamente a potenciar tu talento. No somos solo entrenadores, somos <span className="text-white font-semibold">mentores de tu carrera</span>.
+
+            <p className="text-base sm:text-lg md:text-lg lg:text-lg xl:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+              Un equipo multidisciplinar de élite dedicado exclusivamente a potenciar tu talento. 
+              No somos solo entrenadores, somos <span className="text-white font-semibold">mentores de tu carrera</span>.
             </p>
+
           </motion.div>
+
         </div>
       </section>
 
@@ -185,7 +196,7 @@ export const Equipo = () => {
             </div>
             <div>
               <span className="text-brand-accent font-bold tracking-widest uppercase text-xs">Nuestra Visión</span>
-              <h2 className="text-4xl md:text-6xl font-bold mt-4 mb-10 leading-tight">Más que <br /><span className="text-brand-accent">Entrenadores</span></h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mt-4 mb-8 md:mb-10 leading-[0.95] tracking-tighter">Más que <br /><span className="text-brand-accent">Entrenadores</span></h2>
               <div className="space-y-8">
                 {[
                   { title: "Atención Individualizada", desc: "Cada jugador es un proyecto único. Analizamos tus fortalezas y debilidades para crear un plan a medida.", icon: Target },
@@ -197,7 +208,7 @@ export const Equipo = () => {
                       <item.icon className="text-brand-accent" size={24} />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2">{item.title}</h4>
+                      <h4 className="text-lg md:text-xl lg:text-xl xl:text-2xl font-bold mb-2">{item.title}</h4>
                       <p className="text-white/70 text-sm leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
@@ -212,7 +223,7 @@ export const Equipo = () => {
       <section className="py-32 px-6 md:px-12 bg-brand-black">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold">Nuestros <span className="text-brand-accent italic">Valores</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[0.95] tracking-tighter">Nuestros <span className="text-brand-accent italic">Valores</span></h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {[
@@ -224,7 +235,7 @@ export const Equipo = () => {
                 <div className="w-20 h-20 rounded-full bg-brand-accent/10 flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
                   <v.icon className="text-brand-accent" size={40} />
                 </div>
-                <h3 className="text-2xl font-bold mb-6">{v.title}</h3>
+                <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-2xl font-bold mb-4 md:mb-6">{v.title}</h3>
                 <p className="text-white/70 leading-relaxed">{v.desc}</p>
               </div>
             ))}
@@ -270,11 +281,11 @@ export const Equipo = () => {
       <section className="py-32 px-6 md:px-12 bg-brand-accent relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-brand-black mb-10 leading-none">
-            ENTRENA CON <br />
-            <span className="italic">LOS MEJORES</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 leading-[0.95] tracking-tighter">
+            ¿Eres un apasionado de la <br />
+            <span className="text-brand-accent italic">tecnificación?</span>
           </h2>
-          <p className="text-brand-black/80 text-xl mb-12 max-w-2xl mx-auto font-medium">
+          <p className="text-white/70 text-base md:text-lg xl:text-xl mb-8 md:mb-10 max-w-2xl mx-auto">
             Nuestro staff está listo para llevarte al siguiente nivel. ¿Lo estás tú?
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">

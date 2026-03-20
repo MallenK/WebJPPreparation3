@@ -16,7 +16,7 @@
   --text-3xl: 1.75rem;
   --text-3xl--line-height: 1.05;
 
-  --text-4xl: 2.1rem;
+  --text-4xl: 1.1rem;
   --text-4xl--line-height: 1.02;
 
   --text-5xl: 2.6rem;
@@ -111,4 +111,10 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;  
   overflow: hidden;
+}
+
+
+.section-title {
+  display: none;
+  @apply text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl;
 }

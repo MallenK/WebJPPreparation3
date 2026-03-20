@@ -44,7 +44,7 @@ const ProgramCard = ({ title, subtitle, description, features, price, img, popul
       )}
       <div className="absolute bottom-8 left-8">
         <span className="text-brand-accent font-bold text-xs uppercase tracking-[0.3em] mb-2 block">{subtitle}</span>
-        <h3 className="text-4xl font-bold text-white leading-none">{title}</h3>
+        <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-3xl font-bold text-white leading-none">{title}</h3>
       </div>
     </div>
     <div className="p-10 flex-grow flex flex-col">
@@ -60,7 +60,7 @@ const ProgramCard = ({ title, subtitle, description, features, price, img, popul
       <div className="pt-8 border-t border-white/10 flex items-center justify-between">
         <div>
           <span className="text-white/50 text-[10px] uppercase tracking-widest block mb-1">Inversión</span>
-          <span className="text-3xl font-display font-bold text-white">{price}</span>
+          <span className="text-2xl md:text-3xl font-display font-bold text-white">{price}</span>
         </div>
         <Link to="/contacto" className={cn(
           "py-4 px-8 rounded-full font-bold uppercase text-xs tracking-widest transition-all", 
@@ -105,32 +105,46 @@ export const Programas = () => {
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative pt-40 pb-24 px-6 md:px-12 bg-brand-black">
+      <section className="relative pt-28 md:pt-32 lg:pt-32 xl:pt-40 pb-16 md:pb-20 lg:pb-24 px-6 md:px-10 lg:px-12 bg-brand-black">
+        
         <div className="absolute inset-0 bg-gradient-to-b from-brand-accent/5 to-transparent pointer-events-none" />
+
         <div className="max-w-7xl mx-auto text-center relative z-10">
+          
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Nuestros Planes</span>
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.85] tracking-tighter mb-8">
+
+            <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-xs mb-3 md:mb-4 block">
+              Nuestros Planes
+            </span>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-[0.9] tracking-tighter mb-6 md:mb-8">
               PROGRAMAS DE <br />
               <span className="text-brand-accent italic">ALTO RENDIMIENTO</span>
             </h1>
-            <p className="text-white/70 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
+
+            <p className="text-base sm:text-lg md:text-lg lg:text-lg xl:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
               Entrenamientos personalizados adaptados a cada jugador/a. Mejora tu rendimiento real en el campo.
             </p>
+
           </motion.div>
+
         </div>
       </section>
 
       {/* Program Cards Grid */}
-      <section className="py-24 px-6 md:px-12 bg-brand-black relative">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 items-stretch">
+      <section className="py-16 md:py-20 lg:py-20 xl:py-24 px-6 md:px-10 lg:px-12 bg-brand-black relative">
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-8 xl:gap-10 items-stretch">
           {programs.map((p, i) => <ProgramCard key={i} {...p} />)}
         </div>
+
       </section>
+
+
 
       {/* Methodology Overview - Slanted */}
       <section className="relative py-32 px-6 md:px-12 bg-brand-dark overflow-hidden">
@@ -138,7 +152,7 @@ export const Programas = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 leading-[0.95] tracking-tighter">
                 ¿Cómo trabajamos <br />
                 <span className="text-brand-accent">en cada sesión?</span>
               </h2>
@@ -166,7 +180,7 @@ export const Programas = () => {
                       <item.icon className="text-brand-accent" size={24} />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2">{item.title}</h4>
+                      <h4 className="text-lg md:text-xl lg:text-xl xl:text-2xl font-bold mb-2">{item.title}</h4>
                       <p className="text-white/70 text-sm leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
@@ -200,7 +214,7 @@ export const Programas = () => {
       <section className="py-32 px-6 md:px-12 bg-brand-black">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold">Expectativas de <span className="text-brand-accent italic">Progreso</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[0.95] tracking-tighter">Expectativas de <span className="text-brand-accent italic">Progreso</span></h2>
             <p className="text-white/60 mt-6 max-w-xl mx-auto">Basado en nuestra experiencia con cientos de jugadores durante los últimos 5 años.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -211,7 +225,7 @@ export const Programas = () => {
             ].map((metric, i) => (
               <div key={i} className="glass-card p-12 relative group hover:bg-brand-accent/5 transition-all">
                 <div className="text-brand-accent font-display text-lg mb-4">{metric.time}</div>
-                <h3 className="text-2xl font-bold mb-6 flex items-center gap-4">
+                <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-2xl font-bold mb-4 md:mb-6 flex items-center gap-4">
                   {metric.title}
                   <metric.icon className="text-brand-accent/50 group-hover:text-brand-accent transition-colors" size={24} />
                 </h3>
@@ -227,7 +241,7 @@ export const Programas = () => {
         <div className="absolute bottom-0 left-0 w-full h-32 bg-brand-black slanted-bg-reverse translate-y-1/2" />
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold">Compara nuestros <span className="text-brand-accent">Servicios</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[0.95] tracking-tighter">Compara nuestros <span className="text-brand-accent">Servicios</span></h2>
           </div>
           <div className="overflow-x-auto glass-card border-white/5">
             <table className="w-full text-left border-collapse">
@@ -261,7 +275,7 @@ export const Programas = () => {
       <section className="py-32 px-6 md:px-12 bg-brand-black">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold">Dudas <span className="text-brand-accent italic">Frecuentes</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[0.95] tracking-tighter">Dudas <span className="text-brand-accent italic">Frecuentes</span></h2>
           </div>
           <div className="space-y-6">
             {[
@@ -270,7 +284,7 @@ export const Programas = () => {
               { q: "¿Necesito llevar material propio?", a: "Solo tus botas y ropa de entrenamiento." },
             ].map((faq, i) => (
               <div key={i} className="p-8 border border-white/5 rounded-2xl hover:border-brand-accent/30 transition-colors">
-                <h4 className="text-lg font-bold mb-4 flex items-center gap-3">
+                <h4 className="text-base md:text-lg lg:text-lg xl:text-xl font-bold mb-4 flex items-center gap-3">
                   <HelpCircle className="text-brand-accent" size={20} />
                   {faq.q}
                 </h4>
@@ -285,11 +299,11 @@ export const Programas = () => {
       <section className="py-32 px-6 md:px-12 bg-brand-accent relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-brand-black mb-10 leading-none">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-brand-black mb-8 md:mb-10 leading-[0.95] tracking-tighter">
             EL MOMENTO ES <br />
             <span className="italic">AHORA</span>
           </h2>
-          <p className="text-brand-black/80 text-xl mb-12 max-w-2xl mx-auto font-medium">
+          <p className="text-brand-black/80 text-base md:text-lg xl:text-xl mb-10 md:mb-12 max-w-2xl mx-auto font-medium">
             No dejes para mañana el entrenamiento que te hará destacar el próximo fin de semana.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
