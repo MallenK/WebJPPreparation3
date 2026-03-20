@@ -55,8 +55,8 @@ export const StatsBar = () => {
   ];
 
   return (
-    <section className="bg-brand-dark border-y border-white/10">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-3">
+    <section className="bg-brand-dark border-y border-white/10 py-12 md:py-16 mb-16 md:mb-24">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {stats.map((stat, index) => (
           <StatItem
             key={index}

@@ -62,7 +62,7 @@ export const Hero = () => {
             </Link>
           </div>
 
-          {/* STATS */}
+          {/* STATS 
           <div className="mt-10 md:mt-14 grid grid-cols-3 gap-6 md:gap-8 border-t border-white/10 pt-6 md:pt-8">
             <div>
               <div className="text-2xl font-display font-bold text-white">100%</div>
@@ -76,7 +76,7 @@ export const Hero = () => {
               <div className="text-2xl font-display font-bold text-white">MAX 2</div>
               <div className="text-xs uppercase tracking-widest text-white/50">Por sesión</div>
             </div>
-          </div>
+          </div>*/}
         </motion.div>
 
         {/* RIGHT IMAGE */}
