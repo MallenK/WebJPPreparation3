@@ -42,6 +42,6 @@ Aplicación web enfocada en transmitir una experiencia de alto rendimiento para 
 git init
 git add .
 git commit -m "Initial commit"
-git push -u origin main
+git push origin main
 npm run build
 npm run deploy

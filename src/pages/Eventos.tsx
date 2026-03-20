@@ -35,7 +35,7 @@ export const Eventos = () => {
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-[0.9] tracking-tighter mb-6 md:mb-8">
             EVENTOS DE <br />
-            <span className="text-gradient italic">ALTO RENDIMIENTO</span>
+            <span className="text-gradient italic">JP Preparation</span>
           </h1>
 
           <p className="text-base sm:text-lg md:text-lg lg:text-lg xl:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
