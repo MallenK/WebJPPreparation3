@@ -24,7 +24,7 @@ export const Header = () => {
     { name: 'Tecnificación', path: '/tecnificacion' },
     { name: 'Programas', path: '/programas' },
     { name: 'Equipo', path: '/equipo' },
-    {/* { name: 'Instalaciones', path: '/instalaciones' }, */},
+    { name: 'Instalaciones', path: '/instalaciones' },
     { name: 'Eventos', path: '/eventos' },
     { name: 'Resultados', path: '/resultados' },
   ];
