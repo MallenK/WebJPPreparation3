@@ -2,9 +2,20 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title>JP Preparation</title>
 <script>
-  const path = location.pathname.replace(/^\//, "");
-  location.replace("/?/" + path + location.search + location.hash);
+  // Single Page Apps for GitHub Pages - spa-github-pages technique
+  // https://github.com/rafgraph/spa-github-pages
+  // pathSegmentsToKeep = 1 keeps the repo name segment (/WebJPPreparation3) in the URL
+  var pathSegmentsToKeep = 1;
+  var l = window.location;
+  l.replace(
+    l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+    l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+    l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+    (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+    l.hash
+  );
 </script>
 </head>
 <body></body>

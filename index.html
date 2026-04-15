@@ -7,15 +7,20 @@
 
 
     <script>
-      (function () {
-        const redirect = window.location.search.match(/\/(.*)/);
-        if (redirect) {
-          history.replaceState(null, null, "/" + redirect[1]);
+      // Restore path redirected by 404.html (spa-github-pages technique)
+      (function(l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
         }
-      })();
+      }(window.location));
     </script>
-    <script type="module" crossorigin src="/WebJPPreparation3/assets/index-BGOoQOCU.js"></script>
-    <link rel="stylesheet" crossorigin href="/WebJPPreparation3/assets/index-KSN5bbEo.css">
+    <script type="module" crossorigin src="/WebJPPreparation3/assets/index-DIigceX3.js"></script>
+    <link rel="stylesheet" crossorigin href="/WebJPPreparation3/assets/index-BOo5WjlX.css">
   </head>
   <body>
     <div id="root"></div>
