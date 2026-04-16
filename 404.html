@@ -4,12 +4,18 @@
     <meta charset="utf-8">
     <title>JP Preparation</title>
     <script type="text/javascript">
-      var segmentCount = 1; // Para /WebJPPreparation3/
+      var repoName = "WebJPPreparation3";
       var l = window.location;
+      
+      // Esta línea reconstruye la URL correctamente:
+      // Dominio + /NombreRepo/ + ?/ + lo que el usuario escribió
+      var newPath = l.pathname.split('/').filter(Boolean);
+      // Si el primer segmento no es el repo, lo ignoramos y cogemos el resto
+      var pathAfterRepo = newPath[0] === repoName ? newPath.slice(1).join('/') : newPath.join('/');
+      
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
-        l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+        '/' + repoName + '/?/' + pathAfterRepo +
         (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
       );
