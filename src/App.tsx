@@ -35,7 +35,7 @@ export default function App() {
             <Route path="/tecnificacion" element={<Tecnificacion />} />
             <Route path="/programas" element={<Programas />} />
             <Route path="/equipo" element={<Equipo />} />
-            {/* <Route path="/instalaciones" element={<Instalaciones />} /> */}
+            <Route path="/instalaciones" element={<Instalaciones />} />
             <Route path="/eventos" element={<Eventos />} />
             <Route path="/resultados" element={<Resultados />} />
             <Route path="/contacto" element={<Contacto />} />
