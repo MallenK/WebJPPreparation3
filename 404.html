@@ -4,16 +4,23 @@
     <meta charset="utf-8">
     <title>JP Preparation</title>
     <script type="text/javascript">
-      var segmentCount = 1; // Para /WebJPPreparation3/
+      // 1. Guardamos la ubicación actual
       var l = window.location;
+      
+      // 2. Definimos el nombre de la subcarpeta (nombre del repo)
+      var repoName = 'WebJPPreparation3'; 
+
+      // 3. Reemplazamos la URL actual por una que React pueda entender
+      // Esto transformará /WebJPPreparation3/eventos en /WebJPPreparation3/?/eventos
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
-        l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+        '/' + repoName + '/?/' +
+        l.pathname.slice(1).split('/').slice(1).join('/').replace(/&/g, '~and~') +
         (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
       );
     </script>
   </head>
-  <body></body>
+  <body>
+  </body>
 </html>
