@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { 
-  CheckCircle2, Users, Target, Zap, Clock, Trophy, 
-  BarChart3, ShieldCheck, Star, ArrowRight, Calendar, 
+  CheckCircle2, Users, Target, Zap, Clock, Trophy, Camera,
+  BarChart3, ShieldCheck, Star, ArrowRight, Calendar, Play, Video,
   Info, HelpCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -268,6 +268,95 @@ export const Programas = () => {
               </tbody>
             </table>
           </div>
+        </div>
+      </section>
+
+      {/* UPCOMING SERVICE: VIDEO ANALYSIS */}
+      <section className="pb-24 px-6 md:px-10 lg:px-12 bg-brand-black relative">
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative rounded-[3rem] overflow-hidden border border-brand-accent/30 bg-gradient-to-br from-brand-accent/10 via-transparent to-transparent p-8 md:p-16"
+          >
+            {/* Badge de Próximamente */}
+            <div className="absolute top-8 right-8 md:top-12 md:right-12">
+              <span className="bg-red-600 text-white text-[10px] md:text-xs font-black px-6 py-3 rounded-full uppercase tracking-[0.2em] animate-pulse shadow-[0_0_20px_rgba(220,38,38,0.3)]">
+                PRÓXIMAMENTE
+              </span>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="flex items-center gap-3 text-brand-accent mb-6">
+                  <Video size={24} />
+                  <span className="font-bold tracking-[0.3em] uppercase text-xs">Nuevo Servicio</span>
+                </div>
+                
+                <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tighter leading-none">
+                  Análisis pro: <br />
+                  <span className="text-gradient italic">PARTIDO REAL</span>
+                </h2>
+                
+                <p className="text-white/70 text-lg mb-10 leading-relaxed max-w-xl">
+                  No solo entrenamos, analizamos cómo compites. Llevamos nuestra metodología al campo de juego para evaluar tu rendimiento en situaciones reales de partido.
+                </p>
+
+                <div className="space-y-6">
+                  {[
+                    { icon: Camera, t: "Grabación en directo", d: "Desplazamos a nuestro equipo para grabar tu partido completo." },
+                    { icon: Users, t: "Sesión de Feedback", d: "Reunión privada con jugador y familia para analizar cortes de video." },
+                    { icon: BarChart3, t: "Informe & Entrega", d: "Recibes el video analizado y un informe técnico detallado de rendimiento." },
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-4">
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
+                        <item.icon className="text-brand-accent" size={18} />
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-base">{item.t}</h4>
+                        <p className="text-white/50 text-sm">{item.d}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="mt-12">
+                  <div className="flex flex-col sm:flex-row items-center gap-6">
+                    <span className="flex items-center gap-2 text-red-500 font-black text-[10px] uppercase tracking-[0.3em]">
+                      <span className="relative flex h-2 w-2">
+                        {/* El punto que parpadea en rojo */}
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        {/* El punto fijo en rojo */}
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                      </span>
+                      Lanzamiento Próximamente
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative">
+                <div className="aspect-video rounded-3xl overflow-hidden border border-white/10 relative z-10">
+                  <img 
+                    src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200" 
+                    className="w-full h-full object-cover opacity-60" 
+                    alt="Video Analysis"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-full bg-brand-accent/20 backdrop-blur-md flex items-center justify-center border border-brand-accent/50">
+                      <div className="w-12 h-12 rounded-full bg-brand-accent flex items-center justify-center text-brand-black">
+                        <Play size={24} fill="currentColor" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Elementos decorativos de fondo */}
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-accent/20 rounded-full blur-[80px]" />
+                <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-brand-accent/10 rounded-full blur-[80px]" />
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

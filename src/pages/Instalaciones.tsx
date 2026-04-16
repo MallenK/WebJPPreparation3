@@ -38,9 +38,11 @@ export const Instalaciones = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Nuestro Templo</span>
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-none tracking-tighter mb-8">
-              INSTALA<span className="text-brand-accent italic">CIONES</span>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-[0.9] tracking-tighter mb-6 md:mb-8">
+              INSTALACIONES
             </h1>
+
             <p className="text-white/90 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed">
               Un entorno profesional diseñado para que el jugador se sienta en la élite desde el primer minuto.
             </p>
@@ -49,7 +51,7 @@ export const Instalaciones = () => {
       </section>
 
       {/* Main Features Grid */}
-      <section className="py-32 px-6 md:px-12 bg-brand-black">
+      <section className="pb-32 px-6 md:px-12 bg-brand-black">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
