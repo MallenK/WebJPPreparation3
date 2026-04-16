@@ -7,20 +7,15 @@
 
 
     <script>
-      // Restore path redirected by 404.html (spa-github-pages technique)
-      (function(l) {
-        if (l.search[1] === '/') {
-          var decoded = l.search.slice(1).split('&').map(function(s) {
-            return s.replace(/~and~/g, '&');
-          }).join('?');
-          window.history.replaceState(null, null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-          );
+      (function () {
+        const redirect = window.location.search.match(/\/(.*)/);
+        if (redirect) {
+          history.replaceState(null, null, "/" + redirect[1]);
         }
-      }(window.location));
+      })();
     </script>
-    <script type="module" crossorigin src="/WebJPPreparation3/assets/index-B7J2GSq3.js"></script>
-    <link rel="stylesheet" crossorigin href="/WebJPPreparation3/assets/index-yQg8dYot.css">
+    <script type="module" crossorigin src="/WebJPPreparation3/assets/index-5BrKy_MX.js"></script>
+    <link rel="stylesheet" crossorigin href="/WebJPPreparation3/assets/index-KSN5bbEo.css">
   </head>
   <body>
     <div id="root"></div>
