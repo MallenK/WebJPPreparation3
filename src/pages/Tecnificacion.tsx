@@ -5,6 +5,7 @@ import {
   Video, BarChart3, Users, ShieldCheck, Timer, Microscope
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { cn } from '../lib/utils'; // O la ruta donde tengas tu carpeta lib
 
 export const Tecnificacion = () => {
   return (
@@ -277,21 +278,24 @@ export const Tecnificacion = () => {
       </section>*/}
 
       {/* Training Session Structure */}
-      <section className="py-32 px-6 md:px-12 bg-brand-dark relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-accent/5 -skew-x-12 translate-x-1/4 pointer-events-none" />
+      <section className="py-20 md:py-32 px-4 sm:px-6 md:px-12 bg-brand-dark relative overflow-hidden">
+        {/* Decoración de fondo optimizada */}
+        <div className="absolute top-0 right-0 w-full md:w-1/2 h-full bg-brand-accent/[0.03] -skew-x-12 translate-x-1/4 pointer-events-none" />
+        
         <div className="max-w-7xl mx-auto relative z-10">
           
-          <div className="text-center mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[0.95] tracking-tighter">
-              Estructura de una <br />
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] md:leading-[0.95] tracking-tighter text-balance">
+              Estructura de una <br className="hidden sm:block" />
               <span className="text-brand-accent italic">Sesión Tipo</span>
             </h2>
-            <p className="text-white/60 mt-6 max-w-xl mx-auto">
+            <p className="text-white/60 mt-4 md:mt-6 text-sm md:text-base max-w-xl mx-auto text-balance">
               Sesiones de 60 minutos diseñadas para maximizar el rendimiento de cada jugador.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {/* Grid Adaptable: 1 col (móvil), 2 cols (tablet), 4 cols (desktop) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {[
               {
                 time: "10 min",
@@ -318,18 +322,34 @@ export const Tecnificacion = () => {
                 icon: Trophy
               },
             ].map((step, i) => (
-              <div key={i} className="glass-card p-10 relative overflow-hidden group hover:bg-brand-accent/10 transition-all">
-                <div className="absolute top-0 right-0 p-6 text-brand-accent/10 font-display text-7xl font-bold group-hover:text-brand-accent/20 transition-colors">
+              <div 
+                key={i} 
+                className={cn(
+                  "glass-card relative overflow-hidden group hover:bg-brand-accent/10 transition-all duration-500",
+                  "p-8 md:p-10", // Padding responsivo
+                  "flex flex-col h-full" // Altura uniforme
+                )}
+              >
+                {/* Número de fondo escalado para no estorbar */}
+                <div className="absolute -top-2 -right-2 p-4 text-brand-accent/5 font-display text-6xl md:text-7xl lg:text-8xl font-bold group-hover:text-brand-accent/10 transition-colors pointer-events-none">
                   0{i + 1}
                 </div>
 
-                <div className="flex items-center gap-3 text-brand-accent font-bold mb-6">
-                  <step.icon size={20} />
-                  {step.time}
+                <div className="flex items-center gap-3 text-brand-accent font-bold mb-6 relative z-10">
+                  <step.icon size={20} className="shrink-0" />
+                  <span className="text-sm md:text-base tracking-wider">{step.time}</span>
                 </div>
 
-                <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-2xl font-bold mb-4">{step.title}</h3>
-                <p className="text-white/70 text-sm leading-relaxed">{step.desc}</p>
+                <h3 className="text-xl md:text-2xl font-bold mb-4 relative z-10 leading-tight">
+                  {step.title}
+                </h3>
+                
+                <p className="text-white/70 text-sm md:text-base leading-relaxed relative z-10">
+                  {step.desc}
+                </p>
+
+                {/* Línea decorativa inferior que se expande en hover */}
+                <div className="absolute bottom-0 left-0 h-1 w-0 bg-brand-accent transition-all duration-500 group-hover:w-full" />
               </div>
             ))}
           </div>

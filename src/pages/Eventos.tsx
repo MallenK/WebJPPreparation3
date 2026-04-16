@@ -4,6 +4,7 @@ import {
   Shield, Camera, Zap, Users, Star, Trophy, Flame, Play, CheckCircle2 
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { cn } from '../lib/utils'; // O la ruta donde tengas tu carpeta lib
 
 const SectionHeader = ({ subtitle, title, centered = false }) => (
   <div className={centered ? "text-center mb-16 md:mb-20" : "mb-12 md:mb-16"}>
@@ -47,8 +48,13 @@ export const Eventos = () => {
       </section>
 
       {/* EVENTS GRID */}
-      <section className="section-padding bg-brand-black">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-6 md:gap-8">
+      <section className="py-16 md:py-32 px-4 sm:px-6 md:px-12 bg-brand-black overflow-hidden">
+        <div className={cn(
+          "max-w-7xl mx-auto grid gap-6 md:gap-8",
+          "grid-cols-1",           // 1 columna en móvil
+          "sm:grid-cols-2",       // 2 columnas en tablet (aquí cambia la disposición)
+          "lg:grid-cols-3"        // 3 columnas en desktop
+        )}>
 
           {[
             {
@@ -69,19 +75,45 @@ export const Eventos = () => {
           ].map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.2 }}
-              className="glass-card p-6 md:p-8 lg:p-8 xl:p-10 group hover:bg-brand-accent/5 transition-all"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.5,
+                delay: i * 0.1 
+              }}
+              className={cn(
+                "glass-card relative group hover:bg-brand-accent/5 transition-all duration-500",
+                "p-8 md:p-10", 
+                "flex flex-col h-full border border-white/5 hover:border-brand-accent/20",
+                // Si quieres que en móvil todo se centre y en tablet/pc se alinee a la izquierda:
+                "items-center text-center sm:items-start sm:text-left" 
+              )}
             >
-              <item.icon className="text-brand-accent mb-4 md:mb-6" size={28} />
-              <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-3xl font-black mb-3 md:mb-4">
+              {/* Contenedor del Icono */}
+              <div className="relative mb-6">
+                <item.icon 
+                  className="text-brand-accent relative z-10 transition-transform duration-500 group-hover:scale-110" 
+                  size={32} 
+                />
+                <div className="absolute inset-0 bg-brand-accent/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+
+              {/* Título - Ajuste de tamaño responsivo */}
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-black mb-4 tracking-tighter uppercase italic">
                 {item.title}
               </h3>
-              <p className="text-sm md:text-base text-white/70 leading-relaxed">
+
+              {/* Descripción */}
+              <p className="text-sm md:text-base text-white/70 leading-relaxed text-balance">
                 {item.desc}
               </p>
+
+              {/* Detalle visual superior */}
+              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-brand-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              
+              {/* Detalle visual inferior (barra de progreso decorativa) */}
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-brand-accent transition-all duration-500 group-hover:w-full" />
             </motion.div>
           ))}
 
