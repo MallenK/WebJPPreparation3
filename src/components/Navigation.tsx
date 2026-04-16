@@ -9,15 +9,38 @@ import logo from '../assets/images/brand/logo-jp-preparation.png';
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // Nueva: Controla si el header sube/baja
+  const [lastScrollY, setLastScrollY] = useState(0); // Nueva: Para comparar posición
   const location = useLocation();
 
+  // Lógica de Scroll: Fondo y Visibilidad
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      
+      // Cambiar fondo del header
+      setIsScrolled(currentScrollY > 50);
+
+      // Si el menú móvil está abierto, no escondas el navbar
+      if (isMobileMenuOpen) return;
+
+      // Lógica de esconder al bajar / mostrar al subir
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false); // Bajando: Esconder
+      } else {
+        setIsVisible(true);  // Subiendo: Mostrar
+      }
+      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY, isMobileMenuOpen]);
+
+  // Bloquear el scroll del fondo cuando el menú esté abierto
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { name: 'Inicio', path: '/' },
@@ -33,7 +56,9 @@ export const Header = () => {
     <header 
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-500 py-4 px-4 md:px-8 xl:px-12",
-        isScrolled ? "bg-brand-black/80 backdrop-blur-xl border-b border-white/10 py-3" : "bg-transparent"
+        isScrolled ? "bg-brand-black/90 backdrop-blur-xl border-b border-white/10 py-3" : "bg-transparent",
+        // ESTA ES LA LÍNEA CLAVE:
+        !isVisible && !isMobileMenuOpen ? "-translate-y-full" : "translate-y-0"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-6">
@@ -94,43 +119,40 @@ export const Header = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-40 bg-brand-black lg:hidden flex flex-col"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'tween', duration: 0.4 }}
+            className="fixed inset-0 z-[100] bg-brand-black lg:hidden flex flex-col"
+            style={{ height: '100dvh' }} // Forzamos altura total de pantalla móvil
           >
-            <div className="flex items-center justify-between p-6 border-b border-white/10">
+            {/* Cabecera del menú */}
+            <div className="flex items-center justify-between p-6 border-b border-white/10 shrink-0">
               <div className="flex items-center gap-3">
-                <div className="h-10 flex items-center">
-                  <img
-                    src={logo}
-                    alt="JP Preparation"
-                    className="h-full w-auto object-contain"
-                  />
-                </div>
-                <span className="font-display text-xl font-bold tracking-tighter"> JP PREPARATION</span>
+                <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
+                <span className="font-display text-xl font-bold tracking-tighter uppercase text-white">JP PREPARATION</span>
               </div>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5"
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 text-white"
               >
-                <X size={24} />
+                <X size={28} />
               </button>
             </div>
 
-            <nav className="flex flex-col p-8 gap-6 overflow-y-auto flex-grow">
+            {/* Navegación central - Usamos flex-1 para que ocupe el resto del espacio */}
+            <nav className="flex-1 flex flex-col justify-center px-8 space-y-6 overflow-y-auto">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.path}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.08 }}
+                  transition={{ delay: i * 0.05 }}
                 >
                   <Link 
                     to={link.path}
                     className={cn(
-                      "font-display text-4xl uppercase tracking-tighter transition-colors",
+                      "font-display text-4xl uppercase tracking-tighter transition-colors block",
                       location.pathname === link.path ? "text-brand-accent" : "text-white"
                     )}
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -141,10 +163,11 @@ export const Header = () => {
               ))}
             </nav>
 
-            <div className="p-8 border-t border-white/10">
+            {/* Botón de contacto inferior */}
+            <div className="p-8 border-t border-white/10 shrink-0">
               <Link 
                 to="/contacto" 
-                className="btn-primary w-full py-5 text-base"
+                className="btn-primary w-full py-5 text-center block text-lg font-bold uppercase tracking-widest"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contacto

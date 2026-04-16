@@ -211,25 +211,56 @@ export const Programas = () => {
       </section>
 
       {/* Success Metrics */}
-      <section className="py-32 px-6 md:px-12 bg-brand-black">
+      <section className="py-20 md:py-32 px-4 sm:px-6 md:px-12 bg-brand-black overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[0.95] tracking-tighter">Expectativas de <span className="text-brand-accent italic">Progreso</span></h2>
-            <p className="text-white/60 mt-6 max-w-xl mx-auto">Basado en nuestra experiencia con cientos de jugadores durante los últimos 5 años.</p>
+          {/* Header */}
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-[1.1] md:leading-[0.95] tracking-tighter text-balance">
+              Expectativas de <span className="text-brand-accent italic">Progreso</span>
+            </h2>
+            <p className="text-white/60 mt-4 md:mt-6 text-sm md:text-base max-w-xl mx-auto text-balance">
+              Basado en nuestra experiencia con cientos de jugadores durante los últimos 5 años.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          {/* Grid de Tarjetas */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {[
               { time: "1 Mes", title: "Corrección de Vicios", desc: "Eliminamos malos hábitos posturales y técnicos. Mejora inmediata en el control orientado.", icon: Clock },
               { time: "3 Meses", title: "Consolidación Técnica", desc: "El jugador ejecuta los gestos de forma inconsciente. Aumento de la confianza en el 1vs1.", icon: BarChart3 },
               { time: "6 Meses", title: "Dominio Situacional", desc: "Transferencia total al juego real. El jugador destaca en su equipo por su toma de decisiones.", icon: Trophy },
             ].map((metric, i) => (
-              <div key={i} className="glass-card p-12 relative group hover:bg-brand-accent/5 transition-all">
-                <div className="text-brand-accent font-display text-lg mb-4">{metric.time}</div>
-                <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-2xl font-bold mb-4 md:mb-6 flex items-center gap-4">
-                  {metric.title}
-                  <metric.icon className="text-brand-accent/50 group-hover:text-brand-accent transition-colors" size={24} />
+              <div 
+                key={i} 
+                className={cn(
+                  "glass-card relative group hover:bg-brand-accent/5 transition-all duration-500",
+                  "p-8 md:p-10 lg:p-12", // Padding responsivo
+                  "flex flex-col h-full", // Asegura que todas midan lo mismo
+                  i === 2 && "md:col-span-2 lg:col-span-1" // En tablet, la tercera ocupa ancho completo o se centra
+                )}
+              >
+                {/* Indicador de tiempo con línea decorativa */}
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="text-brand-accent font-display text-sm md:text-lg font-bold tracking-widest uppercase">
+                    {metric.time}
+                  </span>
+                  <div className="h-px flex-1 bg-brand-accent/20"></div>
+                </div>
+
+                <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-start justify-between gap-4">
+                  <span className="leading-tight">{metric.title}</span>
+                  <metric.icon 
+                    className="text-brand-accent/40 group-hover:text-brand-accent group-hover:scale-110 transition-all shrink-0" 
+                    size={28} 
+                  />
                 </h3>
-                <p className="text-white/70 leading-relaxed">{metric.desc}</p>
+
+                <p className="text-white/70 leading-relaxed text-sm md:text-base">
+                  {metric.desc}
+                </p>
+
+                {/* Decoración sutil de fondo para el hover */}
+                <div className="absolute top-0 right-0 -z-10 w-24 h-24 bg-brand-accent/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
             ))}
           </div>
