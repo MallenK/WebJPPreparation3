@@ -1,19 +1,27 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { 
-  MapPin, Maximize, Zap, Camera, Shield, 
+import {
+  MapPin, Maximize, Zap, Camera, Shield,
   Coffee, Wifi, Car, ArrowRight, Star
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import imgInstalacionesHero from '../assets/images/uploads/IMG_1817.jpeg';
+import imgGaleria1 from '../assets/images/uploads/IMG_0175.jpeg';
+import imgGaleria2 from '../assets/images/uploads/IMG_0176.jpeg';
+import imgGaleria3 from '../assets/images/uploads/IMG_0180.jpeg';
+import imgGaleria4 from '../assets/images/uploads/IMG_0181.jpeg';
+import imgGaleria5 from '../assets/images/uploads/IMG_0184.jpeg';
+import imgGaleria6 from '../assets/images/uploads/IMG_0189.jpeg';
+import imgMapaFondo from '../assets/images/uploads/IMG_0184.jpeg';
 
 export const Instalaciones = () => {
   const gallery = [
-    { url: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1000&auto=format&fit=crop", title: "Campo Principal" },
-    { url: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=1000&auto=format&fit=crop", title: "Zona de Tecnificación" },
-    { url: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=1000&auto=format&fit=crop", title: "Entrenamiento Nocturno" },
-    { url: "https://images.unsplash.com/photo-1518604666860-9ed391f76460?q=80&w=1000&auto=format&fit=crop", title: "Material de Élite" },
-    { url: "https://images.unsplash.com/photo-1595030044556-acfaa60edc7f?q=80&w=1000&auto=format&fit=crop", title: "Vestuarios" },
-    { url: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1000&auto=format&fit=crop", title: "Gradas" },
+    { url: imgGaleria1, title: "Campo Principal" },
+    { url: imgGaleria2, title: "Zona de Tecnificación" },
+    { url: imgGaleria3, title: "Entrenamiento Nocturno" },
+    { url: imgGaleria4, title: "Material de Élite" },
+    { url: imgGaleria5, title: "Vestuarios" },
+    { url: imgGaleria6, title: "Gradas" },
   ];
 
   return (
@@ -25,7 +33,6 @@ export const Instalaciones = () => {
             src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=2000&auto=format&fit=crop" 
             className="w-full h-full object-cover scale-110"
             alt="Stadium"
-            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-brand-black/60 backdrop-blur-[2px]" />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent" />
@@ -174,11 +181,10 @@ export const Instalaciones = () => {
       {/* Map Section Placeholder */}
       <section className="h-[500px] bg-brand-dark relative overflow-hidden">
         <div className="absolute inset-0 grayscale opacity-50">
-          <img 
-            src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2000&auto=format&fit=crop" 
-            className="w-full h-full object-cover" 
-            alt="Map Background" 
-            referrerPolicy="no-referrer"
+          <img
+            src={imgMapaFondo}
+            className="w-full h-full object-cover"
+            alt="Map Background"
           />
         </div>
         <div className="absolute inset-0 flex items-center justify-center">

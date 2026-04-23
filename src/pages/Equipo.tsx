@@ -1,11 +1,19 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { 
-  Instagram, Linkedin, Mail, Award, ShieldCheck, 
-  Star, Users, Target, Zap, ArrowRight, BookOpen, 
+import {
+  Instagram, Linkedin, Mail, Award, ShieldCheck,
+  Star, Users, Target, Zap, ArrowRight, BookOpen,
   CheckCircle2, Quote
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import imgJoelParedes from '../assets/images/uploads/IMG_0197.jpeg';
+import imgIkerArjona from '../assets/images/uploads/IMG_0198.jpeg';
+import imgNilSoto from '../assets/images/uploads/IMG_0199.jpeg';
+import imgMarcRodriguez from '../assets/images/uploads/IMG_1700.jpeg';
+import imgJoelAgraz from '../assets/images/uploads/IMG_1701.jpeg';
+import imgArnauTellez from '../assets/images/uploads/IMG_1707.jpeg';
+import imgDavidGarcia from '../assets/images/uploads/IMG_1710.jpeg';
+import imgFilosofia from '../assets/images/uploads/IMG_1701.jpeg';
 
 interface CoachCardProps {
   name: string;
@@ -65,7 +73,7 @@ export const Equipo = () => {
       name: "Joel Paredes",
       role: "Director de la Escuela",
       bio: "Ex-jugador profesional con experiencia en ligas internacionales y competiciones europeas como Champions League, Europa League y Conference League.",
-      img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
+      img: imgJoelParedes,
       license: "Dirección",
       delay: 0.1
     },
@@ -73,7 +81,7 @@ export const Equipo = () => {
       name: "Iker Arjona",
       role: "Captador y Entrenador",
       bio: "Responsable de la captación de jugadores para torneos y entrenador dentro de la estructura de JP Preparation.",
-      img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop",
+      img: imgIkerArjona,
       license: "Staff",
       delay: 0.2
     },
@@ -81,7 +89,7 @@ export const Equipo = () => {
       name: "Nil Soto",
       role: "Entrenador",
       bio: "Responsable de la creación de entrenamientos individualizados adaptados a cada jugador.",
-      img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop",
+      img: imgNilSoto,
       license: "Staff",
       delay: 0.3
     },
@@ -89,7 +97,7 @@ export const Equipo = () => {
       name: "Marc Rodriguez",
       role: "Entrenador y Coordinador",
       bio: "Encargado de la coordinación interna y desarrollo de las sesiones dentro de JP Preparation.",
-      img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop",
+      img: imgMarcRodriguez,
       license: "Coordinación",
       delay: 0.4
     },
@@ -97,7 +105,7 @@ export const Equipo = () => {
       name: "Joel Agraz",
       role: "Entrenador",
       bio: "Entrenador enfocado en la mejora técnica y progresión individual de los jugadores.",
-      img: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=800&auto=format&fit=crop",
+      img: imgJoelAgraz,
       license: "Staff",
       delay: 0.5
     },
@@ -105,7 +113,7 @@ export const Equipo = () => {
       name: "Arnau Tellez",
       role: "Entrenador",
       bio: "Entrenador de JP Preparation centrado en el desarrollo técnico y toma de decisiones.",
-      img: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop",
+      img: imgArnauTellez,
       license: "Staff",
       delay: 0.6
     },
@@ -113,7 +121,7 @@ export const Equipo = () => {
       name: "David Garcia",
       role: "Personal Trainer",
       bio: "Entrenador personal especializado en trabajo de fuerza, pliometría y asesoramiento nutricional y deportivo.",
-      img: "https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?q=80&w=800&auto=format&fit=crop",
+      img: imgDavidGarcia,
       license: "Fitness",
       delay: 0.7
     }
@@ -182,11 +190,10 @@ export const Equipo = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="relative">
               <div className="aspect-square rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1000&auto=format&fit=crop" 
-                  className="w-full h-full object-cover" 
-                  alt="Coaching Philosophy" 
-                  referrerPolicy="no-referrer" 
+                <img
+                  src={imgFilosofia}
+                  className="w-full h-full object-cover"
+                  alt="Coaching Philosophy"
                 />
               </div>
               <div className="absolute -top-10 -right-10 glass-card p-8 max-w-[240px] hidden md:block border-brand-accent/30">

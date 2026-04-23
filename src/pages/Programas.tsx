@@ -1,12 +1,20 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { 
+import {
   CheckCircle2, Users, Target, Zap, Clock, Trophy, Camera,
   BarChart3, ShieldCheck, Star, ArrowRight, Calendar, Play, Video,
   Info, HelpCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
+import imgPrograma1 from '../assets/images/uploads/IMG_2062.jpeg';
+import imgPrograma2 from '../assets/images/uploads/IMG_1701.jpeg';
+import imgPrograma3 from '../assets/images/uploads/IMG_0175.jpeg';
+import imgMetodo2b from '../assets/images/uploads/IMG_6001.jpeg';
+import imgMetodo1b from '../assets/images/uploads/IMG_5907.jpeg';
+import imgMetodo2a from '../assets/images/uploads/IMG_5994.jpeg';
+import imgMetodo1a from '../assets/images/uploads/IMG_5997.jpeg';
+import imgVideoAnalysis from '../assets/images/uploads/IMG_0198.jpeg';
 
 interface ProgramCardProps {
   title: string;
@@ -81,7 +89,7 @@ export const Programas = () => {
       description: "Entrenamiento individual totalmente adaptado a las necesidades del jugador/a.",
       features: ["Trabajo técnico específico", "Corrección en tiempo real", "Adaptado a cada jugador"],
       price: "55€",
-      img: "https://images.unsplash.com/photo-1526232759583-26f173b0bb3e?q=80&w=800&auto=format&fit=crop"
+      img: imgPrograma1
     },
     {
       title: "One-to-One",
@@ -89,7 +97,7 @@ export const Programas = () => {
       description: "Plan continuo con sesiones personalizadas y seguimiento del jugador/a.",
       features: ["Plan individualizado", "Seguimiento continuo", "Comunicación con familias"],
       price: "40€",
-      img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800&auto=format&fit=crop",
+      img: imgPrograma2,
       popular: true
     },
     {
@@ -98,7 +106,7 @@ export const Programas = () => {
       description: "Entrenador personal titulado enfocado en fuerza, pliometría y mejora del rendimiento físico.",
       features: ["Trabajo de fuerza", "Pliometría", "Asesoramiento deportivo y nutricional"],
       price: "Consultar",
-      img: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=800&auto=format&fit=crop"
+      img: imgPrograma3
     }
   ];
 
@@ -191,18 +199,18 @@ export const Programas = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="aspect-square rounded-2xl overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training" referrerPolicy="no-referrer" />
+                  <img src={imgMetodo1a} className="w-full h-full object-cover" alt="Training" />
                 </div>
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1526232759583-26f173b0bb3e?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training" referrerPolicy="no-referrer" />
+                  <img src={imgMetodo1b} className="w-full h-full object-cover" alt="Training" />
                 </div>
               </div>
               <div className="space-y-4 pt-12">
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training" referrerPolicy="no-referrer" />
+                  <img src={imgMetodo2a} className="w-full h-full object-cover" alt="Training" />
                 </div>
                 <div className="aspect-square rounded-2xl overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training" referrerPolicy="no-referrer" />
+                  <img src={imgMetodo2b} className="w-full h-full object-cover" alt="Training" />
                 </div>
               </div>
             </div>
@@ -369,9 +377,9 @@ export const Programas = () => {
 
               <div className="relative">
                 <div className="aspect-video rounded-3xl overflow-hidden border border-white/10 relative z-10">
-                  <img 
-                    src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200" 
-                    className="w-full h-full object-cover opacity-60" 
+                  <img
+                    src={imgVideoAnalysis}
+                    className="w-full h-full object-cover opacity-60"
                     alt="Video Analysis"
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
