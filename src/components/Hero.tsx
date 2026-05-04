@@ -3,7 +3,9 @@ import { motion } from 'motion/react';
 import { ChevronRight, Play, ArrowRight, Target, Zap, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import IMGHero from '../assets/images/uploads/foto_home_1.jpg';
+import IMGHero from '../assets/images/uploads/IMG_1700.jpeg';
+
+
 
 
 export const Hero = () => {

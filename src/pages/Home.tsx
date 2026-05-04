@@ -6,6 +6,21 @@ import { motion } from 'motion/react';
 import { ChevronRight, CheckCircle2, Star, Users, MapPin, Calendar, ArrowRight, Brain, Zap, Target, Trophy, Clock, Shield, Activity, Play, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
+import imgIntro from '../assets/images/uploads/IMG_1301.jpeg';
+import imgDesafio1 from '../assets/images/uploads/IMG_1303.jpeg';
+import imgDesafio2 from '../assets/images/uploads/IMG_1304.jpeg';
+import imgTrainingDay from '../assets/images/uploads/IMG_1305.jpeg';
+
+import imgJoelParedes from '../assets/images/uploads/IMG_0197.jpeg';
+import imgIkerArjona from '../assets/images/uploads/IMG_0198.jpeg';
+import imgNilSoto from '../assets/images/uploads/IMG_0199.jpeg';
+import imgMarcRodriguez from '../assets/images/uploads/IMG_1700.jpeg';
+import imgJoelAgraz from '../assets/images/uploads/IMG_1701.jpeg';
+import imgArnauTellez from '../assets/images/uploads/IMG_1707.jpeg';
+import imgDavidGarcia from '../assets/images/uploads/IMG_1710.jpeg';
+import imgFilosofia from '../assets/images/uploads/IMG_1723.jpeg';
+
+
 
 const SectionHeader = ({ subtitle, title, centered = false }) => (
   <div className={centered ? "text-center mb-12 md:mb-16 lg:mb-16 xl:mb-20" : "mb-10 md:mb-12 lg:mb-14"}>
@@ -90,8 +105,8 @@ export const Home = () => {
             className="relative"
           >
             <div className="aspect-square rounded-[2rem] overflow-hidden border-2 border-white/10 p-3 md:p-4 bg-white/5">
-              <img 
-                src="https://images.unsplash.com/photo-1526232759583-26f173b0bb3e?q=80&w=1000"
+              <img
+                src={imgIntro}
                 className="w-full h-full object-cover rounded-[1.5rem]"
               />
             </div>
@@ -130,8 +145,8 @@ export const Home = () => {
                 viewport={{ once: true }}
                 className="aspect-[3/4] rounded-2xl overflow-hidden mt-6 md:mt-10 lg:mt-8 border border-white/10"
               >
-                <img 
-                  src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1000"
+                <img
+                  src={imgDesafio1}
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </motion.div>
@@ -142,8 +157,8 @@ export const Home = () => {
                 viewport={{ once: true }}
                 className="aspect-[3/4] rounded-2xl overflow-hidden border border-white/10"
               >
-                <img 
-                  src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1000"
+                <img
+                  src={imgDesafio2}
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </motion.div>
@@ -275,7 +290,7 @@ export const Home = () => {
 
             <div className="relative">
               <div className="aspect-video rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Training Day" referrerPolicy="no-referrer" />
+                <img src={imgTrainingDay} className="w-full h-full object-cover" alt="Training Day" />
                 <div className="absolute inset-0 flex items-center justify-center bg-brand-black/40 group cursor-pointer">
                   <div className="w-20 h-20 rounded-full bg-brand-accent flex items-center justify-center animate-pulse group-hover:scale-110 transition-transform">
                     <Play className="text-white fill-current" size={32} />

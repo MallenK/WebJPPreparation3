@@ -1,10 +1,20 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { 
-  Shield, Camera, Zap, Users, Star, Trophy, Flame, Play, CheckCircle2 
+import {
+  Shield, Camera, Zap, Users, Star, Trophy, Flame, Play, CheckCircle2
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { cn } from '../lib/utils'; // O la ruta donde tengas tu carpeta lib
+import { cn } from '../lib/utils';
+import imgStage from '../assets/images/uploads/IMG_1306.jpeg';
+import imgPorteros from '../assets/images/uploads/IMG_1820.jpeg';
+import imgGal1 from '../assets/images/uploads/7bb1a281-5dcf-4e50-bf23-b22d279eaf23.jpeg';
+import imgGal2 from '../assets/images/uploads/82aa7a80-b28a-451f-b7ae-a661cdc85fe2.jpeg';
+import imgGal3 from '../assets/images/uploads/989dfbcd-4a63-4ff4-9d8a-d8441cc1d6f4.jpeg';
+import imgGal4 from '../assets/images/uploads/FullSizeRender.jpeg';
+import imgGal6 from '../assets/images/uploads/IMG_0859.jpeg';
+import imgGal5 from '../assets/images/uploads/IMG_4460.jpeg';
+import imgGal7 from '../assets/images/uploads/IMG_0862.jpeg';
+import imgGal8 from '../assets/images/uploads/IMG_0880.jpeg';
 
 const SectionHeader = ({ subtitle, title, centered = false }) => (
   <div className={centered ? "text-center mb-16 md:mb-20" : "mb-12 md:mb-16"}>
@@ -153,8 +163,8 @@ export const Eventos = () => {
           </div>
 
           <div className="aspect-square rounded-[2rem] overflow-hidden border border-white/10">
-            <img 
-              src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000"
+            <img
+              src={imgStage}
               className="w-full h-full object-cover"
             />
           </div>
@@ -210,8 +220,8 @@ export const Eventos = () => {
 
           <div className="relative mb-10 md:mb-16">
             <div className="aspect-video rounded-3xl overflow-hidden border border-white/10">
-              <img 
-                src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200"
+              <img
+                src={imgPorteros}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black/40">
@@ -240,6 +250,40 @@ export const Eventos = () => {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* GALERÍA */}
+      <section className="section-padding bg-brand-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 md:mb-16">
+            <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-xs">Momentos</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-4 leading-[0.95] tracking-tighter">
+              Galería de <span className="text-brand-accent italic">Eventos</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {[imgGal1, imgGal2, imgGal3, imgGal4, imgGal5, imgGal6, imgGal7, imgGal8].map((src, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07 }}
+                className={cn(
+                  "relative overflow-hidden rounded-2xl group cursor-pointer",
+                  i === 0 || i === 5 ? "aspect-[3/4]" : "aspect-square"
+                )}
+              >
+                <img
+                  src={src}
+                  alt={`Evento ${i + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-brand-black/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

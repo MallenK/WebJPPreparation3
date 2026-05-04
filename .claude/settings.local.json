@@ -3,7 +3,9 @@
     "allow": [
       "Bash(ls src/components/)",
       "Bash(ls src/pages/)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(git stash *)",
+      "Bash(git checkout *)"
     ]
   }
 }

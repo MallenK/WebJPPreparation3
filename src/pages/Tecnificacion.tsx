@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { 
-  CheckCircle2, Target, Zap, Brain, Trophy, ArrowRight, 
+import {
+  CheckCircle2, Target, Zap, Brain, Trophy, ArrowRight, User,
   Video, BarChart3, Users, ShieldCheck, Timer, Microscope
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { cn } from '../lib/utils'; // O la ruta donde tengas tu carpeta lib
+import { cn } from '../lib/utils';
+import imgTecnificacion from '../assets/images/uploads/IMG_0197.jpeg';
+import imgAvatar from '../assets/images/uploads/IMG_7780.jpeg';
 
 export const Tecnificacion = () => {
   return (
@@ -89,8 +91,8 @@ export const Tecnificacion = () => {
             <div className="relative">
               
               <div className="aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000"
+                <img
+                  src={imgTecnificacion}
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   alt="High Performance Training"
                 />
@@ -366,7 +368,7 @@ export const Tecnificacion = () => {
           </h2>
           <div className="mt-12 flex flex-col items-center">
             <div className="w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-brand-accent">
-              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop" alt="Coach" referrerPolicy="no-referrer" />
+              <User size={60} className="text-white/70" />
             </div>
             <div className="font-bold text-white">Juan Pedro</div>
             <div className="text-brand-accent text-sm uppercase tracking-widest">Director Metodológico</div>

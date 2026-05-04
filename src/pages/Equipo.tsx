@@ -1,8 +1,17 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { 
-  Instagram, Linkedin, Mail, Award, ShieldCheck, 
-  Star, Users, Target, Zap, ArrowRight, BookOpen, 
+import joelParedesImg from '../assets/images/team/joel_paredes.jpg';
+import nilSotoImg from '../assets/images/team/nil_soto.jpg';
+import marcRodriguezImg from '../assets/images/team/marc_rodriguez.jpg';
+import joelAgrazImg from '../assets/images/team/joel_agraz.jpg';
+import arnauTellezImg from '../assets/images/team/arnau_tellez.jpg';
+import oscarEntrenadorImg from '../assets/images/team/oscar_entrenador.jpg';
+import imgIkerArjona from '../assets/images/uploads/IMG_0198.jpeg';
+import imgDavidGarcia from '../assets/images/uploads/IMG_1710.jpeg';
+import imgFilosofia from '../assets/images/uploads/IMG_1701.jpeg';
+import {
+  Instagram, Linkedin, Mail, Award, ShieldCheck,
+  Star, Users, Target, Zap, ArrowRight, BookOpen,
   CheckCircle2, Quote
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -26,11 +35,11 @@ const CoachCard = ({ name, role, bio, img, license, delay }: CoachCardProps) => 
     className="glass-card overflow-hidden group"
   >
     <div className="h-[450px] relative overflow-hidden">
-      <img 
-        src={img} 
-        alt={name} 
-        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" 
-        referrerPolicy="no-referrer" 
+      <img
+        src={img}
+        alt={name}
+        className="w-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+        referrerPolicy="no-referrer"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent"></div>
       <div className="absolute bottom-8 left-8 right-8">
@@ -39,7 +48,7 @@ const CoachCard = ({ name, role, bio, img, license, delay }: CoachCardProps) => 
         </div>
         <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-3xl font-bold text-white mb-1 leading-none">{name}</h3>
         <p className="text-brand-accent text-sm font-display uppercase tracking-[0.2em]">{role}</p>
-        
+
         <div className="flex gap-3 mt-6 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
           <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent hover:text-brand-black transition-all">
             <Instagram size={16} />
@@ -65,7 +74,7 @@ export const Equipo = () => {
       name: "Joel Paredes",
       role: "Director de la Escuela",
       bio: "Ex-jugador profesional con experiencia en ligas internacionales y competiciones europeas como Champions League, Europa League y Conference League.",
-      img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
+      img: joelParedesImg,
       license: "Dirección",
       delay: 0.1
     },
@@ -73,7 +82,7 @@ export const Equipo = () => {
       name: "Iker Arjona",
       role: "Captador y Entrenador",
       bio: "Responsable de la captación de jugadores para torneos y entrenador dentro de la estructura de JP Preparation.",
-      img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop",
+      img: imgIkerArjona,
       license: "Staff",
       delay: 0.2
     },
@@ -81,7 +90,7 @@ export const Equipo = () => {
       name: "Nil Soto",
       role: "Entrenador",
       bio: "Responsable de la creación de entrenamientos individualizados adaptados a cada jugador.",
-      img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop",
+      img: nilSotoImg,
       license: "Staff",
       delay: 0.3
     },
@@ -89,7 +98,7 @@ export const Equipo = () => {
       name: "Marc Rodriguez",
       role: "Entrenador y Coordinador",
       bio: "Encargado de la coordinación interna y desarrollo de las sesiones dentro de JP Preparation.",
-      img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop",
+      img: marcRodriguezImg,
       license: "Coordinación",
       delay: 0.4
     },
@@ -97,7 +106,7 @@ export const Equipo = () => {
       name: "Joel Agraz",
       role: "Entrenador",
       bio: "Entrenador enfocado en la mejora técnica y progresión individual de los jugadores.",
-      img: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=800&auto=format&fit=crop",
+      img: joelAgrazImg,
       license: "Staff",
       delay: 0.5
     },
@@ -105,17 +114,33 @@ export const Equipo = () => {
       name: "Arnau Tellez",
       role: "Entrenador",
       bio: "Entrenador de JP Preparation centrado en el desarrollo técnico y toma de decisiones.",
-      img: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop",
+      img: arnauTellezImg,
       license: "Staff",
       delay: 0.6
     },
     {
       name: "David Garcia",
-      role: "Personal Trainer",
-      bio: "Entrenador personal especializado en trabajo de fuerza, pliometría y asesoramiento nutricional y deportivo.",
-      img: "https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?q=80&w=800&auto=format&fit=crop",
+      role: "Dietista y Preparador Físico",
+      bio: "Especialista en nutrición deportiva y preparación física, diseña planes personalizados de fuerza, pliometría y alimentación para optimizar el rendimiento de cada jugador.",
+      img: imgDavidGarcia,
       license: "Fitness",
       delay: 0.7
+    },
+    {
+      name: "Oscar Podestad",
+      role: "Entrenador",
+      bio: "Entrenador con amplia experiencia en el desarrollo técnico y táctico de jugadores, aportando una visión de alto nivel a cada sesión de JP Preparation.",
+      img: oscarEntrenadorImg,
+      license: "Staff",
+      delay: 0.8
+    },
+    {
+      name: "Alfredo",
+      role: "Entrenador de Porteros",
+      bio: "Especialista en el entrenamiento de porteros, trabaja la técnica, el posicionamiento y la lectura del juego para formar guardametas completos y competitivos.",
+      img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop",
+      license: "Staff",
+      delay: 0.9
     }
   ];
 
@@ -123,11 +148,11 @@ export const Equipo = () => {
     <main className="overflow-hidden">
       {/* Hero Section */}
       <section className="relative pt-28 md:pt-32 lg:pt-32 xl:pt-40 pb-16 md:pb-20 lg:pb-24 px-6 md:px-10 lg:px-12 bg-brand-black">
-        
+
         <div className="absolute inset-0 bg-gradient-to-b from-brand-accent/5 to-transparent pointer-events-none" />
 
         <div className="max-w-7xl mx-auto text-center relative z-10">
-          
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -144,7 +169,7 @@ export const Equipo = () => {
             </h1>
 
             <p className="text-base sm:text-lg md:text-lg lg:text-lg xl:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-              Un equipo multidisciplinar de élite dedicado exclusivamente a potenciar tu talento. 
+              Un equipo multidisciplinar de élite dedicado exclusivamente a potenciar tu talento.
               No somos solo entrenadores, somos <span className="text-white font-semibold">mentores de tu carrera</span>.
             </p>
 
@@ -182,11 +207,10 @@ export const Equipo = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="relative">
               <div className="aspect-square rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1000&auto=format&fit=crop" 
-                  className="w-full h-full object-cover" 
-                  alt="Coaching Philosophy" 
-                  referrerPolicy="no-referrer" 
+                <img
+                  src={imgFilosofia}
+                  className="w-full h-full object-cover"
+                  alt="Coaching Philosophy"
                 />
               </div>
               <div className="absolute -top-10 -right-10 glass-card p-8 max-w-[240px] hidden md:block border-brand-accent/30">
@@ -243,7 +267,7 @@ export const Equipo = () => {
         </div>
       </section>
 
-      {/* Certifications / Partners 
+      {/* Certifications / Partners
       <section className="py-24 px-6 md:px-12 bg-brand-dark relative overflow-hidden">
         <div className="absolute bottom-0 left-0 w-full h-32 bg-brand-black slanted-bg-reverse translate-y-1/2" />
         <div className="max-w-7xl mx-auto relative z-10">
