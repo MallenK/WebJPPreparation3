@@ -38,7 +38,7 @@ const CoachCard = ({ name, role, bio, img, license, delay }: CoachCardProps) => 
       <img
         src={img}
         alt={name}
-        className="w-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+        className="w-full object-cover group-hover:scale-110 transition-all duration-700"
         referrerPolicy="no-referrer"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent"></div>
@@ -47,7 +47,7 @@ const CoachCard = ({ name, role, bio, img, license, delay }: CoachCardProps) => 
           {license}
         </div>
         <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-3xl font-bold text-white mb-1 leading-none">{name}</h3>
-        <p className="text-brand-accent text-sm font-display uppercase tracking-[0.2em]">{role}</p>
+        <p className="text-brand-accent text-sm font-bold uppercase tracking-[0.15em] mt-1 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">{role}</p>
 
         <div className="flex gap-3 mt-6 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
           <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent hover:text-brand-black transition-all">
@@ -88,7 +88,7 @@ export const Equipo = () => {
     },
     {
       name: "Nil Soto",
-      role: "Entrenador",
+      role: "Coordinador",
       bio: "Responsable de la creación de entrenamientos individualizados adaptados a cada jugador.",
       img: nilSotoImg,
       license: "Staff",
@@ -96,7 +96,7 @@ export const Equipo = () => {
     },
     {
       name: "Marc Rodriguez",
-      role: "Entrenador y Coordinador",
+      role: "Gestión y Horarios",
       bio: "Encargado de la coordinación interna y desarrollo de las sesiones dentro de JP Preparation.",
       img: marcRodriguezImg,
       license: "Coordinación",
