@@ -5,7 +5,11 @@
       "Bash(ls src/pages/)",
       "Bash(npm run *)",
       "Bash(git stash *)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git merge develop --no-ff -m ' *)"
     ]
   }
 }
