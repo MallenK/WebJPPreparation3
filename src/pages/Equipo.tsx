@@ -6,8 +6,9 @@ import marcRodriguezImg from '../assets/images/team/marc_rodriguez.jpg';
 import joelAgrazImg from '../assets/images/team/joel_agraz.jpg';
 import arnauTellezImg from '../assets/images/team/arnau_tellez.jpg';
 import oscarEntrenadorImg from '../assets/images/team/oscar_entrenador.jpg';
+import alfredoImg from '../assets/images/team/alfredo.jpeg';
+import davidGarciaImg from '../assets/images/team/david_garcia.jpeg';
 import imgIkerArjona from '../assets/images/uploads/IMG_0198.jpeg';
-import imgDavidGarcia from '../assets/images/uploads/IMG_1710.jpeg';
 import imgFilosofia from '../assets/images/uploads/IMG_1701.jpeg';
 import {
   Instagram, Linkedin, Mail, Award, ShieldCheck,
@@ -122,7 +123,7 @@ export const Equipo = () => {
       name: "David Garcia",
       role: "Dietista y Preparador Físico",
       bio: "Especialista en nutrición deportiva y preparación física, diseña planes personalizados de fuerza, pliometría y alimentación para optimizar el rendimiento de cada jugador.",
-      img: imgDavidGarcia,
+      img: davidGarciaImg,
       license: "Fitness",
       delay: 0.7
     },
@@ -138,7 +139,7 @@ export const Equipo = () => {
       name: "Alfredo",
       role: "Entrenador de Porteros",
       bio: "Especialista en el entrenamiento de porteros, trabaja la técnica, el posicionamiento y la lectura del juego para formar guardametas completos y competitivos.",
-      img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop",
+      img: alfredoImg,
       license: "Staff",
       delay: 0.9
     }
