@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import {
   MapPin, Maximize, Zap, Camera, Shield,
-  Coffee, Wifi, Car, ArrowRight, Star
+  Coffee, Wifi, ArrowRight, Star
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import imgInstalacionesHero from '../assets/images/uploads/IMG_1817.jpeg';
@@ -89,15 +89,11 @@ export const Instalaciones = () => {
                 <div className="flex items-start gap-4 mb-8">
                   <MapPin className="text-brand-accent shrink-0" size={24} />
                   <p className="text-white/70">
-                    Carrer de la Tecnología, 12<br />
-                    08001 Barcelona, España
+                    Carrer de la Pobla, 29<br />
+                    08620 Sant Vicenç dels Horts, Barcelona
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-sm text-white/70">
-                    <Car size={18} className="text-brand-accent" />
-                    Parking gratuito para padres
-                  </div>
                   <div className="flex items-center gap-3 text-sm text-white/70">
                     <Wifi size={18} className="text-brand-accent" />
                     Wi-Fi de alta velocidad
@@ -169,9 +165,6 @@ export const Instalaciones = () => {
                   alt={item.title}
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-                  <span className="text-white font-bold text-xl">{item.title}</span>
-                </div>
               </motion.div>
             ))}
           </div>

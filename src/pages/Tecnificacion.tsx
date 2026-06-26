@@ -370,8 +370,8 @@ export const Tecnificacion = () => {
             <div className="w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-brand-accent">
               <User size={60} className="text-white/70" />
             </div>
-            <div className="font-bold text-white">Juan Pedro</div>
-            <div className="text-brand-accent text-sm uppercase tracking-widest">Director Metodológico</div>
+            <div className="font-bold text-white">Joel Paredes</div>
+            <div className="text-brand-accent text-sm uppercase tracking-widest">Director de JP Preparation</div>
           </div>
         </div>
       </section>

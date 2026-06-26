@@ -8,7 +8,6 @@ import arnauTellezImg from '../assets/images/team/arnau_tellez.jpg';
 import oscarEntrenadorImg from '../assets/images/team/oscar_entrenador.jpg';
 import alfredoImg from '../assets/images/team/alfredo.jpeg';
 import davidGarciaImg from '../assets/images/team/david_garcia.jpeg';
-import imgIkerArjona from '../assets/images/uploads/IMG_0198.jpeg';
 import imgFilosofia from '../assets/images/uploads/IMG_1701.jpeg';
 import {
   Instagram, Linkedin, Mail, Award, ShieldCheck,
@@ -78,14 +77,6 @@ export const Equipo = () => {
       img: joelParedesImg,
       license: "Dirección",
       delay: 0.1
-    },
-    {
-      name: "Iker Arjona",
-      role: "Captador y Entrenador",
-      bio: "Responsable de la captación de jugadores para torneos y entrenador dentro de la estructura de JP Preparation.",
-      img: imgIkerArjona,
-      license: "Staff",
-      delay: 0.2
     },
     {
       name: "Nil Soto",
@@ -214,7 +205,7 @@ export const Equipo = () => {
                   alt="Coaching Philosophy"
                 />
               </div>
-              <div className="absolute -top-10 -right-10 glass-card p-8 max-w-[240px] hidden md:block border-brand-accent/30">
+              <div className="absolute -bottom-10 -right-10 glass-card p-8 max-w-[240px] hidden md:block border-brand-accent/30">
                 <Quote className="text-brand-accent mb-4" size={32} />
                 <p className="text-sm italic text-white/80">"El entrenador no solo enseña técnica, enseña a creer en uno mismo."</p>
               </div>
@@ -294,10 +285,10 @@ export const Equipo = () => {
             Siempre estamos buscando entrenadores con talento, ambición y ganas de cambiar el fútbol base. Si crees que encajas en nuestro método, queremos conocerte.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center relative z-10">
-            <a href="mailto:careers@jppreparation.com" className="btn-primary px-12 py-5 flex items-center justify-center gap-3 group">
+            <Link to="/contacto#formulario" className="btn-primary px-12 py-5 flex items-center justify-center gap-3 group">
               TRABAJA CON NOSOTROS
               <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>

@@ -3,7 +3,7 @@ import { Hero } from '../components/Hero';
 import { StatsBar } from '../components/Stats';
 import { SkillGrid } from '../components/SkillGrid';
 import { motion } from 'motion/react';
-import { ChevronRight, CheckCircle2, Star, Users, MapPin, Calendar, ArrowRight, Brain, Zap, Target, Trophy, Clock, Shield, Activity, Play, X } from 'lucide-react';
+import { ChevronRight, CheckCircle2, Star, Users, MapPin, Calendar, ArrowRight, Brain, Zap, Target, Trophy, Clock, Shield, Activity, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
 import imgIntro from '../assets/images/uploads/IMG_1301.jpeg';
@@ -291,11 +291,6 @@ export const Home = () => {
             <div className="relative">
               <div className="aspect-video rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl">
                 <img src={imgTrainingDay} className="w-full h-full object-cover" alt="Training Day" />
-                <div className="absolute inset-0 flex items-center justify-center bg-brand-black/40 group cursor-pointer">
-                  <div className="w-20 h-20 rounded-full bg-brand-accent flex items-center justify-center animate-pulse group-hover:scale-110 transition-transform">
-                    <Play className="text-white fill-current" size={32} />
-                  </div>
-                </div>
               </div>
             </div>
           </div>

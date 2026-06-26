@@ -82,7 +82,7 @@ export const Contacto = () => {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-brand-dark overflow-hidden">
+      <section id="formulario" className="relative py-24 md:py-32 px-6 md:px-12 bg-brand-dark overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-32 bg-brand-black slanted-bg -translate-y-1/2" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">

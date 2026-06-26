@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import {
   CheckCircle2, Users, Target, Zap, Clock, Trophy, Camera,
-  BarChart3, ShieldCheck, Star, ArrowRight, Calendar, Play, Video,
+  BarChart3, ShieldCheck, Star, ArrowRight, Calendar, Video,
   Info, HelpCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -67,7 +67,7 @@ const ProgramCard = ({ title, subtitle, description, features, price, img, popul
       </ul>
       <div className="pt-8 border-t border-white/10 flex items-center justify-between">
         <div>
-          <span className="text-white/50 text-[10px] uppercase tracking-widest block mb-1">Inversión</span>
+          <span className="text-white/50 text-[10px] uppercase tracking-widest block mb-1">Precio</span>
           <span className="text-2xl md:text-3xl font-display font-bold text-white">{price}</span>
         </div>
         <Link to="/contacto" className={cn(
@@ -382,13 +382,6 @@ export const Programas = () => {
                     className="w-full h-full object-cover opacity-60"
                     alt="Video Analysis"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-brand-accent/20 backdrop-blur-md flex items-center justify-center border border-brand-accent/50">
-                      <div className="w-12 h-12 rounded-full bg-brand-accent flex items-center justify-center text-brand-black">
-                        <Play size={24} fill="currentColor" />
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 {/* Elementos decorativos de fondo */}
                 <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-accent/20 rounded-full blur-[80px]" />

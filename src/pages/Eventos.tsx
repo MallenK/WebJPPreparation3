@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import {
-  Shield, Camera, Zap, Users, Star, Trophy, Flame, Play, CheckCircle2
+  Shield, Camera, Zap, Users, Star, Trophy, Flame, CheckCircle2
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
@@ -224,11 +224,6 @@ export const Eventos = () => {
                 src={imgPorteros}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-brand-accent flex items-center justify-center animate-pulse">
-                  <Play className="text-white" size={20} />
-                </div>
-              </div>
             </div>
           </div>
 
