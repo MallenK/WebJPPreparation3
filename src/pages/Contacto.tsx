@@ -14,8 +14,58 @@ import {
   Twitter,
 } from 'lucide-react';
 
+type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+
+interface FormData {
+  nombre: string;
+  edad: string;
+  email: string;
+  telefono: string;
+  servicio: string;
+  mensaje: string;
+}
+
+const initialForm: FormData = {
+  nombre: '', edad: '', email: '', telefono: '', servicio: 'Tecnificación', mensaje: '',
+};
+
 export const Contacto = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [form, setForm] = useState<FormData>(initialForm);
+  const [status, setStatus] = useState<FormStatus>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.nombre.trim() || !form.email.trim()) return;
+
+    setStatus('loading');
+    setErrorMsg('');
+
+    try {
+      const body = new FormData();
+      (Object.keys(form) as (keyof FormData)[]).forEach(k => body.append(k, form[k]));
+      body.append('website', ''); // honeypot: los bots lo rellenan, nosotros lo dejamos vacío
+
+      const res = await fetch('/contact.php', { method: 'POST', body });
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus('success');
+        setForm(initialForm);
+      } else {
+        setStatus('error');
+        setErrorMsg(data.message || 'Error al enviar. Inténtalo de nuevo.');
+      }
+    } catch {
+      setStatus('error');
+      setErrorMsg('Error de conexión. Inténtalo de nuevo.');
+    }
+  };
 
   const contact = {
     whatsapp: '+34 662 968 341',
@@ -177,88 +227,147 @@ export const Contacto = () => {
                 Solicitud de <span className="text-brand-accent">Información</span>
               </h3>
 
-              <form className="space-y-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {status === 'success' ? (
+                <div className="flex flex-col items-center justify-center py-16 text-center gap-6">
+                  <div className="w-20 h-20 rounded-full bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center">
+                    <Send size={36} className="text-brand-accent" />
+                  </div>
+                  <h3 className="text-2xl font-bold">¡Solicitud enviada!</h3>
+                  <p className="text-white/60 max-w-sm">
+                    Hemos recibido tu mensaje. Nos pondremos en contacto contigo lo antes posible.
+                  </p>
+                  <button
+                    onClick={() => setStatus('idle')}
+                    className="btn-outline px-8 py-3 mt-2"
+                  >
+                    Enviar otra solicitud
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
+                        Nombre *
+                      </label>
+                      <input
+                        type="text"
+                        name="nombre"
+                        value={form.nombre}
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white"
+                        placeholder="Tu nombre"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
+                        Edad
+                      </label>
+                      <input
+                        type="text"
+                        name="edad"
+                        value={form.edad}
+                        onChange={handleChange}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white"
+                        placeholder="Ej: 14 años"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={form.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white"
+                        placeholder="tu@email.com"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
+                        Teléfono
+                      </label>
+                      <input
+                        type="tel"
+                        name="telefono"
+                        value={form.telefono}
+                        onChange={handleChange}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white"
+                        placeholder="+34 ..."
+                      />
+                    </div>
+                  </div>
+
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
-                      Nombre
+                      Servicio de interés
                     </label>
-                    <input
-                      type="text"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white"
-                      placeholder="Tu nombre"
-                    />
+                    <select
+                      name="servicio"
+                      value={form.servicio}
+                      onChange={handleChange}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white appearance-none cursor-pointer"
+                    >
+                      <option className="bg-brand-dark">Tecnificación</option>
+                      <option className="bg-brand-dark">Entrenamiento personalizado</option>
+                      <option className="bg-brand-dark">Preparación física</option>
+                      <option className="bg-brand-dark">Información general</option>
+                    </select>
                   </div>
+
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
-                      Edad
+                      Mensaje
                     </label>
-                    <input
-                      type="text"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white"
-                      placeholder="Ej: 14 años"
+                    <textarea
+                      name="mensaje"
+                      value={form.mensaje}
+                      onChange={handleChange}
+                      rows={4}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white resize-none"
+                      placeholder="Escribe aquí tu consulta..."
                     />
                   </div>
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white"
-                      placeholder="tu@email.com"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
-                      Teléfono
-                    </label>
-                    <input
-                      type="tel"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white"
-                      placeholder="+34 ..."
-                    />
-                  </div>
-                </div>
+                  {status === 'error' && (
+                    <p className="text-red-400 text-sm text-center bg-red-400/10 border border-red-400/20 rounded-xl px-4 py-3">
+                      {errorMsg}
+                    </p>
+                  )}
 
-                <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
-                    Servicio de interés
-                  </label>
-                  <select className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white appearance-none cursor-pointer">
-                    <option className="bg-brand-dark">Tecnificación</option>
-                    <option className="bg-brand-dark">Entrenamiento personalizado</option>
-                    <option className="bg-brand-dark">Preparación física</option>
-                    <option className="bg-brand-dark">Información general</option>
-                  </select>
-                </div>
+                  <button
+                    type="submit"
+                    disabled={status === 'loading'}
+                    className="btn-primary w-full py-5 flex items-center justify-center gap-3 group disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {status === 'loading' ? (
+                      <>
+                        <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                        </svg>
+                        ENVIANDO...
+                      </>
+                    ) : (
+                      <>
+                        ENVIAR SOLICITUD
+                        <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </>
+                    )}
+                  </button>
 
-                <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
-                    Mensaje
-                  </label>
-                  <textarea
-                    rows={4}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-brand-accent transition-colors text-white resize-none"
-                    placeholder="Escribe aquí tu consulta..."
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="btn-primary w-full py-5 flex items-center justify-center gap-3 group"
-                >
-                  ENVIAR SOLICITUD
-                  <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </button>
-
-                <p className="text-xs text-white/50 text-center">
-                  Este formulario puede adaptarse con el contenido y flujo definitivo que indique JP Preparation.
-                </p>
-              </form>
+                  <p className="text-xs text-white/50 text-center">
+                    * Campos obligatorios
+                  </p>
+                </form>
+              )}
             </motion.div>
           </div>
         </div>
