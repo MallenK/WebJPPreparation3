@@ -335,6 +335,14 @@ export const Footer = () => {
           <a href="#" className="hover:text-white transition-colors">
             Cookies
           </a>
+          <a
+            href="https://app.jppreparation.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-brand-accent transition-colors"
+          >
+            Área Privada
+          </a>
         </div>
       </div>
     </footer>
