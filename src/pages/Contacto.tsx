@@ -68,8 +68,8 @@ export const Contacto = () => {
   };
 
   const contact = {
-    whatsapp: '+34 662 968 341',
-    whatsappUrl: 'https://wa.me/34662968341',
+    whatsapp: '+34 601 50 68 57',
+    whatsappUrl: 'https://wa.me/34601506857',
     instagram: 'https://www.instagram.com/jp.preparation',
     addressLine1: 'Carrer de la Pobla, 29',
     addressLine2: '08620 Sant Vicenç dels Horts, Barcelona',

@@ -280,12 +280,12 @@ export const Footer = () => {
                 <Phone className="text-brand-accent" size={18} />
               </div>
               <a
-                href="https://wa.me/34662968341"
+                href="https://wa.me/34601506857"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm hover:text-brand-accent transition-colors"
               >
-                +34 662 968 341
+                +34 601 50 68 57
               </a>
             </li>
 
