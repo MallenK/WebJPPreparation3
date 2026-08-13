@@ -6,8 +6,8 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
-import imgTecnificacion from '../assets/images/uploads/IMG_0197.jpeg';
-import imgAvatar from '../assets/images/uploads/IMG_7780.jpeg';
+import imgTecnificacion from '../assets/images/uploads/IMG_0197.webp';
+import imgAvatar from '../assets/images/uploads/IMG_7780.webp';
 
 export const Tecnificacion = () => {
   return (

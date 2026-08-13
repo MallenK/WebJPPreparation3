@@ -1,20 +1,31 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
-  Shield, Camera, Zap, Users, Star, Trophy, Flame, CheckCircle2
+  Shield, Camera, Zap, Users, Star, Trophy, Flame, CheckCircle2, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
-import imgStage from '../assets/images/uploads/IMG_1306.jpeg';
-import imgPorteros from '../assets/images/uploads/IMG_1820.jpeg';
-import imgGal1 from '../assets/images/uploads/7bb1a281-5dcf-4e50-bf23-b22d279eaf23.jpeg';
-import imgGal2 from '../assets/images/uploads/82aa7a80-b28a-451f-b7ae-a661cdc85fe2.jpeg';
-import imgGal3 from '../assets/images/uploads/989dfbcd-4a63-4ff4-9d8a-d8441cc1d6f4.jpeg';
-import imgGal4 from '../assets/images/uploads/FullSizeRender.jpeg';
-import imgGal6 from '../assets/images/uploads/IMG_0859.jpeg';
-import imgGal5 from '../assets/images/uploads/IMG_4460.jpeg';
-import imgGal7 from '../assets/images/uploads/IMG_0862.jpeg';
-import imgGal8 from '../assets/images/uploads/IMG_0880.jpeg';
+import imgStage from '../assets/images/uploads/IMG_1306.webp';
+
+// Carga automática de todas las fotos que haya en esta carpeta.
+// Para añadir más imágenes al carrusel del Stage 2026, basta con dejarlas
+// dentro de src/assets/images/uploads/stage-2026/ — no hace falta tocar código.
+const stage2026Modules = import.meta.glob('../assets/images/uploads/stage-2026/*.{webp,jpg,jpeg,png}', {
+  eager: true,
+  import: 'default'
+}) as Record<string, string>;
+const stage2026Images = Object.keys(stage2026Modules)
+  .sort()
+  .map((key) => stage2026Modules[key]);
+import imgPorteros from '../assets/images/uploads/IMG_1820.webp';
+import imgGal1 from '../assets/images/uploads/7bb1a281-5dcf-4e50-bf23-b22d279eaf23.webp';
+import imgGal2 from '../assets/images/uploads/82aa7a80-b28a-451f-b7ae-a661cdc85fe2.webp';
+import imgGal3 from '../assets/images/uploads/989dfbcd-4a63-4ff4-9d8a-d8441cc1d6f4.webp';
+import imgGal4 from '../assets/images/uploads/FullSizeRender.webp';
+import imgGal6 from '../assets/images/uploads/IMG_0859.webp';
+import imgGal5 from '../assets/images/uploads/IMG_4460.webp';
+import imgGal7 from '../assets/images/uploads/IMG_0862.webp';
+import imgGal8 from '../assets/images/uploads/IMG_0880.webp';
 
 const SectionHeader = ({ subtitle, title, centered = false }) => (
   <div className={centered ? "text-center mb-16 md:mb-20" : "mb-12 md:mb-16"}>
@@ -30,6 +41,150 @@ const SectionHeader = ({ subtitle, title, centered = false }) => (
 
   </div>
 );
+
+type Orientation = 'landscape' | 'portrait';
+
+// Carga cada imagen en memoria una vez para leer sus dimensiones reales
+// (naturalWidth/naturalHeight) y así saber si es horizontal o vertical.
+// No se adivina por el nombre del archivo: se mide la imagen de verdad.
+function useImageOrientations(images: string[]) {
+  const [orientations, setOrientations] = useState<Record<string, Orientation>>({});
+
+  React.useEffect(() => {
+    let cancelled = false;
+    images.forEach((src) => {
+      const probe = new window.Image();
+      probe.onload = () => {
+        if (cancelled) return;
+        const orientation: Orientation = probe.naturalWidth >= probe.naturalHeight ? 'landscape' : 'portrait';
+        setOrientations((prev) => (prev[src] ? prev : { ...prev, [src]: orientation }));
+      };
+      probe.src = src;
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [images]);
+
+  return orientations;
+}
+
+// true = pantalla de escritorio. Se apoya en la misma media query que usa
+// Tailwind para "md" (768px) y se reevalúa en vivo si cambia el tamaño
+// de la ventana — no depende del user-agent del dispositivo.
+function useIsDesktopViewport(breakpointPx = 768) {
+  const [isDesktop, setIsDesktop] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth >= breakpointPx
+  );
+
+  React.useEffect(() => {
+    const mql = window.matchMedia(`(min-width: ${breakpointPx}px)`);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    setIsDesktop(mql.matches);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, [breakpointPx]);
+
+  return isDesktop;
+}
+
+// Carrusel responsive: marco vertical en móvil, horizontal en escritorio.
+// Cada foto se mide de verdad (ancho x alto) y solo se muestra en el
+// dispositivo cuya orientación le corresponde de forma natural — nunca se
+// recorta con "cover" ni se estira para rellenar un hueco que no le pega.
+const StageCarousel = ({ images }: { images: string[] }) => {
+  const orientations = useImageOrientations(images);
+  const isDesktop = useIsDesktopViewport();
+  const wanted: Orientation = isDesktop ? 'landscape' : 'portrait';
+
+  const stillDetecting = Object.keys(orientations).length < images.length;
+  let visibleImages = images.filter((src) => orientations[src] === wanted);
+  // Red de seguridad: si ninguna foto coincide con la orientación buscada
+  // (p.ej. todas son verticales y se ve desde un ordenador), mostramos
+  // igualmente todo el set en vez de dejar el carrusel vacío.
+  if (visibleImages.length === 0 && !stillDetecting) {
+    visibleImages = images;
+  }
+
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  React.useEffect(() => {
+    setIndex(0);
+  }, [wanted, visibleImages.length]);
+
+  if (visibleImages.length === 0) {
+    return <div className="aspect-[3/4] md:aspect-[16/9] rounded-3xl bg-white/5 border border-white/10 animate-pulse" />;
+  }
+
+  const goTo = (nextIndex: number) => {
+    setDirection(nextIndex > index ? 1 : -1);
+    setIndex((nextIndex + visibleImages.length) % visibleImages.length);
+  };
+
+  return (
+    <div>
+      <div className="relative aspect-[3/4] md:aspect-[16/9] rounded-3xl overflow-hidden border border-white/10 bg-black/30">
+        <AnimatePresence initial={false} mode="popLayout">
+          <motion.img
+            key={visibleImages[index]}
+            src={visibleImages[index]}
+            alt={`Stage JP Preparation 2026 - foto ${index + 1}`}
+            initial={{ opacity: 0, x: direction >= 0 ? 60 : -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction >= 0 ? -60 : 60 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.6}
+            onDragEnd={(_, info) => {
+              if (info.offset.x < -80) goTo(index + 1);
+              else if (info.offset.x > 80) goTo(index - 1);
+            }}
+            className="absolute inset-0 w-full h-full object-contain cursor-grab active:cursor-grabbing select-none"
+          />
+        </AnimatePresence>
+
+        <button
+          type="button"
+          aria-label="Foto anterior"
+          onClick={() => goTo(index - 1)}
+          className="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 z-10 bg-brand-black/50 hover:bg-brand-accent hover:text-brand-black text-white p-2 md:p-3 rounded-full border border-white/10 transition-colors"
+        >
+          <ChevronLeft size={20} />
+        </button>
+        <button
+          type="button"
+          aria-label="Foto siguiente"
+          onClick={() => goTo(index + 1)}
+          className="absolute right-3 md:right-5 top-1/2 -translate-y-1/2 z-10 bg-brand-black/50 hover:bg-brand-accent hover:text-brand-black text-white p-2 md:p-3 rounded-full border border-white/10 transition-colors"
+        >
+          <ChevronRight size={20} />
+        </button>
+
+        <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 z-10 bg-brand-black/60 text-white/90 text-xs font-bold px-3 py-1 rounded-full">
+          {index + 1} / {visibleImages.length}
+        </div>
+      </div>
+
+      <div className="flex justify-center flex-wrap gap-2 mt-6">
+        {visibleImages.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            aria-label={`Ir a la foto ${i + 1}`}
+            onClick={() => goTo(i)}
+            className={cn(
+              "h-1.5 rounded-full transition-all",
+              i === index ? "w-6 bg-brand-accent" : "w-1.5 bg-white/20 hover:bg-white/40"
+            )}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export const Eventos = () => {
   return (
     <main className="overflow-x-hidden">
@@ -199,6 +354,30 @@ export const Eventos = () => {
             ))}
 
           </div>
+
+        </div>
+      </section>
+
+
+      {/* STAGE 2026 */}
+      <section className="section-padding bg-brand-black">
+        <div className="max-w-5xl mx-auto">
+
+          <SectionHeader
+            subtitle="Edición 2026"
+            title="STAGE JP PREPARATION <span class='text-brand-accent italic'>2026</span>"
+            centered
+          />
+
+          <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+            <p className="text-base md:text-lg text-white/70 leading-relaxed">
+              Así vivimos la última edición del Stage: días completos de entrenamiento,
+              vídeo análisis, trabajo mental y convivencia entre jugadores/as de
+              distintas categorías. Estas son las fotos reales del campus.
+            </p>
+          </div>
+
+          <StageCarousel images={stage2026Images} />
 
         </div>
       </section>

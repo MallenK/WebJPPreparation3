@@ -8,7 +8,7 @@ import arnauTellezImg from '../assets/images/team/arnau_tellez.jpg';
 import oscarEntrenadorImg from '../assets/images/team/oscar_entrenador.jpg';
 import alfredoImg from '../assets/images/team/alfredo.jpeg';
 import davidGarciaImg from '../assets/images/team/david_garcia.jpeg';
-import imgFilosofia from '../assets/images/uploads/IMG_1701.jpeg';
+import imgFilosofia from '../assets/images/uploads/IMG_1701.webp';
 import {
   Instagram, Linkedin, Mail, Award, ShieldCheck,
   Star, Users, Target, Zap, ArrowRight, BookOpen,

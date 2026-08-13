@@ -6,3 +6,8 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Carpetas de trabajo temporal para scripts/optimize-images.mjs
+scripts/image-input/*
+!scripts/image-input/.gitkeep
+scripts/image-output/

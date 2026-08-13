@@ -6,19 +6,19 @@ import { motion } from 'motion/react';
 import { ChevronRight, CheckCircle2, Star, Users, MapPin, Calendar, ArrowRight, Brain, Zap, Target, Trophy, Clock, Shield, Activity, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
-import imgIntro from '../assets/images/uploads/IMG_1301.jpeg';
-import imgDesafio1 from '../assets/images/uploads/IMG_1303.jpeg';
-import imgDesafio2 from '../assets/images/uploads/IMG_1304.jpeg';
-import imgTrainingDay from '../assets/images/uploads/IMG_1305.jpeg';
+import imgIntro from '../assets/images/uploads/IMG_1301.webp';
+import imgDesafio1 from '../assets/images/uploads/IMG_1303.webp';
+import imgDesafio2 from '../assets/images/uploads/IMG_1304.webp';
+import imgTrainingDay from '../assets/images/uploads/IMG_1305.webp';
 
-import imgJoelParedes from '../assets/images/uploads/IMG_0197.jpeg';
-import imgIkerArjona from '../assets/images/uploads/IMG_0198.jpeg';
-import imgNilSoto from '../assets/images/uploads/IMG_0199.jpeg';
-import imgMarcRodriguez from '../assets/images/uploads/IMG_1700.jpeg';
-import imgJoelAgraz from '../assets/images/uploads/IMG_1701.jpeg';
-import imgArnauTellez from '../assets/images/uploads/IMG_1707.jpeg';
-import imgDavidGarcia from '../assets/images/uploads/IMG_1710.jpeg';
-import imgFilosofia from '../assets/images/uploads/IMG_1723.jpeg';
+import imgJoelParedes from '../assets/images/uploads/IMG_0197.webp';
+import imgIkerArjona from '../assets/images/uploads/IMG_0198.webp';
+import imgNilSoto from '../assets/images/uploads/IMG_0199.webp';
+import imgMarcRodriguez from '../assets/images/uploads/IMG_1700.webp';
+import imgJoelAgraz from '../assets/images/uploads/IMG_1701.webp';
+import imgArnauTellez from '../assets/images/uploads/IMG_1707.webp';
+import imgDavidGarcia from '../assets/images/uploads/IMG_1710.webp';
+import imgFilosofia from '../assets/images/uploads/IMG_1723.webp';
 
 
 

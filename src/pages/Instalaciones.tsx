@@ -5,14 +5,14 @@ import {
   Coffee, Wifi, ArrowRight, Star
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import imgInstalacionesHero from '../assets/images/uploads/IMG_1817.jpeg';
-import imgGaleria1 from '../assets/images/uploads/IMG_0175.jpeg';
-import imgGaleria2 from '../assets/images/uploads/IMG_0176.jpeg';
-import imgGaleria3 from '../assets/images/uploads/IMG_0180.jpeg';
-import imgGaleria4 from '../assets/images/uploads/IMG_0181.jpeg';
-import imgGaleria5 from '../assets/images/uploads/IMG_0184.jpeg';
-import imgGaleria6 from '../assets/images/uploads/IMG_0189.jpeg';
-import imgMapaFondo from '../assets/images/uploads/IMG_0184.jpeg';
+import imgInstalacionesHero from '../assets/images/uploads/IMG_1817.webp';
+import imgGaleria1 from '../assets/images/uploads/IMG_0175.webp';
+import imgGaleria2 from '../assets/images/uploads/IMG_0176.webp';
+import imgGaleria3 from '../assets/images/uploads/IMG_0180.webp';
+import imgGaleria4 from '../assets/images/uploads/IMG_0181.webp';
+import imgGaleria5 from '../assets/images/uploads/IMG_0184.webp';
+import imgGaleria6 from '../assets/images/uploads/IMG_0189.webp';
+import imgMapaFondo from '../assets/images/uploads/IMG_0184.webp';
 
 export const Instalaciones = () => {
   const gallery = [

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import {
   CheckCircle2, Users, Target, Zap, Clock, Trophy, Camera,
@@ -7,14 +7,20 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
-import imgPrograma1 from '../assets/images/uploads/IMG_2062.jpeg';
-import imgPrograma2 from '../assets/images/uploads/IMG_1701.jpeg';
-import imgPrograma3 from '../assets/images/uploads/IMG_0175.jpeg';
-import imgMetodo2b from '../assets/images/uploads/IMG_6001.jpeg';
-import imgMetodo1b from '../assets/images/uploads/IMG_5907.jpeg';
-import imgMetodo2a from '../assets/images/uploads/IMG_5994.jpeg';
-import imgMetodo1a from '../assets/images/uploads/IMG_5997.jpeg';
-import imgVideoAnalysis from '../assets/images/uploads/IMG_0198.jpeg';
+import imgPrograma1 from '../assets/images/uploads/IMG_2062.webp';
+import imgPrograma2 from '../assets/images/uploads/IMG_1701.webp';
+import imgPrograma3 from '../assets/images/uploads/IMG_0175.webp';
+import imgMetodo2b from '../assets/images/uploads/IMG_6001.webp';
+import imgMetodo1b from '../assets/images/uploads/IMG_5907.webp';
+import imgMetodo2a from '../assets/images/uploads/IMG_5994.webp';
+import imgMetodo1a from '../assets/images/uploads/IMG_5997.webp';
+import imgVideoAnalysis from '../assets/images/uploads/IMG_0198.webp';
+
+interface ModeContent {
+  label: string;
+  description: string;
+  features: string[];
+}
 
 interface ProgramCardProps {
   title: string;
@@ -22,64 +28,89 @@ interface ProgramCardProps {
   description: string;
   features: string[];
   price: string;
+  priceNote?: string;
   img: string;
   popular?: boolean;
+  modes?: ModeContent[];
   key?: React.Key;
 }
 
-const ProgramCard = ({ title, subtitle, description, features, price, img, popular = false }: ProgramCardProps) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className={cn(
-      "rounded-3xl overflow-hidden border transition-all duration-500 flex flex-col group",
-      popular ? "border-brand-accent bg-brand-dark shadow-2xl lg:scale-105 z-10" : "border-white/10 bg-white/5 hover:border-white/20"
-    )}
-  >
-    <div className="h-72 relative overflow-hidden">
-      <img 
-        src={img} 
-        alt={title} 
-        className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" 
-        referrerPolicy="no-referrer" 
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent"></div>
-      {popular && (
-        <div className="absolute top-6 right-6 bg-brand-accent text-brand-black text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-xl">
-          MÁS SOLICITADO
-        </div>
+const ProgramCard = ({ title, subtitle, description, features, price, priceNote, img, popular = false, modes }: ProgramCardProps) => {
+  const [activeMode, setActiveMode] = useState(0);
+  const content = modes ? modes[activeMode] : { description, features };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className={cn(
+        "rounded-3xl overflow-hidden border transition-all duration-500 flex flex-col group",
+        popular ? "border-brand-accent bg-brand-dark shadow-2xl lg:scale-105 z-10" : "border-white/10 bg-white/5 hover:border-white/20"
       )}
-      <div className="absolute bottom-8 left-8">
-        <span className="text-brand-accent font-bold text-xs uppercase tracking-[0.3em] mb-2 block">{subtitle}</span>
-        <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-3xl font-bold text-white leading-none">{title}</h3>
-      </div>
-    </div>
-    <div className="p-10 flex-grow flex flex-col">
-      <p className="text-white/70 mb-8 text-sm leading-relaxed">{description}</p>
-      <ul className="space-y-4 mb-10 flex-grow">
-        {features.map((f, i) => (
-          <li key={i} className="flex items-start gap-3 text-sm text-white/80">
-            <CheckCircle2 size={18} className="text-brand-accent shrink-0 mt-0.5" />
-            <span>{f}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="pt-8 border-t border-white/10 flex items-center justify-between">
-        <div>
-          <span className="text-white/50 text-[10px] uppercase tracking-widest block mb-1">Precio</span>
-          <span className="text-2xl md:text-3xl font-display font-bold text-white">{price}</span>
+    >
+      <div className="h-72 relative overflow-hidden">
+        <img
+          src={img}
+          alt={title}
+          className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent"></div>
+        {popular && (
+          <div className="absolute top-6 right-6 bg-brand-accent text-brand-black text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-xl">
+            MÁS SOLICITADO
+          </div>
+        )}
+        <div className="absolute bottom-8 left-8">
+          <span className="text-brand-accent font-bold text-xs uppercase tracking-[0.3em] mb-2 block">{subtitle}</span>
+          <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-3xl font-bold text-white leading-none">{title}</h3>
         </div>
-        <Link to="/contacto" className={cn(
-          "py-4 px-8 rounded-full font-bold uppercase text-xs tracking-widest transition-all", 
-          popular ? "bg-brand-accent text-brand-black hover:bg-white" : "bg-white/10 text-white hover:bg-white/20"
-        )}>
-          RESERVAR
-        </Link>
       </div>
-    </div>
-  </motion.div>
-);
+      <div className="p-10 flex-grow flex flex-col">
+        {modes && (
+          <div className="flex gap-2 p-1.5 mb-6 bg-white/5 rounded-full border border-white/10 self-start">
+            {modes.map((m, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setActiveMode(i)}
+                className={cn(
+                  "px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all",
+                  activeMode === i ? "bg-brand-accent text-brand-black" : "text-white/60 hover:text-white"
+                )}
+              >
+                {m.label}
+              </button>
+            ))}
+          </div>
+        )}
+        <p className="text-white/70 mb-8 text-sm leading-relaxed">{content.description}</p>
+        <ul className="space-y-4 mb-10 flex-grow">
+          {content.features.map((f, i) => (
+            <li key={i} className="flex items-start gap-3 text-sm text-white/80">
+              <CheckCircle2 size={18} className="text-brand-accent shrink-0 mt-0.5" />
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="pt-8 border-t border-white/10 flex items-center justify-between">
+          <div>
+            <span className="text-white/50 text-[10px] uppercase tracking-widest block mb-1">Precio</span>
+            <span className="text-2xl md:text-3xl font-display font-bold text-white">{price}</span>
+            {priceNote && <span className="text-white/50 text-xs block mt-1">{priceNote}</span>}
+          </div>
+          <Link to="/contacto" className={cn(
+            "py-4 px-8 rounded-full font-bold uppercase text-xs tracking-widest transition-all",
+            popular ? "bg-brand-accent text-brand-black hover:bg-white" : "bg-white/10 text-white hover:bg-white/20"
+          )}>
+            RESERVAR
+          </Link>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export const Programas = () => {
   const programs = [
@@ -89,16 +120,41 @@ export const Programas = () => {
       description: "Entrenamiento individual totalmente adaptado a las necesidades del jugador/a.",
       features: ["Trabajo técnico específico", "Corrección en tiempo real", "Adaptado a cada jugador"],
       price: "55€",
-      img: imgPrograma1
+      img: imgPrograma1,
+      modes: [
+        {
+          label: "Individual",
+          description: "Entrenamiento individual totalmente adaptado a las necesidades del jugador/a.",
+          features: ["Trabajo técnico específico", "Corrección en tiempo real", "Adaptado a cada jugador"]
+        },
+        {
+          label: "En pareja",
+          description: "Entrenamiento en pareja (máx. 2 jugadores/as) adaptado a las necesidades de ambos.",
+          features: ["Trabajo técnico compartido", "Corrección en tiempo real para los dos", "Dinámica competitiva entre compañeros"]
+        }
+      ]
     },
     {
       title: "One-to-One",
       subtitle: "Mensual",
-      description: "Plan continuo con sesiones personalizadas y seguimiento del jugador/a.",
-      features: ["Plan individualizado", "Seguimiento continuo", "Comunicación con familias"],
-      price: "40€",
+      description: "Bono de 4 sesiones (una por semana) con seguimiento personalizado del jugador/a.",
+      features: ["4 sesiones al mes", "Seguimiento continuo", "Comunicación con familias"],
+      price: "180€",
+      priceNote: "45€/sesión · 4 sesiones",
       img: imgPrograma2,
-      popular: true
+      popular: true,
+      modes: [
+        {
+          label: "Individual",
+          description: "Bono de 4 sesiones (una por semana) con seguimiento personalizado del jugador/a.",
+          features: ["4 sesiones al mes", "Seguimiento continuo", "Comunicación con familias"]
+        },
+        {
+          label: "En pareja",
+          description: "Bono de 4 sesiones en pareja (una por semana) con seguimiento personalizado de ambos jugadores/as.",
+          features: ["4 sesiones al mes en pareja", "Seguimiento continuo", "Comunicación con familias"]
+        }
+      ]
     },
     {
       title: "Personal Trainer",
