@@ -92,7 +92,7 @@ function useIsDesktopViewport(breakpointPx = 768) {
 // Cada foto se mide de verdad (ancho x alto) y solo se muestra en el
 // dispositivo cuya orientación le corresponde de forma natural — nunca se
 // recorta con "cover" ni se estira para rellenar un hueco que no le pega.
-const StageCarousel = ({ images }: { images: string[] }) => {
+const StageCarousel = ({ images, altPrefix = "Stage JP Preparation 2026" }: { images: string[]; altPrefix?: string }) => {
   const orientations = useImageOrientations(images);
   const isDesktop = useIsDesktopViewport();
   const wanted: Orientation = isDesktop ? 'landscape' : 'portrait';
@@ -129,7 +129,7 @@ const StageCarousel = ({ images }: { images: string[] }) => {
           <motion.img
             key={visibleImages[index]}
             src={visibleImages[index]}
-            alt={`Stage JP Preparation 2026 - foto ${index + 1}`}
+            alt={`${altPrefix} - foto ${index + 1}`}
             initial={{ opacity: 0, x: direction >= 0 ? 60 : -60 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: direction >= 0 ? -60 : 60 }}
@@ -436,28 +436,10 @@ export const Eventos = () => {
               Galería de <span className="text-brand-accent italic">Eventos</span>
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {[imgGal1, imgGal2, imgGal3, imgGal4, imgGal5, imgGal6, imgGal7, imgGal8].map((src, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
-                className={cn(
-                  "relative overflow-hidden rounded-2xl group cursor-pointer",
-                  i === 0 || i === 5 ? "aspect-[3/4]" : "aspect-square"
-                )}
-              >
-                <img
-                  src={src}
-                  alt={`Evento ${i + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-brand-black/40 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </motion.div>
-            ))}
-          </div>
+          <StageCarousel
+            images={[imgGal1, imgGal2, imgGal3, imgGal4, imgGal5, imgGal6, imgGal7, imgGal8]}
+            altPrefix="Galería de Eventos"
+          />
         </div>
       </section>
 
