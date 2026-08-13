@@ -13,7 +13,3 @@
 </IfModule>
 
 ErrorDocument 404 /index.html
-
-<IfModule mod_headers.c>
-  Header set X-Htaccess-Test "active"
-</IfModule>
