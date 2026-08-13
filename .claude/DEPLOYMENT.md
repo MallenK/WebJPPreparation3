@@ -44,6 +44,33 @@ Por eso Hostinger está configurado para tirar de `gh-pages`, no de `main`. Esa 
 - El repo de GitHub es **público**, así que no hace falta configurar credenciales ni deploy keys.
 - El pull se dispara solo (webhook) en cuanto se hace push a `gh-pages` — no hay que entrar a hPanel para desplegar.
 
+## El `.htaccess` se gestiona a MANO, nunca desde el repo
+
+`public_html/.htaccess` es imprescindible para que las rutas de React Router (`BrowserRouter`, URLs limpias tipo `/instalaciones`) sobrevivan a una recarga — sin él, recargar cualquier página que no sea la raíz devuelve un 404 real del servidor.
+
+Probado y confirmado (13-14/08/2026): un `.htaccess` subido a mano desde el **Administrador de Archivos de hPanel** funciona perfectamente. El mismo archivo, con el mismo contenido, desplegado a través del Git Auto Deploy de Hostinger **nunca se aplica** (probablemente un problema de permisos/propietario específico de ese mecanismo de despliegue). Por eso `.htaccess` **no existe en este repositorio** — si lo añades a `public/`, Git Auto Deploy lo volverá a desplegar en su versión rota y sobrescribirá el que funciona, resucitando el 404 en la próxima recarga.
+
+**Si algún día hay que tocarlo:** edítalo directamente en el servidor (hPanel → Administrador de archivos → `domains/jppreparation.com/public_html/.htaccess`), nunca en este repo. Contenido actual:
+
+```apache
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+ErrorDocument 404 /index.html
+```
+
+Confirmado que Git Auto Deploy **no borra** archivos que no están en el repo (solo sobrescribe los que sí lo están), así que quitarlo de aquí es seguro: el `.htaccess` del servidor queda intacto en cada despliegue futuro.
+
+**Cuidado al navegar por el Administrador de Archivos:** `public_html/app/` es la raíz de un subdominio completamente distinto (`app.jppreparation.com`, una aplicación PHP de tickets/soporte ajena a esta web). Tiene su propio `.htaccess` — no lo toques. El nuestro está en `public_html/` directamente.
+
 ## Cómo publicar un cambio (flujo normal)
 
 1. Edita el código.
@@ -83,4 +110,4 @@ Si coinciden, el despliegue está en producción.
 
 El mismo componente (`StageCarousel`) se reutiliza en la sección "Galería de Eventos", pero esa sigue usando una lista fija de imports (no una carpeta dinámica).
 
-El carrusel además detecta la orientación real de cada foto (ancho x alto, no el nombre del archivo) y solo muestra en cada dispositivo las que encajan de forma natural: horizontales en escritorio, verticales en móvil — sin recortar ni deformar ninguna.
+El carrusel muestra siempre todas las fotos (no las filtra ni oculta por orientación) y usa `object-contain` para no recortarlas ni deformarlas nunca. Cada foto tiene un botón para abrirla en un lightbox a pantalla completa (navegable con flechas, teclado y Escape), pensado para verla bien sea cual sea su relación de aspecto.
