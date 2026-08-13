@@ -110,7 +110,7 @@ export const Hero = () => {
               </div>
               <div>
                 <div className="text-xs text-white/50 uppercase tracking-widest">Ubicación</div>
-                <div className="text-xl font-bold">Sant Vicenç</div>
+                <div className="text-xl font-bold">Sant Vicenç dels Horts</div>
               </div>
             </div>
           </motion.div>

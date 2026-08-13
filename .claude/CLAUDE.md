@@ -10,7 +10,7 @@
 - **Naturaleza del Proyecto:** Web estática de alto rendimiento visual, fluida y directa.
 - **Frontend:** HTML5 semántico, CSS3 estructurado y JavaScript Vanilla para el control de interacciones, enrutamiento interno o gestión de leads.
 - **Enfoque de Diseño:** **Strictly Mobile First**. La web se consulta masivamente a pie de campo por parte de jugadores, padres y entrenadores desde smartphones.
-- **Despliegue:** Servido estáticamente a través de GitHub Pages.
+- **Despliegue:** Servido en producción por Hostinger (Business Web Hosting), no por GitHub Pages. GitHub es el origen del código y quien dispara el despliegue (rama `gh-pages` + Git Auto Deploy de Hostinger vía webhook). Flujo completo y cómo publicar cambios: ver `.claude/DEPLOYMENT.md`.
 
 ## Secciones del Sitio (Mapa de Navegación)
 - **Inicio / Tecnificación / Programas:** Propuesta de valor, Roadmap de alto rendimiento (Evaluación, Fundamentos, Especialización, Dominio) y bloques de un día de entrenamiento (Activación Cognitiva, Tecnificación, Situaciones de Juego, Vuelta a la calma).

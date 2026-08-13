@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  Shield, Camera, Zap, Users, Star, Trophy, Flame, CheckCircle2, ChevronLeft, ChevronRight
+  Shield, Camera, Zap, Users, Star, Trophy, Flame, CheckCircle2, ChevronLeft, ChevronRight, Maximize2, X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
@@ -42,93 +43,78 @@ const SectionHeader = ({ subtitle, title, centered = false }) => (
   </div>
 );
 
-type Orientation = 'landscape' | 'portrait';
+// Flechas + contador + puntos, compartidos entre la vista en línea y el modal.
+const CarouselControls = ({
+  onPrev, onNext, index, total, dark = true
+}: { onPrev: () => void; onNext: () => void; index: number; total: number; dark?: boolean }) => (
+  <>
+    <button
+      type="button"
+      aria-label="Foto anterior"
+      onClick={onPrev}
+      className={cn(
+        "absolute left-3 md:left-5 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full border transition-colors",
+        dark ? "bg-brand-black/50 border-white/10 text-white hover:bg-brand-accent hover:text-brand-black" : "bg-white/10 border-white/20 text-white hover:bg-brand-accent hover:text-brand-black"
+      )}
+    >
+      <ChevronLeft size={20} />
+    </button>
+    <button
+      type="button"
+      aria-label="Foto siguiente"
+      onClick={onNext}
+      className={cn(
+        "absolute right-3 md:right-5 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full border transition-colors",
+        dark ? "bg-brand-black/50 border-white/10 text-white hover:bg-brand-accent hover:text-brand-black" : "bg-white/10 border-white/20 text-white hover:bg-brand-accent hover:text-brand-black"
+      )}
+    >
+      <ChevronRight size={20} />
+    </button>
+    <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 z-10 bg-brand-black/60 text-white/90 text-xs font-bold px-3 py-1 rounded-full">
+      {index + 1} / {total}
+    </div>
+  </>
+);
 
-// Carga cada imagen en memoria una vez para leer sus dimensiones reales
-// (naturalWidth/naturalHeight) y así saber si es horizontal o vertical.
-// No se adivina por el nombre del archivo: se mide la imagen de verdad.
-function useImageOrientations(images: string[]) {
-  const [orientations, setOrientations] = useState<Record<string, Orientation>>({});
-
-  React.useEffect(() => {
-    let cancelled = false;
-    images.forEach((src) => {
-      const probe = new window.Image();
-      probe.onload = () => {
-        if (cancelled) return;
-        const orientation: Orientation = probe.naturalWidth >= probe.naturalHeight ? 'landscape' : 'portrait';
-        setOrientations((prev) => (prev[src] ? prev : { ...prev, [src]: orientation }));
-      };
-      probe.src = src;
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [images]);
-
-  return orientations;
-}
-
-// true = pantalla de escritorio. Se apoya en la misma media query que usa
-// Tailwind para "md" (768px) y se reevalúa en vivo si cambia el tamaño
-// de la ventana — no depende del user-agent del dispositivo.
-function useIsDesktopViewport(breakpointPx = 768) {
-  const [isDesktop, setIsDesktop] = useState(
-    () => typeof window !== 'undefined' && window.innerWidth >= breakpointPx
-  );
-
-  React.useEffect(() => {
-    const mql = window.matchMedia(`(min-width: ${breakpointPx}px)`);
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    setIsDesktop(mql.matches);
-    mql.addEventListener('change', handler);
-    return () => mql.removeEventListener('change', handler);
-  }, [breakpointPx]);
-
-  return isDesktop;
-}
-
-// Carrusel responsive: marco vertical en móvil, horizontal en escritorio.
-// Cada foto se mide de verdad (ancho x alto) y solo se muestra en el
-// dispositivo cuya orientación le corresponde de forma natural — nunca se
-// recorta con "cover" ni se estira para rellenar un hueco que no le pega.
+// Carrusel: muestra siempre TODAS las fotos, sin ocultar ninguna por su
+// orientación. El marco usa "object-contain" (nunca recorta ni deforma).
+// Para verlas realmente a su tamaño y forma ideal sin límite de marco,
+// un clic abre un lightbox a pantalla completa.
 const StageCarousel = ({ images, altPrefix = "Stage JP Preparation 2026" }: { images: string[]; altPrefix?: string }) => {
-  const orientations = useImageOrientations(images);
-  const isDesktop = useIsDesktopViewport();
-  const wanted: Orientation = isDesktop ? 'landscape' : 'portrait';
-
-  const stillDetecting = Object.keys(orientations).length < images.length;
-  let visibleImages = images.filter((src) => orientations[src] === wanted);
-  // Red de seguridad: si ninguna foto coincide con la orientación buscada
-  // (p.ej. todas son verticales y se ve desde un ordenador), mostramos
-  // igualmente todo el set en vez de dejar el carrusel vacío.
-  if (visibleImages.length === 0 && !stillDetecting) {
-    visibleImages = images;
-  }
-
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   React.useEffect(() => {
-    setIndex(0);
-  }, [wanted, visibleImages.length]);
+    if (!isOpen) return;
+    document.body.style.overflow = 'hidden';
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false);
+      if (e.key === 'ArrowRight') goTo(index + 1);
+      if (e.key === 'ArrowLeft') goTo(index - 1);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKeyDown);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, index]);
 
-  if (visibleImages.length === 0) {
-    return <div className="aspect-[3/4] md:aspect-[16/9] rounded-3xl bg-white/5 border border-white/10 animate-pulse" />;
-  }
+  if (images.length === 0) return null;
 
   const goTo = (nextIndex: number) => {
     setDirection(nextIndex > index ? 1 : -1);
-    setIndex((nextIndex + visibleImages.length) % visibleImages.length);
+    setIndex((nextIndex + images.length) % images.length);
   };
 
   return (
     <div>
-      <div className="relative aspect-[3/4] md:aspect-[16/9] rounded-3xl overflow-hidden border border-white/10 bg-black/30">
+      <div className="relative aspect-[3/4] md:aspect-[16/9] rounded-3xl overflow-hidden border border-white/10 bg-black/30 group">
         <AnimatePresence initial={false} mode="popLayout">
           <motion.img
-            key={visibleImages[index]}
-            src={visibleImages[index]}
+            key={images[index]}
+            src={images[index]}
             alt={`${altPrefix} - foto ${index + 1}`}
             initial={{ opacity: 0, x: direction >= 0 ? 60 : -60 }}
             animate={{ opacity: 1, x: 0 }}
@@ -147,28 +133,18 @@ const StageCarousel = ({ images, altPrefix = "Stage JP Preparation 2026" }: { im
 
         <button
           type="button"
-          aria-label="Foto anterior"
-          onClick={() => goTo(index - 1)}
-          className="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 z-10 bg-brand-black/50 hover:bg-brand-accent hover:text-brand-black text-white p-2 md:p-3 rounded-full border border-white/10 transition-colors"
+          aria-label="Ver a pantalla completa"
+          onClick={() => setIsOpen(true)}
+          className="absolute top-3 right-3 md:top-4 md:right-4 z-10 bg-brand-black/50 hover:bg-brand-accent hover:text-brand-black text-white p-2 md:p-2.5 rounded-full border border-white/10 transition-colors"
         >
-          <ChevronLeft size={20} />
-        </button>
-        <button
-          type="button"
-          aria-label="Foto siguiente"
-          onClick={() => goTo(index + 1)}
-          className="absolute right-3 md:right-5 top-1/2 -translate-y-1/2 z-10 bg-brand-black/50 hover:bg-brand-accent hover:text-brand-black text-white p-2 md:p-3 rounded-full border border-white/10 transition-colors"
-        >
-          <ChevronRight size={20} />
+          <Maximize2 size={16} />
         </button>
 
-        <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 z-10 bg-brand-black/60 text-white/90 text-xs font-bold px-3 py-1 rounded-full">
-          {index + 1} / {visibleImages.length}
-        </div>
+        <CarouselControls onPrev={() => goTo(index - 1)} onNext={() => goTo(index + 1)} index={index} total={images.length} />
       </div>
 
       <div className="flex justify-center flex-wrap gap-2 mt-6">
-        {visibleImages.map((_, i) => (
+        {images.map((_, i) => (
           <button
             key={i}
             type="button"
@@ -181,6 +157,47 @@ const StageCarousel = ({ images, altPrefix = "Stage JP Preparation 2026" }: { im
           />
         ))}
       </div>
+
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] bg-black flex items-center justify-center p-4 md:p-10"
+              onClick={() => setIsOpen(false)}
+            >
+              <button
+                type="button"
+                aria-label="Cerrar"
+                onClick={() => setIsOpen(false)}
+                className="absolute top-4 right-4 md:top-6 md:right-6 z-10 bg-white/10 hover:bg-brand-accent hover:text-brand-black text-white p-2.5 rounded-full border border-white/20 transition-colors"
+              >
+                <X size={22} />
+              </button>
+
+              <div className="relative w-full h-full flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+                <AnimatePresence initial={false} mode="popLayout">
+                  <motion.img
+                    key={images[index]}
+                    src={images[index]}
+                    alt={`${altPrefix} - foto ${index + 1}`}
+                    initial={{ opacity: 0, scale: 0.97 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.97 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="max-w-full max-h-full object-contain select-none"
+                  />
+                </AnimatePresence>
+
+                <CarouselControls onPrev={() => goTo(index - 1)} onNext={() => goTo(index + 1)} index={index} total={images.length} dark={false} />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   );
 };
