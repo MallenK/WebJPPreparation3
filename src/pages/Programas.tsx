@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import {
   CheckCircle2, Users, Target, Zap, Clock, Trophy, Camera,
@@ -10,17 +10,12 @@ import { cn } from '../lib/utils';
 import imgPrograma1 from '../assets/images/uploads/IMG_2062.webp';
 import imgPrograma2 from '../assets/images/uploads/IMG_1701.webp';
 import imgPrograma3 from '../assets/images/uploads/IMG_0175.webp';
+import imgPrograma4 from '../assets/images/uploads/IMG_2362.webp';
 import imgMetodo2b from '../assets/images/uploads/IMG_6001.webp';
 import imgMetodo1b from '../assets/images/uploads/IMG_5907.webp';
 import imgMetodo2a from '../assets/images/uploads/IMG_5994.webp';
 import imgMetodo1a from '../assets/images/uploads/IMG_5997.webp';
 import imgVideoAnalysis from '../assets/images/uploads/IMG_0198.webp';
-
-interface ModeContent {
-  label: string;
-  description: string;
-  features: string[];
-}
 
 interface ProgramCardProps {
   title: string;
@@ -31,14 +26,10 @@ interface ProgramCardProps {
   priceNote?: string;
   img: string;
   popular?: boolean;
-  modes?: ModeContent[];
   key?: React.Key;
 }
 
-const ProgramCard = ({ title, subtitle, description, features, price, priceNote, img, popular = false, modes }: ProgramCardProps) => {
-  const [activeMode, setActiveMode] = useState(0);
-  const content = modes ? modes[activeMode] : { description, features };
-
+const ProgramCard = ({ title, subtitle, description, features, price, priceNote, img, popular = false }: ProgramCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -68,26 +59,9 @@ const ProgramCard = ({ title, subtitle, description, features, price, priceNote,
         </div>
       </div>
       <div className="p-10 flex-grow flex flex-col">
-        {modes && (
-          <div className="flex gap-2 p-1.5 mb-6 bg-white/5 rounded-full border border-white/10 self-start">
-            {modes.map((m, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setActiveMode(i)}
-                className={cn(
-                  "px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all",
-                  activeMode === i ? "bg-brand-accent text-brand-black" : "text-white/60 hover:text-white"
-                )}
-              >
-                {m.label}
-              </button>
-            ))}
-          </div>
-        )}
-        <p className="text-white/70 mb-8 text-sm leading-relaxed">{content.description}</p>
+        <p className="text-white/70 mb-8 text-sm leading-relaxed">{description}</p>
         <ul className="space-y-4 mb-10 flex-grow">
-          {content.features.map((f, i) => (
+          {features.map((f, i) => (
             <li key={i} className="flex items-start gap-3 text-sm text-white/80">
               <CheckCircle2 size={18} className="text-brand-accent shrink-0 mt-0.5" />
               <span>{f}</span>
@@ -113,6 +87,28 @@ const ProgramCard = ({ title, subtitle, description, features, price, priceNote,
 };
 
 export const Programas = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollToSlide = (i: number) => {
+    const card = carouselRef.current?.children[i] as HTMLElement | undefined;
+    card?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  };
+
+  const handleCarouselScroll = () => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const center = el.scrollLeft + el.clientWidth / 2;
+    let closest = 0;
+    let minDist = Infinity;
+    Array.from(el.children).forEach((child, i) => {
+      const c = child as HTMLElement;
+      const dist = Math.abs(c.offsetLeft + c.offsetWidth / 2 - center);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    setActiveSlide(closest);
+  };
+
   const programs = [
     {
       title: "One-to-One",
@@ -120,19 +116,7 @@ export const Programas = () => {
       description: "Entrenamiento individual totalmente adaptado a las necesidades del jugador/a.",
       features: ["Trabajo técnico específico", "Corrección en tiempo real", "Adaptado a cada jugador"],
       price: "55€",
-      img: imgPrograma1,
-      modes: [
-        {
-          label: "Individual",
-          description: "Entrenamiento individual totalmente adaptado a las necesidades del jugador/a.",
-          features: ["Trabajo técnico específico", "Corrección en tiempo real", "Adaptado a cada jugador"]
-        },
-        {
-          label: "En pareja",
-          description: "Entrenamiento en pareja (máx. 2 jugadores/as) adaptado a las necesidades de ambos.",
-          features: ["Trabajo técnico compartido", "Corrección en tiempo real para los dos", "Dinámica competitiva entre compañeros"]
-        }
-      ]
+      img: imgPrograma1
     },
     {
       title: "One-to-One",
@@ -142,19 +126,16 @@ export const Programas = () => {
       price: "180€",
       priceNote: "45€/sesión · 4 sesiones",
       img: imgPrograma2,
-      popular: true,
-      modes: [
-        {
-          label: "Individual",
-          description: "Bono de 4 sesiones (una por semana) con seguimiento personalizado del jugador/a.",
-          features: ["4 sesiones al mes", "Seguimiento continuo", "Comunicación con familias"]
-        },
-        {
-          label: "En pareja",
-          description: "Bono de 4 sesiones en pareja (una por semana) con seguimiento personalizado de ambos jugadores/as.",
-          features: ["4 sesiones al mes en pareja", "Seguimiento continuo", "Comunicación con familias"]
-        }
-      ]
+      popular: true
+    },
+    {
+      title: "Dúo",
+      subtitle: "2 jugadores/as + 1 entrenador",
+      description: "Entrenamiento en pareja (2 jugadores/as) con el mismo trabajo técnico individualizado, compartido entre ambos.",
+      features: ["Trabajo técnico específico para cada jugador", "Corrección en tiempo real para los dos", "Dinámica competitiva entre compañeros"],
+      price: "30€",
+      priceNote: "por jugador/a · bono mensual: 120€/jugador",
+      img: imgPrograma4
     },
     {
       title: "Personal Trainer",
@@ -199,10 +180,40 @@ export const Programas = () => {
         </div>
       </section>
 
-      {/* Program Cards Grid */}
-      <section className="py-16 md:py-20 lg:py-20 xl:py-24 px-6 md:px-10 lg:px-12 bg-brand-black relative">
-        
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-8 xl:gap-10 items-stretch">
+      {/* Program Cards */}
+      <section className="py-16 md:py-20 lg:py-20 xl:py-24 bg-brand-black relative">
+
+        {/* Carrusel táctil — solo mobile */}
+        <div className="md:hidden">
+          <div
+            ref={carouselRef}
+            onScroll={handleCarouselScroll}
+            className="flex gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth pl-6 pr-6"
+          >
+            {programs.map((p, i) => (
+              <div key={i} className="shrink-0 w-[82%] snap-center">
+                <ProgramCard {...p} />
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center gap-2 mt-8">
+            {programs.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Ir al plan ${i + 1}`}
+                onClick={() => scrollToSlide(i)}
+                className={cn(
+                  "h-1.5 rounded-full transition-all",
+                  i === activeSlide ? "w-6 bg-brand-accent" : "w-1.5 bg-white/20"
+                )}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Rejilla 2x2 — tablet y escritorio */}
+        <div className="hidden md:grid max-w-5xl mx-auto md:grid-cols-2 gap-8 xl:gap-10 items-stretch px-10 lg:px-12">
           {programs.map((p, i) => <ProgramCard key={i} {...p} />)}
         </div>
 
