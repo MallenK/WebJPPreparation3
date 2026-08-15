@@ -112,7 +112,7 @@ export const Programas = () => {
       description: "Entrenamiento en pareja (2 jugadores/as) con el mismo trabajo técnico individualizado, compartido entre ambos.",
       features: ["Trabajo técnico específico para cada jugador", "Corrección en tiempo real para los dos", "Dinámica competitiva entre compañeros"],
       price: "240€",
-      priceNote: "120€/jugador · 4 sesiones de 30€ al mes",
+      priceNote: "120€/jugador · 4 sesiones de 30€ por sesión",
       img: imgPrograma4
     },
     {
