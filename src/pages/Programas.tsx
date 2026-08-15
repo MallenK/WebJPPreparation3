@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import {
   CheckCircle2, Users, Target, Zap, Clock, Trophy, Camera,
@@ -58,7 +58,7 @@ const ProgramCard = ({ title, subtitle, description, features, price, priceNote,
           <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-3xl font-bold text-white leading-none">{title}</h3>
         </div>
       </div>
-      <div className="p-10 flex-grow flex flex-col">
+      <div className="p-6 md:p-10 flex-grow flex flex-col">
         <p className="text-white/70 mb-8 text-sm leading-relaxed">{description}</p>
         <ul className="space-y-4 mb-10 flex-grow">
           {features.map((f, i) => (
@@ -87,28 +87,6 @@ const ProgramCard = ({ title, subtitle, description, features, price, priceNote,
 };
 
 export const Programas = () => {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  const scrollToSlide = (i: number) => {
-    const card = carouselRef.current?.children[i] as HTMLElement | undefined;
-    card?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-  };
-
-  const handleCarouselScroll = () => {
-    const el = carouselRef.current;
-    if (!el) return;
-    const center = el.scrollLeft + el.clientWidth / 2;
-    let closest = 0;
-    let minDist = Infinity;
-    Array.from(el.children).forEach((child, i) => {
-      const c = child as HTMLElement;
-      const dist = Math.abs(c.offsetLeft + c.offsetWidth / 2 - center);
-      if (dist < minDist) { minDist = dist; closest = i; }
-    });
-    setActiveSlide(closest);
-  };
-
   const programs = [
     {
       title: "One-to-One",
@@ -180,43 +158,11 @@ export const Programas = () => {
         </div>
       </section>
 
-      {/* Program Cards */}
-      <section className="py-16 md:py-20 lg:py-20 xl:py-24 bg-brand-black relative">
-
-        {/* Carrusel táctil — solo mobile */}
-        <div className="md:hidden">
-          <div
-            ref={carouselRef}
-            onScroll={handleCarouselScroll}
-            className="flex gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth pl-6 pr-6"
-          >
-            {programs.map((p, i) => (
-              <div key={i} className="shrink-0 w-[82%] snap-center">
-                <ProgramCard {...p} />
-              </div>
-            ))}
-          </div>
-          <div className="flex justify-center gap-2 mt-8">
-            {programs.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                aria-label={`Ir al plan ${i + 1}`}
-                onClick={() => scrollToSlide(i)}
-                className={cn(
-                  "h-1.5 rounded-full transition-all",
-                  i === activeSlide ? "w-6 bg-brand-accent" : "w-1.5 bg-white/20"
-                )}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Rejilla 2x2 — tablet y escritorio */}
-        <div className="hidden md:grid max-w-5xl mx-auto md:grid-cols-2 gap-8 xl:gap-10 items-stretch px-10 lg:px-12">
+      {/* Program Cards — 1 columna en mobile, 2x2 en tablet/escritorio */}
+      <section className="py-16 md:py-20 lg:py-20 xl:py-24 px-6 md:px-10 lg:px-12 bg-brand-black relative">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 xl:gap-10 items-stretch">
           {programs.map((p, i) => <ProgramCard key={i} {...p} />)}
         </div>
-
       </section>
 
 
