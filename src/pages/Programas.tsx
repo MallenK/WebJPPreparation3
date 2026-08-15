@@ -133,8 +133,8 @@ export const Programas = () => {
       subtitle: "2 jugadores/as + 1 entrenador",
       description: "Entrenamiento en pareja (2 jugadores/as) con el mismo trabajo técnico individualizado, compartido entre ambos.",
       features: ["Trabajo técnico específico para cada jugador", "Corrección en tiempo real para los dos", "Dinámica competitiva entre compañeros"],
-      price: "30€",
-      priceNote: "por jugador/a · bono mensual: 120€/jugador",
+      price: "120€",
+      priceNote: "por jugador/a · bono de 4 sesiones de 30€ al mes",
       img: imgPrograma4
     },
     {
