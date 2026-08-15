@@ -16,7 +16,7 @@ git push origin main          (código fuente, historial legible)
         │
         ▼
 npm run deploy                (build + push SOLO del resultado compilado)
-        │  = npm run build && gh-pages -d dist
+        │  = npm run build && gh-pages -d dist --dotfiles
         ▼
 rama gh-pages en GitHub       (HTML/CSS/JS/imágenes ya compilados, sin código fuente)
         │
@@ -44,13 +44,17 @@ Por eso Hostinger está configurado para tirar de `gh-pages`, no de `main`. Esa 
 - El repo de GitHub es **público**, así que no hace falta configurar credenciales ni deploy keys.
 - El pull se dispara solo (webhook) en cuanto se hace push a `gh-pages` — no hay que entrar a hPanel para desplegar.
 
-## El `.htaccess` se gestiona a MANO, nunca desde el repo
+## El `.htaccess` vive en `public/.htaccess`, gestionado por git
 
 `public_html/.htaccess` es imprescindible para que las rutas de React Router (`BrowserRouter`, URLs limpias tipo `/instalaciones`) sobrevivan a una recarga — sin él, recargar cualquier página que no sea la raíz devuelve un 404 real del servidor.
 
-Probado y confirmado (13-14/08/2026): un `.htaccess` subido a mano desde el **Administrador de Archivos de hPanel** funciona perfectamente. El mismo archivo, con el mismo contenido, desplegado a través del Git Auto Deploy de Hostinger **nunca se aplica** (probablemente un problema de permisos/propietario específico de ese mecanismo de despliegue). Por eso `.htaccess` **no existe en este repositorio** — si lo añades a `public/`, Git Auto Deploy lo volverá a desplegar en su versión rota y sobrescribirá el que funciona, resucitando el 404 en la próxima recarga.
+**Causa raíz descubierta (15/08/2026):** durante un tiempo diagnosticamos esto como "Git Auto Deploy de Hostinger no respeta el `.htaccess`" y lo gestionamos subiéndolo a mano por el Administrador de Archivos de hPanel. Era un diagnóstico incorrecto. El problema real es que el paquete `gh-pages` **excluye los dotfiles por defecto** al publicar — verificado revisando el historial de la propia rama `gh-pages`: en ningún despliegue de la época en que `.htaccess` sí estaba en `public/` llegó a aparecer en esa rama. Es decir, el archivo nunca llegaba siquiera a GitHub; Hostinger no tenía nada que aplicar, no era un problema de permisos suyo.
 
-**Si algún día hay que tocarlo:** edítalo directamente en el servidor (hPanel → Administrador de archivos → `domains/jppreparation.com/public_html/.htaccess`), nunca en este repo. Contenido actual:
+Como consecuencia, un `.htaccess` subido a mano en el servidor funcionaba hasta el siguiente despliegue: cuando Hostinger volvía a sincronizar `public_html` contra el contenido de `gh-pages` (que nunca incluía `.htaccess`), lo perdía otra vez.
+
+**Solución aplicada:** `public/.htaccess` vuelve a estar en el repo, y `package.json` usa `gh-pages -d dist --dotfiles` para que sí se incluya al publicar. Al estar trackeado en `gh-pages`, Hostinger lo restaura solo en cada sincronización — igual que ya hacía automáticamente con otros archivos de esa rama (p. ej. `.env.example`, que reaparecía solo tras borrarlo a mano precisamente porque sí estaba trackeado).
+
+**Nunca lo edites solo en el servidor** — cualquier cambio manual se perderá en el próximo `npm run deploy`. Edita `public/.htaccess` en el repo y despliega normalmente. Contenido actual:
 
 ```apache
 <IfModule mod_rewrite.c>
@@ -66,8 +70,6 @@ Probado y confirmado (13-14/08/2026): un `.htaccess` subido a mano desde el **Ad
 
 ErrorDocument 404 /index.html
 ```
-
-Confirmado que Git Auto Deploy **no borra** archivos que no están en el repo (solo sobrescribe los que sí lo están), así que quitarlo de aquí es seguro: el `.htaccess` del servidor queda intacto en cada despliegue futuro.
 
 **Cuidado al navegar por el Administrador de Archivos:** `public_html/app/` es la raíz de un subdominio completamente distinto (`app.jppreparation.com`, una aplicación PHP de tickets/soporte ajena a esta web). Tiene su propio `.htaccess` — no lo toques. El nuestro está en `public_html/` directamente.
 
@@ -93,13 +95,13 @@ curl -s "https://www.jppreparation.com/" | grep -oE '/assets/index-[A-Za-z0-9_-]
 
 Si coinciden, el despliegue está en producción.
 
-**Además, comprueba que una ruta interna sobrevive a una recarga directa** (no solo la home). El `.htaccess` manual de `public_html/` se ha perdido más de una vez tras un despliegue — a veces el Git Auto Deploy de Hostinger hace un checkout limpio en vez de un pull incremental y se lleva por delante ese archivo, que al no estar en el repo no vuelve solo:
+**Además, comprueba que una ruta interna sobrevive a una recarga directa** (no solo la home), para confirmar que el `.htaccess` viajó bien en el deploy:
 
 ```bash
 curl -s -o /dev/null -w "%{http_code}\n" https://www.jppreparation.com/programas
 ```
 
-Si devuelve `404` (y el cuerpo es la plantilla de error genérica de Hostinger, no nuestro `index.html`), el `.htaccess` ha desaparecido del servidor y hay que volver a subirlo a mano — ver la sección anterior "El `.htaccess` se gestiona a MANO".
+Si devuelve `404` (y el cuerpo es la plantilla de error genérica de Hostinger, no nuestro `index.html`), revisa que `public/.htaccess` exista en el repo y que `package.json` tenga `gh-pages -d dist --dotfiles` — ver la sección anterior.
 
 ## Imágenes: pipeline de optimización
 
