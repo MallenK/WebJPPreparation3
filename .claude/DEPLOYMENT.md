@@ -93,6 +93,14 @@ curl -s "https://www.jppreparation.com/" | grep -oE '/assets/index-[A-Za-z0-9_-]
 
 Si coinciden, el despliegue está en producción.
 
+**Además, comprueba que una ruta interna sobrevive a una recarga directa** (no solo la home). El `.htaccess` manual de `public_html/` se ha perdido más de una vez tras un despliegue — a veces el Git Auto Deploy de Hostinger hace un checkout limpio en vez de un pull incremental y se lleva por delante ese archivo, que al no estar en el repo no vuelve solo:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" https://www.jppreparation.com/programas
+```
+
+Si devuelve `404` (y el cuerpo es la plantilla de error genérica de Hostinger, no nuestro `index.html`), el `.htaccess` ha desaparecido del servidor y hay que volver a subirlo a mano — ver la sección anterior "El `.htaccess` se gestiona a MANO".
+
 ## Imágenes: pipeline de optimización
 
 - `scripts/optimize-images.mjs` (usa `sharp`, ya en `devDependencies`) redimensiona a un ancho máximo y convierte a `.webp`.
