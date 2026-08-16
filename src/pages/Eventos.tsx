@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
-import imgStage from '../assets/images/uploads/IMG_1306.webp';
+import imgStage from '../assets/images/uploads/experiencia-total/_DSC7427.webp';
 
 // Carga automática de todas las fotos que haya en esta carpeta.
 // Para añadir más imágenes al carrusel del Stage 2026, basta con dejarlas
@@ -334,10 +334,13 @@ export const Eventos = () => {
             </div>
           </div>
 
-          <div className="aspect-square rounded-[2rem] overflow-hidden border border-white/10">
+          <div className="rounded-[2rem] overflow-hidden border border-white/10">
             <img
               src={imgStage}
-              className="w-full h-full object-cover"
+              alt="Stage JP Preparation"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-auto"
             />
           </div>
 
