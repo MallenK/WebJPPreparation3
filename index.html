@@ -102,30 +102,41 @@
       }
     </script>
 
-    <!-- Google tag (gtag.js) — cargado tras el evento load para no competir por el hilo principal durante el arranque -->
+    <!--
+      Consent Mode v2: por defecto TODO denegado hasta que el usuario elige en el
+      banner de cookies (src/components/CookieConsent.tsx). Tiene que ejecutarse
+      ANTES de que cargue Google Tag Manager para que los tags de Google dentro
+      del contenedor respeten este estado desde el primer momento.
+    -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7C70L94CN9');
-
-      function loadGtag() {
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-7C70L94CN9';
-        document.head.appendChild(s);
-      }
-      if (document.readyState === 'complete') {
-        loadGtag();
-      } else {
-        window.addEventListener('load', function () { setTimeout(loadGtag, 1); });
-      }
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 500
+      });
     </script>
 
-    <script type="module" crossorigin src="/assets/index-niP5nfXR.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DuV7gg1f.css">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MQH5GSK3');</script>
+    <!-- End Google Tag Manager -->
+
+    <script type="module" crossorigin src="/assets/index-DVpkVxkM.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Bco5F9Ro.css">
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQH5GSK3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <div id="root"></div>
   </body>
 </html>
