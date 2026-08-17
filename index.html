@@ -7,16 +7,27 @@
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C70L94CN9"></script>
+    <!-- Google tag (gtag.js) — cargado tras el evento load para no competir por el hilo principal durante el arranque -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-7C70L94CN9');
+
+      function loadGtag() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-7C70L94CN9';
+        document.head.appendChild(s);
+      }
+      if (document.readyState === 'complete') {
+        loadGtag();
+      } else {
+        window.addEventListener('load', function () { setTimeout(loadGtag, 1); });
+      }
     </script>
 
-    <script type="module" crossorigin src="/assets/index-TPCjRs-M.js"></script>
+    <script type="module" crossorigin src="/assets/index-BYR8gH9i.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-L8IkYAty.css">
   </head>
   <body>
