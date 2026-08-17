@@ -14,6 +14,10 @@ const Resultados = lazy(() => import('./pages/Resultados').then(m => ({ default:
 const Contacto = lazy(() => import('./pages/Contacto').then(m => ({ default: m.Contacto })));
 const Legal = lazy(() => import('./pages/Legal').then(m => ({ default: m.Legal })));
 
+// Banner de cookies oculto temporalmente a petición del cliente (volverá a mostrarse más adelante).
+// Para reactivarlo: cambiar a `true`.
+const SHOW_COOKIE_BANNER = false;
+
 // Gestiona el scroll y avisa a GTM/GA4 de cada cambio de ruta (la SPA no
 // recarga la página, así que sin esto solo se registraría la primera visita).
 const RouteChangeHandler = () => {
@@ -70,7 +74,7 @@ export default function App() {
         </div>
         <Footer />
       </div>
-      <CookieConsent />
+      {SHOW_COOKIE_BANNER && <CookieConsent />}
     </>
   );
 }
