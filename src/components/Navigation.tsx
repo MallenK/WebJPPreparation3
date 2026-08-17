@@ -4,7 +4,7 @@ import { Menu, X, ChevronRight, Phone, Instagram, Facebook, Music2, Mail, MapPin
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
 
-import logo from '../assets/images/brand/logo-jp-preparation.png';
+import logo from '../assets/images/brand/logo-jp-preparation-fit.webp';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);

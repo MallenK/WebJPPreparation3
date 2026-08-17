@@ -6,10 +6,10 @@ import { motion } from 'motion/react';
 import { ChevronRight, CheckCircle2, Star, Users, MapPin, Calendar, ArrowRight, Brain, Zap, Target, Trophy, Clock, Shield, Activity, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
-import imgIntro from '../assets/images/uploads/IMG_1301.webp';
-import imgDesafio1 from '../assets/images/uploads/IMG_1303.webp';
-import imgDesafio2 from '../assets/images/uploads/IMG_1304.webp';
-import imgTrainingDay from '../assets/images/uploads/IMG_1305.webp';
+import imgIntro from '../assets/images/uploads/IMG_1301-fit.webp';
+import imgDesafio1 from '../assets/images/uploads/IMG_1303-fit.webp';
+import imgDesafio2 from '../assets/images/uploads/IMG_1304-fit.webp';
+import imgTrainingDay from '../assets/images/uploads/IMG_1305-fit.webp';
 
 
 const SectionHeader = ({ subtitle, title, centered = false }) => (

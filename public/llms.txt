@@ -1,0 +1,16 @@
+# JP Preparation
+
+> Academia de tecnificación y entrenamiento personalizado de alto rendimiento para futbolistas, en Sant Vicenç dels Horts (Barcelona). Sesiones individuales o en grupos de máximo 2 jugadores, desde 4 años.
+
+JP Preparation ofrece entrenamiento de fútbol milimétrico, no el entrenamiento genérico de un club de 25 jugadores. Ubicados en Carrer de la Pobla, 29, 08620 Sant Vicenç dels Horts, Barcelona.
+
+## Páginas
+
+- [Inicio](https://www.jppreparation.com/): Propuesta de valor y visión general de la academia.
+- [Tecnificación](https://www.jppreparation.com/tecnificacion): Roadmap de alto rendimiento y metodología de entrenamiento.
+- [Programas](https://www.jppreparation.com/programas): Planes disponibles (One-to-One, Dúo, Personal Trainer) y precios.
+- [Equipo](https://www.jppreparation.com/equipo): Staff técnico y entrenadores.
+- [Instalaciones](https://www.jppreparation.com/instalaciones): Las instalaciones del centro.
+- [Eventos](https://www.jppreparation.com/eventos): Stages, torneos y eventos especiales.
+- [Resultados](https://www.jppreparation.com/resultados): Resultados y logros de los jugadores.
+- [Contacto](https://www.jppreparation.com/contacto): Ubicación, teléfono y formulario de contacto.
