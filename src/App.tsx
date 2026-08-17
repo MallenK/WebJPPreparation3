@@ -29,7 +29,7 @@ export default function App() {
       <div className="flex flex-col min-h-screen">
         <Header />
         <div className="flex-grow">
-          <Suspense fallback={null}>
+          <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/tecnificacion" element={<Tecnificacion />} />
