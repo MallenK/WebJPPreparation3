@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import joelParedesImg from '../assets/images/team/joel_paredes.jpg';
-import nilSotoImg from '../assets/images/team/nil_soto.jpg';
-import marcRodriguezImg from '../assets/images/team/marc_rodriguez.jpg';
-import joelAgrazImg from '../assets/images/team/joel_agraz.jpg';
-import arnauTellezImg from '../assets/images/team/arnau_tellez.jpg';
-import oscarEntrenadorImg from '../assets/images/team/oscar_entrenador.jpg';
-import alfredoImg from '../assets/images/team/alfredo.jpeg';
-import davidGarciaImg from '../assets/images/team/david_garcia.jpeg';
-import imgFilosofia from '../assets/images/uploads/IMG_1701.webp';
+import joelParedesImg from '../assets/images/team/joel_paredes.webp';
+import nilSotoImg from '../assets/images/team/nil_soto.webp';
+import marcRodriguezImg from '../assets/images/team/marc_rodriguez.webp';
+import joelAgrazImg from '../assets/images/team/joel_agraz.webp';
+import arnauTellezImg from '../assets/images/team/arnau_tellez.webp';
+import oscarEntrenadorImg from '../assets/images/team/oscar_entrenador.webp';
+import alfredoImg from '../assets/images/team/alfredo.webp';
+import davidGarciaImg from '../assets/images/team/david_garcia.webp';
+import imgFilosofia from '../assets/images/uploads/IMG_1701-fit.webp';
 import {
   Instagram, Linkedin, Mail, Award, ShieldCheck,
   Star, Users, Target, Zap, ArrowRight, BookOpen,
@@ -23,10 +23,11 @@ interface CoachCardProps {
   img: string;
   license: string;
   delay: number;
+  priority?: boolean;
   key?: React.Key;
 }
 
-const CoachCard = ({ name, role, bio, img, license, delay }: CoachCardProps) => (
+const CoachCard = ({ name, role, bio, img, license, delay, priority }: CoachCardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -38,6 +39,8 @@ const CoachCard = ({ name, role, bio, img, license, delay }: CoachCardProps) => 
       <img
         src={img}
         alt={name}
+        loading={priority ? undefined : 'lazy'}
+        decoding={priority ? undefined : 'async'}
         className="w-full object-cover group-hover:scale-110 transition-all duration-700"
         referrerPolicy="no-referrer"
       />
@@ -185,7 +188,7 @@ export const Equipo = () => {
               }
             >
               <div className="w-full max-w-sm">
-                <CoachCard {...coach} />
+                <CoachCard {...coach} priority={i === 0} />
               </div>
             </div>
           ))}
@@ -201,6 +204,8 @@ export const Equipo = () => {
               <div className="aspect-square rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                 <img
                   src={imgFilosofia}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                   alt="Coaching Philosophy"
                 />

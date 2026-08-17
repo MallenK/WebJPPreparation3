@@ -11,16 +11,6 @@ import imgDesafio1 from '../assets/images/uploads/IMG_1303.webp';
 import imgDesafio2 from '../assets/images/uploads/IMG_1304.webp';
 import imgTrainingDay from '../assets/images/uploads/IMG_1305.webp';
 
-import imgJoelParedes from '../assets/images/uploads/IMG_0197.webp';
-import imgIkerArjona from '../assets/images/uploads/IMG_0198.webp';
-import imgNilSoto from '../assets/images/uploads/IMG_0199.webp';
-import imgMarcRodriguez from '../assets/images/uploads/IMG_1700.webp';
-import imgJoelAgraz from '../assets/images/uploads/IMG_1701.webp';
-import imgArnauTellez from '../assets/images/uploads/IMG_1707.webp';
-import imgDavidGarcia from '../assets/images/uploads/IMG_1710.webp';
-import imgFilosofia from '../assets/images/uploads/IMG_1723.webp';
-
-
 
 const SectionHeader = ({ subtitle, title, centered = false }) => (
   <div className={centered ? "text-center mb-12 md:mb-16 lg:mb-16 xl:mb-20" : "mb-10 md:mb-12 lg:mb-14"}>

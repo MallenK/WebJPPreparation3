@@ -7,15 +7,15 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
-import imgPrograma1 from '../assets/images/uploads/IMG_2062.webp';
-import imgPrograma2 from '../assets/images/uploads/IMG_1701.webp';
-import imgPrograma3 from '../assets/images/uploads/IMG_0175.webp';
-import imgPrograma4 from '../assets/images/uploads/IMG_2362.webp';
-import imgMetodo2b from '../assets/images/uploads/IMG_6001.webp';
-import imgMetodo1b from '../assets/images/uploads/IMG_5907.webp';
-import imgMetodo2a from '../assets/images/uploads/IMG_5994.webp';
-import imgMetodo1a from '../assets/images/uploads/IMG_5997.webp';
-import imgVideoAnalysis from '../assets/images/uploads/IMG_0198.webp';
+import imgPrograma1 from '../assets/images/uploads/IMG_2062-fit.webp';
+import imgPrograma2 from '../assets/images/uploads/IMG_1701-fit.webp';
+import imgPrograma3 from '../assets/images/uploads/IMG_0175-fit.webp';
+import imgPrograma4 from '../assets/images/uploads/IMG_2362-fit.webp';
+import imgMetodo2b from '../assets/images/uploads/IMG_6001-fit.webp';
+import imgMetodo1b from '../assets/images/uploads/IMG_5907-fit.webp';
+import imgMetodo2a from '../assets/images/uploads/IMG_5994-fit.webp';
+import imgMetodo1a from '../assets/images/uploads/IMG_5997-fit.webp';
+import imgVideoAnalysis from '../assets/images/uploads/IMG_0198-fit.webp';
 
 interface ProgramCardProps {
   title: string;
@@ -26,10 +26,11 @@ interface ProgramCardProps {
   priceNote?: string;
   img: string;
   popular?: boolean;
+  priority?: boolean;
   key?: React.Key;
 }
 
-const ProgramCard = ({ title, subtitle, description, features, price, priceNote, img, popular = false }: ProgramCardProps) => {
+const ProgramCard = ({ title, subtitle, description, features, price, priceNote, img, popular = false, priority = false }: ProgramCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -44,6 +45,8 @@ const ProgramCard = ({ title, subtitle, description, features, price, priceNote,
         <img
           src={img}
           alt={title}
+          loading={priority ? undefined : 'lazy'}
+          decoding={priority ? undefined : 'async'}
           className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700"
           referrerPolicy="no-referrer"
         />
@@ -161,7 +164,7 @@ export const Programas = () => {
       {/* Program Cards — 1 columna en mobile, 2x2 en tablet/escritorio */}
       <section className="py-16 md:py-20 lg:py-20 xl:py-24 px-6 md:px-10 lg:px-12 bg-brand-black relative">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 xl:gap-10 items-stretch">
-          {programs.map((p, i) => <ProgramCard key={i} {...p} />)}
+          {programs.map((p, i) => <ProgramCard key={i} {...p} priority={i === 0} />)}
         </div>
       </section>
 
@@ -212,18 +215,18 @@ export const Programas = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="aspect-square rounded-2xl overflow-hidden">
-                  <img src={imgMetodo1a} className="w-full h-full object-cover" alt="Training" />
+                  <img src={imgMetodo1a} loading="lazy" decoding="async" className="w-full h-full object-cover" alt="Training" />
                 </div>
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden">
-                  <img src={imgMetodo1b} className="w-full h-full object-cover" alt="Training" />
+                  <img src={imgMetodo1b} loading="lazy" decoding="async" className="w-full h-full object-cover" alt="Training" />
                 </div>
               </div>
               <div className="space-y-4 pt-12">
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden">
-                  <img src={imgMetodo2a} className="w-full h-full object-cover" alt="Training" />
+                  <img src={imgMetodo2a} loading="lazy" decoding="async" className="w-full h-full object-cover" alt="Training" />
                 </div>
                 <div className="aspect-square rounded-2xl overflow-hidden">
-                  <img src={imgMetodo2b} className="w-full h-full object-cover" alt="Training" />
+                  <img src={imgMetodo2b} loading="lazy" decoding="async" className="w-full h-full object-cover" alt="Training" />
                 </div>
               </div>
             </div>
@@ -392,6 +395,8 @@ export const Programas = () => {
                 <div className="aspect-video rounded-3xl overflow-hidden border border-white/10 relative z-10">
                   <img
                     src={imgVideoAnalysis}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover opacity-60"
                     alt="Video Analysis"
                   />

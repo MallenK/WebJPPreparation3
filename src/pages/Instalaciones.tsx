@@ -5,13 +5,12 @@ import {
   Coffee, Wifi, ArrowRight, Star
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import imgInstalacionesHero from '../assets/images/uploads/IMG_1817.webp';
-import imgGaleria1 from '../assets/images/uploads/IMG_0175.webp';
-import imgGaleria2 from '../assets/images/uploads/IMG_0176.webp';
-import imgGaleria3 from '../assets/images/uploads/IMG_0180.webp';
-import imgGaleria4 from '../assets/images/uploads/IMG_0181.webp';
+import imgGaleria1 from '../assets/images/uploads/IMG_0175-fit.webp';
+import imgGaleria2 from '../assets/images/uploads/IMG_0176-fit.webp';
+import imgGaleria3 from '../assets/images/uploads/IMG_0180-fit.webp';
+import imgGaleria4 from '../assets/images/uploads/IMG_0181-fit.webp';
 import imgGaleria5 from '../assets/images/uploads/IMG_0184.webp';
-import imgGaleria6 from '../assets/images/uploads/IMG_0189.webp';
+import imgGaleria6 from '../assets/images/uploads/IMG_0189-fit.webp';
 import imgMapaFondo from '../assets/images/uploads/IMG_0184.webp';
 
 export const Instalaciones = () => {
@@ -159,9 +158,11 @@ export const Instalaciones = () => {
                 transition={{ delay: i * 0.1 }}
                 className="relative aspect-square rounded-2xl overflow-hidden group cursor-pointer"
               >
-                <img 
-                  src={item.url} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                <img
+                  src={item.url}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt={item.title}
                   referrerPolicy="no-referrer"
                 />
@@ -176,6 +177,8 @@ export const Instalaciones = () => {
         <div className="absolute inset-0 grayscale opacity-50">
           <img
             src={imgMapaFondo}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
             alt="Map Background"
           />
