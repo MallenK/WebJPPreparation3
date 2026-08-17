@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
+import { trackEvent } from '../lib/analytics';
 import imgPrograma1 from '../assets/images/uploads/IMG_2062-fit.webp';
 import imgPrograma2 from '../assets/images/uploads/IMG_1701-fit.webp';
 import imgPrograma3 from '../assets/images/uploads/IMG_0175-fit.webp';
@@ -77,10 +78,13 @@ const ProgramCard = ({ title, subtitle, description, features, price, priceNote,
             <span className="text-2xl md:text-3xl font-display font-bold text-white">{price}</span>
             {priceNote && <span className="text-white/50 text-xs block mt-1">{priceNote}</span>}
           </div>
-          <Link to="/contacto" className={cn(
-            "py-4 px-8 rounded-full font-bold uppercase text-xs tracking-widest transition-all",
-            popular ? "bg-brand-accent text-brand-black hover:bg-white" : "bg-white/10 text-white hover:bg-white/20"
-          )}>
+          <Link
+            to="/contacto"
+            onClick={() => trackEvent('cta_click', { cta_name: 'reservar_plan', plan_name: title, link_location: 'programas_card' })}
+            className={cn(
+              "py-4 px-8 rounded-full font-bold uppercase text-xs tracking-widest transition-all",
+              popular ? "bg-brand-accent text-brand-black hover:bg-white" : "bg-white/10 text-white hover:bg-white/20"
+            )}>
             RESERVAR
           </Link>
         </div>
@@ -446,7 +450,11 @@ export const Programas = () => {
             No dejes para mañana el entrenamiento que te hará destacar el próximo fin de semana.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link to="/contacto" className="bg-brand-black text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-brand-dark transition-all flex items-center justify-center gap-3 group">
+            <Link
+              to="/contacto"
+              onClick={() => trackEvent('cta_click', { cta_name: 'reservar_mi_plaza', link_location: 'programas_cta_final' })}
+              className="bg-brand-black text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-brand-dark transition-all flex items-center justify-center gap-3 group"
+            >
               RESERVAR MI PLAZA
               <ArrowRight className="group-hover:translate-x-2 transition-transform" />
             </Link>

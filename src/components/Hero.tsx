@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ChevronRight, Play, ArrowRight, Target, Zap, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { trackEvent } from '../lib/analytics';
 
 import IMGHero from '../assets/images/uploads/IMG_1700-fit.webp';
 
@@ -60,11 +61,19 @@ export const Hero = () => {
           </div>
 
           <div className="flex gap-2 mt-1">
-            <Link to="/contacto" className="flex-1 flex items-center justify-center gap-1.5 bg-brand-accent text-white font-bold py-3.5 rounded-full uppercase tracking-widest text-[11px]">
+            <Link
+              to="/contacto"
+              onClick={() => trackEvent('cta_click', { cta_name: 'reservar_sesion', link_location: 'hero_mobile' })}
+              className="flex-1 flex items-center justify-center gap-1.5 bg-brand-accent text-white font-bold py-3.5 rounded-full uppercase tracking-widest text-[11px]"
+            >
               Reservar
               <ArrowRight size={14} />
             </Link>
-            <Link to="/programas" className="flex-1 flex items-center justify-center gap-1.5 border-2 border-white/20 text-white font-bold py-3.5 rounded-full uppercase tracking-widest text-[11px]">
+            <Link
+              to="/programas"
+              onClick={() => trackEvent('cta_click', { cta_name: 'ver_programas', link_location: 'hero_mobile' })}
+              className="flex-1 flex items-center justify-center gap-1.5 border-2 border-white/20 text-white font-bold py-3.5 rounded-full uppercase tracking-widest text-[11px]"
+            >
               Programas
               <Play size={12} className="fill-current" />
             </Link>
@@ -116,12 +125,20 @@ export const Hero = () => {
                 Sesiones <span className="text-white font-bold">individualizadas</span> adaptadas a cada jugador/a, con trabajo específico para mejorar la toma de decisiones y el rendimiento real en el campo.
             </p>
             <div className="flex flex-row gap-6">
-              <Link to="/contacto" className="btn-primary group">
+              <Link
+                to="/contacto"
+                onClick={() => trackEvent('cta_click', { cta_name: 'reservar_sesion', link_location: 'hero_desktop' })}
+                className="btn-primary group"
+              >
                 Reservar sesión
                 <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
               </Link>
 
-              <Link to="/programas" className="btn-outline group">
+              <Link
+                to="/programas"
+                onClick={() => trackEvent('cta_click', { cta_name: 'ver_programas', link_location: 'hero_desktop' })}
+                className="btn-outline group"
+              >
                 Ver programas
                 <Play className="ml-2 w-4 h-4 fill-current group-hover:scale-110 transition-transform" />
               </Link>

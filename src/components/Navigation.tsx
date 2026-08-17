@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronRight, Phone, Instagram, Facebook, Music2, Mail, MapPin, Youtube, Twitter } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
+import { trackEvent } from '../lib/analytics';
 
 import logo from '../assets/images/brand/logo-jp-preparation-fit.webp';
 
@@ -218,6 +219,7 @@ export const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram de JP Preparation"
+              onClick={() => trackEvent('social_click', { social_network: 'instagram', link_location: 'footer' })}
               className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all duration-300 border border-white/5 hover:border-brand-accent/50"
             >
               <Instagram size={18} />
@@ -228,6 +230,7 @@ export const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="TikTok de JP Preparation"
+              onClick={() => trackEvent('social_click', { social_network: 'tiktok', link_location: 'footer' })}
               className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all duration-300 border border-white/5 hover:border-brand-accent/50"
             >
               <Music2 size={18} />
@@ -288,6 +291,7 @@ export const Footer = () => {
                 href="https://wa.me/34601506857"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('contact_click', { contact_method: 'whatsapp', link_location: 'footer' })}
                 className="text-sm hover:text-brand-accent transition-colors"
               >
                 +34 601 50 68 57
@@ -302,6 +306,7 @@ export const Footer = () => {
                 href="https://www.instagram.com/jp.preparation"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('social_click', { social_network: 'instagram', link_location: 'footer_contact' })}
                 className="text-sm hover:text-brand-accent transition-colors"
               >
                 @jp.preparation
@@ -321,6 +326,7 @@ export const Footer = () => {
             href="https://www.google.com/maps/search/?api=1&query=Carrer+de+la+Pobla+29+Sant+Vicenc+dels+Horts+Barcelona"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('contact_click', { contact_method: 'maps', link_location: 'footer' })}
             className="btn-outline w-full py-4 text-sm"
           >
             Ver en Google Maps
@@ -331,15 +337,15 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/50 text-[10px] uppercase tracking-[0.2em] font-bold">
         <p>© 2026 JP Preparation. Todos los derechos reservados.</p>
         <div className="flex gap-8">
-          <a href="#" className="hover:text-brand-accent transition-colors">
+          <Link to="/legal#aviso-legal" className="hover:text-brand-accent transition-colors">
             Aviso Legal
-          </a>
-          <a href="#" className="hover:text-white transition-colors">
+          </Link>
+          <Link to="/legal#privacidad" className="hover:text-white transition-colors">
             Privacidad
-          </a>
-          <a href="#" className="hover:text-white transition-colors">
+          </Link>
+          <Link to="/legal#cookies" className="hover:text-white transition-colors">
             Cookies
-          </a>
+          </Link>
           <a
             href="https://app.jppreparation.com"
             target="_blank"

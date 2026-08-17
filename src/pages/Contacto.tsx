@@ -13,6 +13,7 @@ import {
   Youtube,
   Twitter,
 } from 'lucide-react';
+import { trackEvent } from '../lib/analytics';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
@@ -56,6 +57,7 @@ export const Contacto = () => {
 
       if (data.success) {
         setStatus('success');
+        trackEvent('generate_lead', { form_name: 'contacto', servicio_interes: form.servicio });
         setForm(initialForm);
       } else {
         setStatus('error');
@@ -197,6 +199,7 @@ export const Contacto = () => {
                     href={contact.whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent('contact_click', { contact_method: 'whatsapp', link_location: 'contacto_quick' })}
                     className="bg-[#25D366] text-white px-8 py-3 rounded-full font-bold flex items-center justify-center gap-2 hover:scale-105 transition-transform"
                   >
                     WHATSAPP
@@ -205,6 +208,7 @@ export const Contacto = () => {
                     href={contact.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent('social_click', { social_network: 'instagram', link_location: 'contacto_quick' })}
                     className="btn-outline px-8 py-3"
                   >
                     INSTAGRAM
@@ -506,6 +510,7 @@ export const Contacto = () => {
                 href={contact.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('contact_click', { contact_method: 'maps', link_location: 'contacto_page' })}
                 className="btn-primary w-full flex items-center justify-center gap-3"
               >
                 ABRIR EN GOOGLE MAPS
