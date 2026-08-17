@@ -75,7 +75,7 @@ export const Home = () => {
                     <item.icon className="text-brand-accent group-hover:text-white" size={18} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm md:text-base mb-1">{item.title}</h4>
+                    <h3 className="font-bold text-white text-sm md:text-base mb-1">{item.title}</h3>
                     <p className="text-white/60 text-xs">{item.desc}</p>
                   </div>
                 </div>
@@ -97,6 +97,7 @@ export const Home = () => {
             <div className="aspect-square rounded-[2rem] overflow-hidden border-2 border-white/10 p-3 md:p-4 bg-white/5">
               <img
                 src={imgIntro}
+                alt="Jugador entrenando con JP Preparation"
                 className="w-full h-full object-cover rounded-[1.5rem]"
               />
             </div>
@@ -137,6 +138,9 @@ export const Home = () => {
               >
                 <img
                   src={imgDesafio1}
+                  alt="Entrenamiento individualizado JP Preparation"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </motion.div>
@@ -149,6 +153,9 @@ export const Home = () => {
               >
                 <img
                   src={imgDesafio2}
+                  alt="Corrección técnica personalizada JP Preparation"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </motion.div>
@@ -270,7 +277,7 @@ export const Home = () => {
                       {item.time}
                     </div>
                     <div>
-                      <h4 className="text-lg md:text-xl lg:text-xl xl:text-2xl font-bold mb-2">{item.title}</h4>
+                      <h3 className="text-lg md:text-xl lg:text-xl xl:text-2xl font-bold mb-2">{item.title}</h3>
                       <p className="text-white/70 text-sm leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
@@ -332,7 +339,7 @@ export const Home = () => {
                   <div key={i} className="space-y-2">
                     <div className="flex items-center gap-3">
                       <Activity className="text-brand-cyan" size={18} />
-                      <h4 className="font-bold text-white">{item.title}</h4>
+                      <h3 className="font-bold text-white">{item.title}</h3>
                     </div>
                     <p className="text-white/60 text-xs leading-relaxed">{item.desc}</p>
                   </div>
@@ -368,7 +375,7 @@ export const Home = () => {
                   "Ejercicios genéricos sin progresión personal.",
                   "Falta de análisis de vídeo."
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-4 text-white/40">
+                  <li key={i} className="flex items-center gap-4 text-white/60">
                     <X size={18} className="text-red-500 shrink-0" />
                     <span className="text-sm">{item}</span>
                   </li>

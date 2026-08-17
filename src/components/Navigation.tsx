@@ -107,9 +107,11 @@ export const Header = () => {
         </nav>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white shrink-0"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={isMobileMenuOpen}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -135,6 +137,7 @@ export const Header = () => {
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 text-white"
+                aria-label="Cerrar menú"
               >
                 <X size={28} />
               </button>
@@ -214,6 +217,7 @@ export const Footer = () => {
               href="https://www.instagram.com/jp.preparation"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Instagram de JP Preparation"
               className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all duration-300 border border-white/5 hover:border-brand-accent/50"
             >
               <Instagram size={18} />
@@ -223,6 +227,7 @@ export const Footer = () => {
               href="https://www.tiktok.com/@jp.preparation"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="TikTok de JP Preparation"
               className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all duration-300 border border-white/5 hover:border-brand-accent/50"
             >
               <Music2 size={18} />
@@ -231,9 +236,9 @@ export const Footer = () => {
         </div>
 
         <div>
-          <h4 className="font-display text-lg mb-8 text-white tracking-widest uppercase">
+          <h3 className="font-display text-lg mb-8 text-white tracking-widest uppercase">
             Explorar
-          </h4>
+          </h3>
           <ul className="space-y-4">
             {[
               { name: 'Tecnificación', path: '/tecnificacion' },
@@ -246,7 +251,7 @@ export const Footer = () => {
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className="text-white/40 hover:text-brand-accent transition-colors flex items-center group"
+                  className="text-white/60 hover:text-brand-accent transition-colors flex items-center group"
                 >
                   <ChevronRight
                     size={14}
@@ -260,11 +265,11 @@ export const Footer = () => {
         </div>
 
         <div>
-          <h4 className="font-display text-lg mb-8 text-white tracking-widest uppercase">
+          <h3 className="font-display text-lg mb-8 text-white tracking-widest uppercase">
             Contacto
-          </h4>
+          </h3>
           <ul className="space-y-6">
-            <li className="flex items-start gap-4 text-white/40 group">
+            <li className="flex items-start gap-4 text-white/60 group">
               <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
                 <MapPin className="text-brand-accent" size={18} />
               </div>
@@ -275,7 +280,7 @@ export const Footer = () => {
               </span>
             </li>
 
-            <li className="flex items-center gap-4 text-white/40 group">
+            <li className="flex items-center gap-4 text-white/60 group">
               <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
                 <Phone className="text-brand-accent" size={18} />
               </div>
@@ -289,7 +294,7 @@ export const Footer = () => {
               </a>
             </li>
 
-            <li className="flex items-center gap-4 text-white/40 group">
+            <li className="flex items-center gap-4 text-white/60 group">
               <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
                 <Instagram className="text-brand-accent" size={18} />
               </div>
@@ -306,10 +311,10 @@ export const Footer = () => {
         </div>
 
         <div>
-          <h4 className="font-display text-lg mb-8 text-white tracking-widest uppercase">
+          <h3 className="font-display text-lg mb-8 text-white tracking-widest uppercase">
             Ubicación
-          </h4>
-          <p className="text-white/40 mb-6 text-sm">
+          </h3>
+          <p className="text-white/60 mb-6 text-sm">
             Puedes encontrarnos en Sant Vicenç dels Horts, Barcelona.
           </p>
           <a
@@ -323,7 +328,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/20 text-[10px] uppercase tracking-[0.2em] font-bold">
+      <div className="max-w-7xl mx-auto pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/50 text-[10px] uppercase tracking-[0.2em] font-bold">
         <p>© 2026 JP Preparation. Todos los derechos reservados.</p>
         <div className="flex gap-8">
           <a href="#" className="hover:text-brand-accent transition-colors">

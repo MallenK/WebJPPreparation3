@@ -421,6 +421,9 @@ export const Eventos = () => {
             <div className="aspect-video rounded-3xl overflow-hidden border border-white/10">
               <img
                 src={imgPorteros}
+                alt="Evento de porteros JP Preparation"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>
