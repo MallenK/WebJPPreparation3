@@ -218,7 +218,7 @@ export const Eventos = () => {
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-[0.9] tracking-tighter mb-6 md:mb-8">
             EVENTOS DE <br />
-            <span className="text-gradient italic">JP Preparation</span>
+            <span className="text-gradient">JP Preparation</span>
           </h1>
 
           <p className="text-base sm:text-lg md:text-lg lg:text-lg xl:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
@@ -354,7 +354,7 @@ export const Eventos = () => {
 
           <SectionHeader
             subtitle="Competición"
-            title="TORNEOS DE <span class='text-gradient italic'>VERDAD</span>"
+            title="TORNEOS DE <span class='text-gradient'>VERDAD</span>"
             centered
           />
 
@@ -471,7 +471,7 @@ export const Eventos = () => {
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black mb-6 md:mb-8 leading-[0.95] tracking-tighter">
             ¿QUIERES VIVIR <br/>
-            <span className="text-gradient italic">ESTO?</span>
+            <span className="text-gradient">ESTO?</span>
           </h2>
 
           <p className="text-white/70 mb-10">
