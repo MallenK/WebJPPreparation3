@@ -421,7 +421,7 @@ export const Home = () => {
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-8 leading-[0.95] tracking-tighter">
               ¿ESTÁS LISTO PARA <br />
-              <span className="text-gradient italic">LA ÉLITE?</span>
+              <span className="text-gradient">LA ÉLITE?</span>
             </h2>
             <p className="text-base md:text-lg xl:text-xl text-white/70 mb-12 max-w-2xl mx-auto leading-relaxed">
               Las plazas son limitadas para garantizar la máxima calidad en cada sesión. No pierdas la oportunidad de transformar tu juego.

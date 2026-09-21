@@ -304,7 +304,7 @@ export const Equipo = () => {
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 leading-[0.95] tracking-tighter">
             ¿Eres un apasionado de la <br />
-            <span className="text-brand-accent italic">tecnificación?</span>
+            <span className="text-brand-black italic">tecnificación?</span>
           </h2>
           <p className="text-white/70 text-base md:text-lg xl:text-xl mb-8 md:mb-10 max-w-2xl mx-auto">
             Nuestro staff está listo para llevarte al siguiente nivel. ¿Lo estás tú?
