@@ -1,273 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.jppreparation.com/</loc>
-    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/jugador-conduccion-balon-5ns0VcKu.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/entrenador-corrige-jugadora-BpVS3lF2.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/jugadora-choca-mano-entrenador-yyK9lU5e.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/jugador-disparo-porteria-DYOxWSxQ.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/entrenador-sesion-tecnificacion-BpCGb2l9.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/pista-larga-hacia-calle-DCx7H56p.webp</image:loc>
-    </image:image>
   </url>
   <url>
     <loc>https://www.jppreparation.com/tecnificacion</loc>
-    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/jugadora-escucha-entrenador-BH1HzjtJ.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/joel-paredes-avatar-DhwjJpB-.webp</image:loc>
-    </image:image>
   </url>
   <url>
     <loc>https://www.jppreparation.com/programas</loc>
-    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/jugadora-entrenamiento-individual-xrS9Ry-H.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/entrenador-explica-ejercicio-jugador-BTwDJJus.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/zona-fuerza-B3ymoOOA.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/dos-jugadores-entrenamiento-duo-DxOox7DF.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/material-entrenamiento-zScv4pLs.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/jugadora-regate-cono-BHQXzapP.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/jugador-volea-red-Nas59Zxo.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/jugadora-slalom-picas-CN7TIpan.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/16-vista-elevada-del-campo-Dv7UWbj-.webp</image:loc>
-    </image:image>
   </url>
   <url>
     <loc>https://www.jppreparation.com/equipo</loc>
-    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/joel-paredes-director-xtmNPrVU.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/nil-soto-coordinador-Dp1aM41G.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/marc-rodriguez-gestion-horarios-DZ6ZdYqt.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/joel-agraz-entrenador-BdYY70mH.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/arnau-tellez-entrenador-DNl-gLEd.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/oscar-podestad-entrenador-DY4h1U5w.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/alfredo-entrenador-porteros-CoNXZnml.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/david-garcia-preparador-fisico-4Yms6ezO.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/entrenador-explica-ejercicio-jugador-BTwDJJus.webp</image:loc>
-    </image:image>
   </url>
   <url>
     <loc>https://www.jppreparation.com/instalaciones</loc>
-    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/pista-mural-entrenamiento-DDB43Pjs.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/hall-camisetas-DCoJEKyG.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/vitrina-trofeos-6mPA5Clc.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/pista-larga-logo-CemDqSvm.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/sesion-individual-Cvu73zVj.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/porteria-precision-B7XG1VPb.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/material-entrenamiento-zScv4pLs.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/sala-lemas-C1X-6ke-.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/mural-adn-D838gCV2.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/zona-fuerza-B3ymoOOA.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/sala-ciclo-indoor-DQFnNy0n.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/zona-recuperacion-DM-9fY0-.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/vestuario-cEnxEXl_.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/fachada-frontal-FAB8fLRH.webp</image:loc>
-    </image:image>
   </url>
   <url>
     <loc>https://www.jppreparation.com/eventos</loc>
-    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/staff-stage-B6j3XdMP.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/torneo-podio-medallas-hu_Yt-zv.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/evento-batalla-porteros-DpwQ9iF6.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/grupo-evento-aire-libre-mRmeP1To.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/foto-grupo-campus-montana-D-CaLMQe.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/celebracion-jugadores-cesped-CnXsJE7h.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/grupo-jugadores-pista-exterior-DdFZ8UMM.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/jugadores-staff-estadio-CDs-tAHs.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/expedicion-hotel-CYWKxO3U.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/jugadores-playa-CTutP19h.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/celebracion-victoria-bengala-BdRHFl7P.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/01-foto-de-grupo-de-todos-los-participantes-CjIC7uuo.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/02-charla-antes-del-entrenamiento-DBfuY3pf.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/03-campo-visto-desde-la-ventana-Cnhuur8_.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/04-uno-contra-uno-en-el-cesped-DTHLITyc.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/05-jugadores-posando-en-el-campo-DJI56nIC.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/06-juegos-en-la-piscina-lhfc6_dl.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/07-comida-en-el-comedor-BANa6AGR.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/08-equipo-celeste-posando-DHDsI1aR.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/09-equipo-azul-posando-CVFgZ-Ri.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/10-equipo-celeste-con-su-entrenador-nPZ5eofO.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/11-equipo-azul-junto-al-bosque-DmYcxSjP.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/12-partido-a-contraluz-B-mqZiYV.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/13-entrenadores-siguiendo-el-partido-Bvi5Rhml.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/14-equipo-celeste-sonriendo-B_NPYKNf.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/15-equipo-azul-haciendo-gestos-dTEZ1brD.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/16-vista-elevada-del-campo-Dv7UWbj-.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/17-entrenador-explica-un-ejercicio-DwjGeRMo.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/18-equipo-junto-a-la-porteria-Bh6MeV2X.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/19-piscina-del-campus-CMGGPYNb.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/20-actividad-nocturna-aMVqrpbU.webp</image:loc>
-    </image:image>
   </url>
   <url>
     <loc>https://www.jppreparation.com/resultados</loc>
-    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.jppreparation.com/contacto</loc>
-    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://www.jppreparation.com/assets/fachada-calle-pobla-29-CPVBu7CA.webp</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://www.jppreparation.com/legal</loc>
-    <lastmod>2026-08-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
   </url>
 </urlset>
